@@ -5,8 +5,9 @@ export function findKthLargest(nums: number[], k: number): number {
     return nums[k - 1];
      */
 
+    //-------------------------------------------
+    /**
     // 构建 前 k 个元素的小堆顶
-
     // 构建小顶堆
     function buildHeap(arr: number[], l: number) {
         if (l === 1) {
@@ -60,4 +61,59 @@ export function findKthLargest(nums: number[], k: number): number {
     }
 
     return heap[1];
+     */
+
+    // 利用快速排序, 将元素排好
+    function swap(arr: number[], i: number, j: number) {
+        const temp = arr[i];
+        arr[i] = arr[j];
+        arr[j] = temp;
+    }
+
+    function partition(arr: number[], left: number, right: number): number {
+        const datum =
+            arr[Math.floor(Math.random() * (right - left + 1) + left)];
+        let i = left,
+            j = right;
+
+        while (i <= j) {
+            while (arr[i] < datum) {
+                i++;
+            }
+            while (arr[j] > datum) {
+                j--;
+            }
+
+            // 交换
+            if (i <= j) {
+                swap(arr, i, j);
+                i += 1;
+                j -= 1;
+            }
+        }
+
+        return i;
+    }
+
+    function qSort(arr: number[], left: number, right: number) {
+        let index = -1;
+        if (left < right) {
+            // 划分数组
+            index = partition(arr, left, right);
+            if (left < index - 1) {
+                qSort(arr, left, index - 1);
+            }
+            if (index < right) {
+                qSort(arr, index, right);
+            }
+        }
+    }
+
+    function quickSort(arr: number[]) {
+        qSort(arr, 0, arr.length - 1);
+    }
+
+    quickSort(nums);
+
+    return nums[nums.length - k];
 }

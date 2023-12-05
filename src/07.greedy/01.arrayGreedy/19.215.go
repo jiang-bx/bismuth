@@ -1,5 +1,7 @@
 package array_greedy
 
+import "math/rand"
+
 func FindKthLargest(nums []int, k int) int {
 	/**
 	sort.Slice(nums, func(i, j int) bool {
@@ -9,6 +11,8 @@ func FindKthLargest(nums []int, k int) int {
 	return nums[k-1]
 	*/
 
+	/**
+	// 小顶堆
 	swap := func(arr []int, i int, j int) {
 		temp := arr[i]
 		arr[i] = arr[j]
@@ -58,4 +62,55 @@ func FindKthLargest(nums []int, k int) int {
 	}
 
 	return heap[1]
+	*/
+
+	quickSort(nums)
+
+	return nums[len(nums)-k]
+}
+
+func swap(arr []int, i int, j int) {
+	temp := arr[i]
+	arr[i] = arr[j]
+	arr[j] = temp
+}
+
+func partition(arr []int, left int, right int) int {
+	datum := arr[rand.Int()%(right-left+1)+left]
+	i := left
+	j := right
+
+	for i <= j {
+		for arr[i] < datum {
+			i++
+		}
+		for arr[j] > datum {
+			j--
+		}
+
+		if i <= j {
+			swap(arr, i, j)
+			i++
+			j--
+		}
+	}
+
+	return i
+}
+
+func qSort(arr []int, left int, right int) {
+	index := -1
+	if left < right {
+		index = partition(arr, left, right)
+		if left < index-1 {
+			qSort(arr, left, index-1)
+		}
+		if index < right {
+			qSort(arr, index, right)
+		}
+	}
+}
+
+func quickSort(arr []int) {
+	qSort(arr, 0, len(arr)-1)
 }

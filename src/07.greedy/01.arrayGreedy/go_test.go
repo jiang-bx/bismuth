@@ -585,3 +585,37 @@ func TestFindKthLargest(t *testing.T) {
 		testTemp()
 	})
 }
+
+func TestSortColors(t *testing.T) {
+	utils.TestWarp("75 测试用例", func() {
+		params1 := []int{}
+		params2 := 0
+		res := []int{}
+		testTemp := func() {
+			str1, _ := json.Marshal(params1)
+			str2, _ := json.Marshal(params2)
+			res1, _ := json.Marshal(res)
+			desc := string(str1) + ", " + string(str2) + " should return " + string(res1)
+
+			SortColors(params1)
+
+			utils.TestCondition(t, desc, reflect.DeepEqual(params1, res))
+		}
+
+		params1 = []int{
+			2, 0, 2, 1, 1, 0,
+		}
+		res = []int{
+			0, 0, 1, 1, 2, 2,
+		}
+		testTemp()
+
+		params1 = []int{
+			2, 0, 1,
+		}
+		res = []int{
+			0, 1, 2,
+		}
+		testTemp()
+	})
+}

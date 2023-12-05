@@ -17,6 +17,7 @@ import { findLongestChain } from "./16.646";
 import { reconstructQueue } from "./17.406";
 import { majorityElement } from "./18.169";
 import { findKthLargest } from "./19.215";
+import { sortColors } from "./20.75";
 
 describe("523 测试用例", () => {
     test(`flowerbed = [1,0,0,0,1], n = 1 should return true`, () => {
@@ -444,5 +445,19 @@ describe("215 测试用例", () => {
 
     test(`[3,2,3,1,2,4,5,5,6], k = 4 should return 4`, () => {
         expect(findKthLargest([3, 2, 3, 1, 2, 4, 5, 5, 6], 4)).toBe(4);
+    });
+});
+
+describe("75 测试用例", () => {
+    test(`[2,0,2,1,1,0] should return [0,0,1,1,2,2]`, () => {
+        const a = [2, 0, 2, 1, 1, 0];
+        sortColors(a);
+        expect(a).toEqual([0, 0, 1, 1, 2, 2]);
+    });
+
+    test(`[2,0,1] should return [0,1,2]`, () => {
+        const a = [2, 0, 1];
+        sortColors(a);
+        expect(a).toEqual([0, 1, 2]);
     });
 });
