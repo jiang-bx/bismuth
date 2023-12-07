@@ -19,6 +19,7 @@ import { majorityElement } from "./18.169";
 import { findKthLargest } from "./19.215";
 import { sortColors } from "./20.75";
 import { wiggleSort } from "./21.324";
+import { findMinMoves } from "./22.517";
 
 describe("523 测试用例", () => {
     test(`flowerbed = [1,0,0,0,1], n = 1 should return true`, () => {
@@ -474,5 +475,19 @@ describe("324 测试用例", () => {
         const a = [1, 3, 2, 2, 3, 1];
         wiggleSort(a);
         expect(a).toEqual([2, 3, 1, 3, 1, 2]);
+    });
+});
+
+describe("517 测试用例", () => {
+    test(`[1,0,5] should return 3`, () => {
+        expect(findMinMoves([1, 0, 5])).toBe(3);
+    });
+
+    test(`[0, 3,0] should return 2`, () => {
+        expect(findMinMoves([0, 3, 0])).toBe(2);
+    });
+
+    test(`[0, 2, 0] should return -1`, () => {
+        expect(findMinMoves([0, 2, 0])).toBe(-1);
     });
 });

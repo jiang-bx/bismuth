@@ -653,3 +653,36 @@ func TestWiggleSort(t *testing.T) {
 		testTemp()
 	})
 }
+
+func TestFindMinMoves(t *testing.T) {
+	utils.TestWarp("517 测试用例", func() {
+		params1 := []int{}
+		params2 := 0
+		res := 0
+		testTemp := func() {
+			str1, _ := json.Marshal(params1)
+			str2, _ := json.Marshal(params2)
+			res1, _ := json.Marshal(res)
+			desc := string(str1) + ", " + string(str2) + " should return " + string(res1)
+			utils.TestCondition(t, desc, FindMinMoves(params1) == res)
+		}
+
+		params1 = []int{
+			1, 0, 5,
+		}
+		res = 3
+		testTemp()
+
+		params1 = []int{
+			0, 3, 0,
+		}
+		res = 2
+		testTemp()
+
+		params1 = []int{
+			0, 2, 0,
+		}
+		res = -1
+		testTemp()
+	})
+}
