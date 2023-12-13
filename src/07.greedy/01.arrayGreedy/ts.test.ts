@@ -21,6 +21,7 @@ import { sortColors } from "./20.75";
 import { wiggleSort } from "./21.324";
 import { findMinMoves } from "./22.517";
 import { predictPartyVictory } from "./23.649";
+import { checkValidString } from "./24.678";
 
 describe("523 测试用例", () => {
     test(`flowerbed = [1,0,0,0,1], n = 1 should return true`, () => {
@@ -500,5 +501,23 @@ describe("649 测试用例", () => {
 
     test(`RDD should return Dire`, () => {
         expect(predictPartyVictory("RDD")).toBe("Dire");
+    });
+
+    test(`DRDRR should return Dire`, () => {
+        expect(predictPartyVictory("DRDRR")).toBe("Dire");
+    });
+});
+
+describe("678 测试用例", () => {
+    test(`() should return true`, () => {
+        expect(checkValidString("()")).toBe(true);
+    });
+
+    test(`(*) should return true`, () => {
+        expect(checkValidString("(*)")).toBe(true);
+    });
+
+    test(`(*)) should return true`, () => {
+        expect(checkValidString("(*))")).toBe(true);
     });
 });
