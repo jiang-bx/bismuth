@@ -736,3 +736,30 @@ func TestCheckValidString(t *testing.T) {
 		testTemp()
 	})
 }
+
+func TestStrongPasswordChecker(t *testing.T) {
+	utils.TestWarp("420 测试用例", func() {
+		params1 := ""
+		params2 := 0
+		res := 0
+		testTemp := func() {
+			str1, _ := json.Marshal(params1)
+			str2, _ := json.Marshal(params2)
+			res1, _ := json.Marshal(res)
+			desc := string(str1) + ", " + string(str2) + " should return " + string(res1)
+			utils.TestCondition(t, desc, StrongPasswordChecker(params1) == res)
+		}
+
+		params1 = "a"
+		res = 5
+		testTemp()
+
+		params1 = "aA1"
+		res = 3
+		testTemp()
+
+		params1 = "1337C0d3"
+		res = 0
+		testTemp()
+	})
+}

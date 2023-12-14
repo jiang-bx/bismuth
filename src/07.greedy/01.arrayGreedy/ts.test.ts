@@ -22,6 +22,7 @@ import { wiggleSort } from "./21.324";
 import { findMinMoves } from "./22.517";
 import { predictPartyVictory } from "./23.649";
 import { checkValidString } from "./24.678";
+import { strongPasswordChecker } from "./25.420";
 
 describe("523 测试用例", () => {
     test(`flowerbed = [1,0,0,0,1], n = 1 should return true`, () => {
@@ -519,5 +520,35 @@ describe("678 测试用例", () => {
 
     test(`(*)) should return true`, () => {
         expect(checkValidString("(*))")).toBe(true);
+    });
+
+    test(`((((()(()()()*()(((((*)()*(**(())))))(())()())(((())())())))))))(((((())*)))()))(()((*()*(*)))(*)() should return true`, () => {
+        expect(
+            checkValidString(
+                "((((()(()()()*()(((((*)()*(**(())))))(())()())(((())())())))))))(((((())*)))()))(()((*()*(*)))(*)()"
+            )
+        ).toBe(true);
+    });
+
+    test(`(((((*(()((((*((**(((()()*)()()()*((((**)())*)*)))))))(())(()))())((*()()(((()((()*(())*(()**)()(()) should return false`, () => {
+        expect(
+            checkValidString(
+                "(((((*(()((((*((**(((()()*)()()()*((((**)())*)*)))))))(())(()))())((*()()(((()((()*(())*(()**)()(())"
+            )
+        ).toBe(false);
+    });
+});
+
+describe("420 测试用例", () => {
+    test(`a should return 5`, () => {
+        expect(strongPasswordChecker("a")).toBe(5);
+    });
+
+    test(`aA1 should return 3`, () => {
+        expect(strongPasswordChecker("aA1")).toBe(3);
+    });
+
+    test(`1337C0d3 should return 0`, () => {
+        expect(strongPasswordChecker("1337C0d3")).toBe(0);
     });
 });
