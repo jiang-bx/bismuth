@@ -2,6 +2,7 @@ import { maxSubArray } from "./01.53";
 import { canCompleteCircuit } from "./02.134";
 import { findUnsortedSubarray } from "./03.581";
 import { maxProduct } from "./04.152";
+import { increasingTriplet } from "./05.334";
 
 describe("53 测试用例", () => {
     test(`[-2,1,-3,4,-1,2,1,-5,4] should return 6`, () => {
@@ -64,5 +65,31 @@ describe("152 测试用例", () => {
 
     test(`[-2,0,-1] should return 0`, () => {
         expect(maxProduct([-2, 0, -1])).toBe(0);
+    });
+
+    test(`[0, 2] should return 2`, () => {
+        expect(maxProduct([0, 2])).toBe(2);
+    });
+
+    test(`[-2,3,-4] should return 24`, () => {
+        expect(maxProduct([-2, 3, -4])).toBe(24);
+    });
+
+    test(`[2,-5,-2,-4,3] should return 24`, () => {
+        expect(maxProduct([2, -5, -2, -4, 3])).toBe(24);
+    });
+});
+
+describe("334 测试用例", () => {
+    test(`[1, 2, 3, 4, 5] should return true`, () => {
+        expect(increasingTriplet([1, 2, 3, 4, 5])).toBe(true);
+    });
+
+    test(`[5, 4, 3, 2, 1] should return false`, () => {
+        expect(increasingTriplet([5, 4, 3, 2, 1])).toBe(false);
+    });
+
+    test(`[2, 1, 5, 0, 4, 6] should return true`, () => {
+        expect(increasingTriplet([2, 1, 5, 0, 4, 6])).toBe(true);
     });
 });

@@ -107,3 +107,30 @@ func TestMaxProduct(t *testing.T) {
 		testTemp()
 	})
 }
+
+func TestIncreasingTriplet(t *testing.T) {
+	utils.TestWarp("334 测试用例", func() {
+		params1 := []int{}
+		params2 := []int{}
+		res := false
+		testTemp := func() {
+			str1, _ := json.Marshal(params1)
+			str2, _ := json.Marshal(params2)
+			res1, _ := json.Marshal(res)
+			desc := string(str1) + ", " + string(str2) + " should return " + string(res1)
+			utils.TestCondition(t, desc, IncreasingTriplet(params1) == res)
+		}
+
+		params1 = []int{1, 2, 3, 4, 5}
+		res = true
+		testTemp()
+
+		params1 = []int{5, 4, 3, 2, 1}
+		res = false
+		testTemp()
+
+		params1 = []int{2, 1, 5, 0, 4, 6}
+		res = true
+		testTemp()
+	})
+}
