@@ -134,3 +134,30 @@ func TestIncreasingTriplet(t *testing.T) {
 		testTemp()
 	})
 }
+
+func TestWiggleMaxLength(t *testing.T) {
+	utils.TestWarp("376 测试用例", func() {
+		params1 := []int{}
+		params2 := []int{}
+		res := 0
+		testTemp := func() {
+			str1, _ := json.Marshal(params1)
+			str2, _ := json.Marshal(params2)
+			res1, _ := json.Marshal(res)
+			desc := string(str1) + ", " + string(str2) + " should return " + string(res1)
+			utils.TestCondition(t, desc, WiggleMaxLength(params1) == res)
+		}
+
+		params1 = []int{1, 7, 4, 9, 2, 5}
+		res = 6
+		testTemp()
+
+		params1 = []int{1, 17, 5, 10, 13, 15, 10, 5, 16, 8}
+		res = 7
+		testTemp()
+
+		params1 = []int{1, 2, 3, 4, 5, 6, 7, 8, 9}
+		res = 2
+		testTemp()
+	})
+}

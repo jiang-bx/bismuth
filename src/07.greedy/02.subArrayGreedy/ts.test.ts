@@ -3,6 +3,7 @@ import { canCompleteCircuit } from "./02.134";
 import { findUnsortedSubarray } from "./03.581";
 import { maxProduct } from "./04.152";
 import { increasingTriplet } from "./05.334";
+import { wiggleMaxLength } from "./06.376";
 
 describe("53 测试用例", () => {
     test(`[-2,1,-3,4,-1,2,1,-5,4] should return 6`, () => {
@@ -91,5 +92,22 @@ describe("334 测试用例", () => {
 
     test(`[2, 1, 5, 0, 4, 6] should return true`, () => {
         expect(increasingTriplet([2, 1, 5, 0, 4, 6])).toBe(true);
+    });
+    test(`[20,100,10,12,5,13] should return true`, () => {
+        expect(increasingTriplet([20, 100, 10, 12, 5, 13])).toBe(true);
+    });
+});
+
+describe("376 测试用例", () => {
+    test(`[1,7,4,9,2,5] should return 6`, () => {
+        expect(wiggleMaxLength([1, 7, 4, 9, 2, 5])).toBe(6);
+    });
+
+    test(`[1,17,5,10,13,15,10,5,16,8] should return 7`, () => {
+        expect(wiggleMaxLength([1, 17, 5, 10, 13, 15, 10, 5, 16, 8])).toBe(7);
+    });
+
+    test(`[1,2,3,4,5,6,7,8,9] should return 2`, () => {
+        expect(wiggleMaxLength([1, 2, 3, 4, 5, 6, 7, 8, 9])).toBe(2);
     });
 });
