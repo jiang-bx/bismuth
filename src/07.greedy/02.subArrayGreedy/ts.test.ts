@@ -4,6 +4,7 @@ import { findUnsortedSubarray } from "./03.581";
 import { maxProduct } from "./04.152";
 import { increasingTriplet } from "./05.334";
 import { wiggleMaxLength } from "./06.376";
+import { isPossible } from "./07.659";
 
 describe("53 测试用例", () => {
     test(`[-2,1,-3,4,-1,2,1,-5,4] should return 6`, () => {
@@ -109,5 +110,19 @@ describe("376 测试用例", () => {
 
     test(`[1,2,3,4,5,6,7,8,9] should return 2`, () => {
         expect(wiggleMaxLength([1, 2, 3, 4, 5, 6, 7, 8, 9])).toBe(2);
+    });
+});
+
+describe("659 测试用例", () => {
+    test(`[1,2,3,3,4,5] should return true`, () => {
+        expect(isPossible([1, 2, 3, 3, 4, 5])).toBe(true);
+    });
+
+    test(`[1,2,3,3,4,4,5,5] should return true`, () => {
+        expect(isPossible([1, 2, 3, 3, 4, 4, 5, 5])).toBe(true);
+    });
+
+    test(`[1,2,3,4,4,5] should return false`, () => {
+        expect(isPossible([1, 2, 3, 4, 4, 5])).toBe(false);
     });
 });
