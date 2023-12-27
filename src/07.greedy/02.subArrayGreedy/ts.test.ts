@@ -5,6 +5,7 @@ import { maxProduct } from "./04.152";
 import { increasingTriplet } from "./05.334";
 import { wiggleMaxLength } from "./06.376";
 import { isPossible } from "./07.659";
+import { integerBreak } from "./08.343";
 
 describe("53 测试用例", () => {
     test(`[-2,1,-3,4,-1,2,1,-5,4] should return 6`, () => {
@@ -124,5 +125,15 @@ describe("659 测试用例", () => {
 
     test(`[1,2,3,4,4,5] should return false`, () => {
         expect(isPossible([1, 2, 3, 4, 4, 5])).toBe(false);
+    });
+});
+
+describe("343 测试用例", () => {
+    test(`2 should return 1`, () => {
+        expect(integerBreak(2)).toBe(1);
+    });
+
+    test(`10 should return 36`, () => {
+        expect(integerBreak(10)).toBe(36);
     });
 });
