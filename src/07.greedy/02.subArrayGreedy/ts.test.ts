@@ -6,6 +6,7 @@ import { increasingTriplet } from "./05.334";
 import { wiggleMaxLength } from "./06.376";
 import { isPossible } from "./07.659";
 import { integerBreak } from "./08.343";
+import { nextGreaterElement } from "./09.496";
 
 describe("53 测试用例", () => {
     test(`[-2,1,-3,4,-1,2,1,-5,4] should return 6`, () => {
@@ -135,5 +136,21 @@ describe("343 测试用例", () => {
 
     test(`10 should return 36`, () => {
         expect(integerBreak(10)).toBe(36);
+    });
+
+    test(`31 should return 78732`, () => {
+        expect(integerBreak(31)).toBe(78732);
+    });
+});
+
+describe("496 测试用例", () => {
+    test(`nums1 = [4,1,2], nums2 = [1,3,4,2] should return [-1,3,-1]`, () => {
+        expect(nextGreaterElement([4, 1, 2], [1, 3, 4, 2])).toEqual([
+            -1, 3, -1,
+        ]);
+    });
+
+    test(`nums1 = [2,4], nums2 = [1,2,3,4] should return [3,-1]`, () => {
+        expect(nextGreaterElement([2, 4], [1, 2, 3, 4])).toEqual([3, -1]);
     });
 });
