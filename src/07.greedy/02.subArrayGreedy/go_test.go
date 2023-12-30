@@ -237,3 +237,26 @@ func TestNextGreaterElement(t *testing.T) {
 		testTemp()
 	})
 }
+
+func TestNextGreaterElements(t *testing.T) {
+	utils.TestWarp("503 测试用例", func() {
+		params1 := []int{}
+		params2 := []int{}
+		res := []int{}
+		testTemp := func() {
+			str1, _ := json.Marshal(params1)
+			str2, _ := json.Marshal(params2)
+			res1, _ := json.Marshal(res)
+			desc := string(str1) + ", " + string(str2) + " should return " + string(res1)
+			utils.TestCondition(t, desc, reflect.DeepEqual(NextGreaterElements(params1), res))
+		}
+
+		params1 = []int{1, 2, 1}
+		res = []int{2, -1, 2}
+		testTemp()
+
+		params1 = []int{1, 2, 3, 4, 3}
+		res = []int{2, 3, 4, -1, 4}
+		testTemp()
+	})
+}

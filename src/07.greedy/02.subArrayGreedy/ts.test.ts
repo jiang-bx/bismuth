@@ -7,6 +7,7 @@ import { wiggleMaxLength } from "./06.376";
 import { isPossible } from "./07.659";
 import { integerBreak } from "./08.343";
 import { nextGreaterElement } from "./09.496";
+import { nextGreaterElements } from "./10.503";
 
 describe("53 测试用例", () => {
     test(`[-2,1,-3,4,-1,2,1,-5,4] should return 6`, () => {
@@ -152,5 +153,15 @@ describe("496 测试用例", () => {
 
     test(`nums1 = [2,4], nums2 = [1,2,3,4] should return [3,-1]`, () => {
         expect(nextGreaterElement([2, 4], [1, 2, 3, 4])).toEqual([3, -1]);
+    });
+});
+
+describe("503 测试用例", () => {
+    test(`[1,2,1] should return [2,-1,2]`, () => {
+        expect(nextGreaterElements([1, 2, 1])).toEqual([2, -1, 2]);
+    });
+
+    test(`[1,2,3,4,3] should return [2,3,4,-1,4]`, () => {
+        expect(nextGreaterElements([1, 2, 3, 4, 3])).toEqual([2, 3, 4, -1, 4]);
     });
 });
