@@ -260,3 +260,30 @@ func TestNextGreaterElements(t *testing.T) {
 		testTemp()
 	})
 }
+
+func TestFind132pattern(t *testing.T) {
+	utils.TestWarp("456 测试用例", func() {
+		params1 := []int{}
+		params2 := []int{}
+		res := true
+		testTemp := func() {
+			str1, _ := json.Marshal(params1)
+			str2, _ := json.Marshal(params2)
+			res1, _ := json.Marshal(res)
+			desc := string(str1) + ", " + string(str2) + " should return " + string(res1)
+			utils.TestCondition(t, desc, Find132pattern(params1) == res)
+		}
+
+		params1 = []int{1, 2, 3, 4}
+		res = false
+		testTemp()
+
+		params1 = []int{3, 1, 4, 2}
+		res = true
+		testTemp()
+
+		params1 = []int{-1, 3, 2, 0}
+		res = true
+		testTemp()
+	})
+}

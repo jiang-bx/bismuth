@@ -8,6 +8,7 @@ import { isPossible } from "./07.659";
 import { integerBreak } from "./08.343";
 import { nextGreaterElement } from "./09.496";
 import { nextGreaterElements } from "./10.503";
+import { find132pattern } from "./11.456";
 
 describe("53 测试用例", () => {
     test(`[-2,1,-3,4,-1,2,1,-5,4] should return 6`, () => {
@@ -163,5 +164,19 @@ describe("503 测试用例", () => {
 
     test(`[1,2,3,4,3] should return [2,3,4,-1,4]`, () => {
         expect(nextGreaterElements([1, 2, 3, 4, 3])).toEqual([2, 3, 4, -1, 4]);
+    });
+});
+
+describe("456 测试用例", () => {
+    test(`[1,2,3,4] should return false`, () => {
+        expect(find132pattern([1, 2, 3, 4])).toBe(false);
+    });
+
+    test(`[3,1,4,2] should return true`, () => {
+        expect(find132pattern([3, 1, 4, 2])).toBe(true);
+    });
+
+    test(`[-1,3,2,0] should return true`, () => {
+        expect(find132pattern([-1, 3, 2, 0])).toBe(true);
     });
 });
