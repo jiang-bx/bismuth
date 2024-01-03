@@ -9,6 +9,7 @@ import { integerBreak } from "./08.343";
 import { nextGreaterElement } from "./09.496";
 import { nextGreaterElements } from "./10.503";
 import { find132pattern } from "./11.456";
+import { removeDuplicateLetters } from "./12.316";
 
 describe("53 测试用例", () => {
     test(`[-2,1,-3,4,-1,2,1,-5,4] should return 6`, () => {
@@ -178,5 +179,19 @@ describe("456 测试用例", () => {
 
     test(`[-1,3,2,0] should return true`, () => {
         expect(find132pattern([-1, 3, 2, 0])).toBe(true);
+    });
+
+    test(`[1,0,1,-4,-3] should return false`, () => {
+        expect(find132pattern([1, 0, 1, -4, -3])).toBe(false);
+    });
+});
+
+describe("316 测试用例", () => {
+    test(`bcabc should return abc`, () => {
+        expect(removeDuplicateLetters("bcabc")).toBe("abc");
+    });
+
+    test(`cbacdcbc should return acdb`, () => {
+        expect(removeDuplicateLetters("cbacdcbc")).toBe("acdb");
     });
 });
