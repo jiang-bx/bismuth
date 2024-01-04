@@ -10,6 +10,7 @@ import { nextGreaterElement } from "./09.496";
 import { nextGreaterElements } from "./10.503";
 import { find132pattern } from "./11.456";
 import { removeDuplicateLetters } from "./12.316";
+import { removeKdigits } from "./13.402";
 
 describe("53 测试用例", () => {
     test(`[-2,1,-3,4,-1,2,1,-5,4] should return 6`, () => {
@@ -193,5 +194,19 @@ describe("316 测试用例", () => {
 
     test(`cbacdcbc should return acdb`, () => {
         expect(removeDuplicateLetters("cbacdcbc")).toBe("acdb");
+    });
+});
+
+describe("402 测试用例", () => {
+    test(`num = "1432219", k = 3 should return 1219`, () => {
+        expect(removeKdigits("1432219", 3)).toBe("1219");
+    });
+
+    test(`num = "10200", k = 1 should return 200`, () => {
+        expect(removeKdigits("10200", 1)).toBe("200");
+    });
+
+    test(`num = "10", k = 2 should return 0`, () => {
+        expect(removeKdigits("10", 2)).toBe("0");
     });
 });
