@@ -340,3 +340,37 @@ func TestRemoveKdigits(t *testing.T) {
 		testTemp()
 	})
 }
+
+func TestMaxNumber(t *testing.T) {
+	utils.TestWarp("321 测试用例", func() {
+		params1 := []int{}
+		params2 := []int{}
+		params3 := 0
+		res := []int{}
+		testTemp := func() {
+			str1, _ := json.Marshal(params1)
+			str2, _ := json.Marshal(params2)
+			res1, _ := json.Marshal(res)
+			desc := string(str1) + ", " + string(str2) + " should return " + string(res1)
+			utils.TestCondition(t, desc, reflect.DeepEqual(MaxNumber(params1, params2, params3), res))
+		}
+
+		params1 = []int{3, 4, 6, 5}
+		params2 = []int{9, 1, 2, 5, 8, 3}
+		params3 = 5
+		res = []int{9, 8, 6, 5, 3}
+		testTemp()
+
+		params1 = []int{6, 7}
+		params2 = []int{6, 0, 4}
+		params3 = 5
+		res = []int{6, 7, 6, 0, 4}
+		testTemp()
+
+		params1 = []int{3, 9}
+		params2 = []int{8, 9}
+		params3 = 3
+		res = []int{9, 8, 9}
+		testTemp()
+	})
+}

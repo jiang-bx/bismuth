@@ -11,6 +11,7 @@ import { nextGreaterElements } from "./10.503";
 import { find132pattern } from "./11.456";
 import { removeDuplicateLetters } from "./12.316";
 import { removeKdigits } from "./13.402";
+import { maxNumber } from "./14.321";
 
 describe("53 测试用例", () => {
     test(`[-2,1,-3,4,-1,2,1,-5,4] should return 6`, () => {
@@ -208,5 +209,21 @@ describe("402 测试用例", () => {
 
     test(`num = "10", k = 2 should return 0`, () => {
         expect(removeKdigits("10", 2)).toBe("0");
+    });
+});
+
+describe("321 测试用例", () => {
+    test(`[3, 4, 6, 5], [9, 1, 2, 5, 8, 3], k = 5 should return [9, 8, 6, 5, 3]`, () => {
+        expect(maxNumber([3, 4, 6, 5], [9, 1, 2, 5, 8, 3], 5)).toEqual([
+            9, 8, 6, 5, 3,
+        ]);
+    });
+
+    test(`[6, 7], [6, 0, 4], k = 5 should return [9, 8, 6, 5, 3]`, () => {
+        expect(maxNumber([6, 7], [6, 0, 4], 5)).toEqual([6, 7, 6, 0, 4]);
+    });
+
+    test(`[3, 9], [8, 9], k = 3 should return [9, 8, 9]`, () => {
+        expect(maxNumber([3, 9], [8, 9], 3)).toEqual([9, 8, 9]);
     });
 });
