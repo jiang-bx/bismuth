@@ -12,6 +12,7 @@ import { find132pattern } from "./11.456";
 import { removeDuplicateLetters } from "./12.316";
 import { removeKdigits } from "./13.402";
 import { maxNumber } from "./14.321";
+import { largestRectangleArea } from "./15.84";
 
 describe("53 测试用例", () => {
     test(`[-2,1,-3,4,-1,2,1,-5,4] should return 6`, () => {
@@ -225,5 +226,15 @@ describe("321 测试用例", () => {
 
     test(`[3, 9], [8, 9], k = 3 should return [9, 8, 9]`, () => {
         expect(maxNumber([3, 9], [8, 9], 3)).toEqual([9, 8, 9]);
+    });
+});
+
+describe("84 测试用例", () => {
+    test(`[2,1,5,6,2,3] should return 10`, () => {
+        expect(largestRectangleArea([2, 1, 5, 6, 2, 3])).toBe(10);
+    });
+
+    test(`[2,4] should return 4`, () => {
+        expect(largestRectangleArea([2, 4])).toBe(4);
     });
 });
