@@ -397,3 +397,39 @@ func TestLargestRectangleArea(t *testing.T) {
 		testTemp()
 	})
 }
+
+func TestMaximalRectangle(t *testing.T) {
+	utils.TestWarp("85 测试用例", func() {
+		params1 := [][]byte{}
+		params2 := []int{}
+		res := 0
+		testTemp := func() {
+			str1, _ := json.Marshal(params1)
+			str2, _ := json.Marshal(params2)
+			res1, _ := json.Marshal(res)
+			desc := string(str1) + ", " + string(str2) + " should return " + string(res1)
+			utils.TestCondition(t, desc, MaximalRectangle(params1) == res)
+		}
+
+		params1 = [][]byte{
+			{'1', '0', '1', '0', '0'},
+			{'1', '0', '1', '1', '1'},
+			{'1', '1', '1', '1', '1'},
+			{'1', '0', '0', '1', '0'},
+		}
+		res = 6
+		testTemp()
+
+		params1 = [][]byte{
+			{'0'},
+		}
+		res = 0
+		testTemp()
+
+		params1 = [][]byte{
+			{'1'},
+		}
+		res = 1
+		testTemp()
+	})
+}

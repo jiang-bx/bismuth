@@ -13,6 +13,7 @@ import { removeDuplicateLetters } from "./12.316";
 import { removeKdigits } from "./13.402";
 import { maxNumber } from "./14.321";
 import { largestRectangleArea } from "./15.84";
+import { maximalRectangle } from "./16.85";
 
 describe("53 测试用例", () => {
     test(`[-2,1,-3,4,-1,2,1,-5,4] should return 6`, () => {
@@ -236,5 +237,26 @@ describe("84 测试用例", () => {
 
     test(`[2,4] should return 4`, () => {
         expect(largestRectangleArea([2, 4])).toBe(4);
+    });
+});
+
+describe("85 测试用例", () => {
+    test(`[["1","0","1","0","0"],["1","0","1","1","1"],["1","1","1","1","1"],["1","0","0","1","0"]] should return 6`, () => {
+        expect(
+            maximalRectangle([
+                ["1", "0", "1", "0", "0"],
+                ["1", "0", "1", "1", "1"],
+                ["1", "1", "1", "1", "1"],
+                ["1", "0", "0", "1", "0"],
+            ])
+        ).toBe(6);
+    });
+
+    test(`[["0"]] should return 0`, () => {
+        expect(maximalRectangle([["0"]])).toBe(0);
+    });
+
+    test(`[["1"]] should return 1`, () => {
+        expect(maximalRectangle([["1"]])).toBe(1);
     });
 });
