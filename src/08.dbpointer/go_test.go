@@ -3,6 +3,7 @@ package dbpointer
 import (
 	"encoding/json"
 	"leetcode/src/utils"
+	"reflect"
 	"testing"
 )
 
@@ -51,7 +52,37 @@ func TestValidPalindrome(t *testing.T) {
 		testTemp()
 
 		params1 = "abc"
-		res = true
+		res = false
+		testTemp()
+	})
+}
+
+func TestTwoSum(t *testing.T) {
+	utils.TestWarp("167 测试用例", func() {
+		params1 := []int{}
+		params2 := 0
+		res := []int{}
+		testTemp := func() {
+			str1, _ := json.Marshal(params1)
+			str2, _ := json.Marshal(params2)
+			res1, _ := json.Marshal(res)
+			desc := string(str1) + ", " + string(str2) + " should return " + string(res1)
+			utils.TestCondition(t, desc, reflect.DeepEqual(TwoSum(params1, params2), res))
+		}
+
+		params1 = []int{2, 7, 11, 15}
+		params2 = 9
+		res = []int{1, 2}
+		testTemp()
+
+		params1 = []int{2, 3, 4}
+		params2 = 6
+		res = []int{1, 3}
+		testTemp()
+
+		params1 = []int{-1, 0}
+		params2 = -1
+		res = []int{1, 2}
 		testTemp()
 	})
 }
