@@ -1,6 +1,7 @@
 import { reverseVowels } from "./01.345";
 import { validPalindrome } from "./02.680";
 import { twoSum } from "./03.167";
+import { threeSum } from "./04.15";
 
 describe("345 测试用例", () => {
     test(`hello should return holle`, () => {
@@ -45,5 +46,22 @@ describe("167 测试用例", () => {
 
     test(`numbers = [-1,0], target = -1 should return [1,2]`, () => {
         expect(twoSum([-1, 0], -1)).toEqual([1, 2]);
+    });
+});
+
+describe("15 测试用例", () => {
+    test(`[-1,0,1,2,-1,-4] should return [[-1,-1,2],[-1,0,1]]`, () => {
+        expect(threeSum([-1, 0, 1, 2, -1, -4])).toEqual([
+            [-1, -1, 2],
+            [-1, 0, 1],
+        ]);
+    });
+
+    test(`[0,1,1] should return []`, () => {
+        expect(threeSum([0, 1, 1])).toEqual([]);
+    });
+
+    test(`[0,0,0] should return [[0, 0, 0]]`, () => {
+        expect(threeSum([0, 0, 0])).toEqual([[0, 0, 0]]);
     });
 });

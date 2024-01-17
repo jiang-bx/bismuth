@@ -86,3 +86,35 @@ func TestTwoSum(t *testing.T) {
 		testTemp()
 	})
 }
+
+func TestThreeSum(t *testing.T) {
+	utils.TestWarp("15 测试用例", func() {
+		params1 := []int{}
+		params2 := 0
+		res := [][]int{}
+		testTemp := func() {
+			str1, _ := json.Marshal(params1)
+			str2, _ := json.Marshal(params2)
+			res1, _ := json.Marshal(res)
+			desc := string(str1) + ", " + string(str2) + " should return " + string(res1)
+			utils.TestCondition(t, desc, reflect.DeepEqual(ThreeSum(params1), res))
+		}
+
+		params1 = []int{-1, 0, 1, 2, -1, -4}
+		res = [][]int{
+			{-1, -1, 2},
+			{-1, 0, 1},
+		}
+		testTemp()
+
+		params1 = []int{0, 1, 1}
+		res = [][]int{}
+		testTemp()
+
+		params1 = []int{0, 0, 0}
+		res = [][]int{
+			{0, 0, 0},
+		}
+		testTemp()
+	})
+}
