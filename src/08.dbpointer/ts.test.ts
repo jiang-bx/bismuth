@@ -2,6 +2,7 @@ import { reverseVowels } from "./01.345";
 import { validPalindrome } from "./02.680";
 import { twoSum } from "./03.167";
 import { threeSum } from "./04.15";
+import { threeSumClosest } from "./05.16";
 
 describe("345 测试用例", () => {
     test(`hello should return holle`, () => {
@@ -63,5 +64,15 @@ describe("15 测试用例", () => {
 
     test(`[0,0,0] should return [[0, 0, 0]]`, () => {
         expect(threeSum([0, 0, 0])).toEqual([[0, 0, 0]]);
+    });
+});
+
+describe("16 测试用例", () => {
+    test(`nums = [-1,2,1,-4], target = 1 should return 2`, () => {
+        expect(threeSumClosest([-1, 2, 1, -4], 1)).toBe(2);
+    });
+
+    test(`nums = [0,0,0], target = 1 should return 0`, () => {
+        expect(threeSumClosest([0, 0, 0], 1)).toBe(0);
     });
 });
