@@ -141,5 +141,33 @@ func TestThreeSumClosest(t *testing.T) {
 		params2 = 1
 		res = 0
 		testTemp()
+
+		params1 = []int{2, 3, 8, 9, 10}
+		params2 = 16
+		res = 15
+		testTemp()
+	})
+}
+
+func TestMaxArea(t *testing.T) {
+	utils.TestWarp("11 测试用例", func() {
+		params1 := []int{}
+		params2 := 0
+		res := 0
+		testTemp := func() {
+			str1, _ := json.Marshal(params1)
+			str2, _ := json.Marshal(params2)
+			res1, _ := json.Marshal(res)
+			desc := string(str1) + ", " + string(str2) + " should return " + string(res1)
+			utils.TestCondition(t, desc, MaxArea(params1) == res)
+		}
+
+		params1 = []int{1, 8, 6, 2, 5, 4, 8, 3, 7}
+		res = 49
+		testTemp()
+
+		params1 = []int{1, 1}
+		res = 1
+		testTemp()
 	})
 }
