@@ -4,6 +4,8 @@ import { twoSum } from "./03.167";
 import { threeSum } from "./04.15";
 import { threeSumClosest } from "./05.16";
 import { maxArea } from "./06.11";
+import { trap } from "./07.42";
+import { removeElement } from "./08.27";
 
 describe("345 测试用例", () => {
     test(`hello should return holle`, () => {
@@ -106,11 +108,31 @@ describe("16 测试用例", () => {
 });
 
 describe("11 测试用例", () => {
-    test(`[1,8,6,2,5,4,8,3,7] should return 49`, () => {
+    test(`[1,8,6,2,5,4,8,3,7] should return 49 `, () => {
         expect(maxArea([1, 8, 6, 2, 5, 4, 8, 3, 7])).toBe(49);
     });
 
     test(`[1,1] should return 1`, () => {
         expect(maxArea([1, 1])).toBe(1);
+    });
+});
+
+describe("42 测试用例", () => {
+    test(`[0,1,0,2,1,0,1,3,2,1,2,1] should return 6 `, () => {
+        expect(trap([0, 1, 0, 2, 1, 0, 1, 3, 2, 1, 2, 1])).toBe(6);
+    });
+
+    test(`[4,2,0,3,2,5] should return 9`, () => {
+        expect(trap([4, 2, 0, 3, 2, 5])).toBe(9);
+    });
+});
+
+describe("27 测试用例", () => {
+    test(`[3,2,2,3], val = 3 should return 2 `, () => {
+        expect(removeElement([3, 2, 2, 3], 3)).toBe(2);
+    });
+
+    test(`[0,1,2,2,3,0,4,2], val = 2 should return 5 `, () => {
+        expect(removeElement([0, 1, 2, 2, 3, 0, 4, 2], 2)).toBe(5);
     });
 });
