@@ -6,6 +6,7 @@ import { threeSumClosest } from "./05.16";
 import { maxArea } from "./06.11";
 import { trap } from "./07.42";
 import { removeElement } from "./08.27";
+import { removeDuplicates } from "./09.26";
 
 describe("345 测试用例", () => {
     test(`hello should return holle`, () => {
@@ -134,5 +135,15 @@ describe("27 测试用例", () => {
 
     test(`[0,1,2,2,3,0,4,2], val = 2 should return 5 `, () => {
         expect(removeElement([0, 1, 2, 2, 3, 0, 4, 2], 2)).toBe(5);
+    });
+});
+
+describe("26 测试用例", () => {
+    test(`[1, 1, 2] should return 2 `, () => {
+        expect(removeDuplicates([1, 1, 2])).toBe(2);
+    });
+
+    test(`[0,0,1,1,1,2,2,3,3,4] should return 5 `, () => {
+        expect(removeDuplicates([0, 0, 1, 1, 1, 2, 2, 3, 3, 4])).toBe(5);
     });
 });

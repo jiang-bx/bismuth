@@ -219,3 +219,26 @@ func TestRemoveElement(t *testing.T) {
 		testTemp()
 	})
 }
+
+func TestRemoveDuplicates(t *testing.T) {
+	utils.TestWarp("26 测试用例", func() {
+		params1 := []int{}
+		params2 := 0
+		res := 0
+		testTemp := func() {
+			str1, _ := json.Marshal(params1)
+			str2, _ := json.Marshal(params2)
+			res1, _ := json.Marshal(res)
+			desc := string(str1) + ", " + string(str2) + " should return " + string(res1)
+			utils.TestCondition(t, desc, RemoveDuplicates(params1) == res)
+		}
+
+		params1 = []int{1, 1, 2}
+		res = 2
+		testTemp()
+
+		params1 = []int{0, 0, 1, 1, 1, 2, 2, 3, 3, 4}
+		res = 5
+		testTemp()
+	})
+}
