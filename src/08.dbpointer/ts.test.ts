@@ -7,6 +7,7 @@ import { maxArea } from "./06.11";
 import { trap } from "./07.42";
 import { removeElement } from "./08.27";
 import { removeDuplicates } from "./09.26";
+import { removeDuplicates1 } from "./10.80";
 
 describe("345 测试用例", () => {
     test(`hello should return holle`, () => {
@@ -145,5 +146,15 @@ describe("26 测试用例", () => {
 
     test(`[0,0,1,1,1,2,2,3,3,4] should return 5 `, () => {
         expect(removeDuplicates([0, 0, 1, 1, 1, 2, 2, 3, 3, 4])).toBe(5);
+    });
+});
+
+describe("80 测试用例", () => {
+    test(`[1,1,1,2,2,3] should return 5 `, () => {
+        expect(removeDuplicates1([1, 1, 1, 2, 2, 3])).toBe(5);
+    });
+
+    test(`[0,0,1,1,1,1,2,3,3] should return 7 `, () => {
+        expect(removeDuplicates1([0, 0, 1, 1, 1, 1, 2, 3, 3])).toBe(7);
     });
 });

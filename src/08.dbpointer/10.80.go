@@ -1,6 +1,6 @@
 package dbpointer
 
-func RemoveDuplicates(nums []int) int {
+func RemoveDuplicates1(nums []int) int {
 	// 双指针解法
 	// i, j := 0, 1
 	// for j < len(nums) {

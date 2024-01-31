@@ -1,4 +1,4 @@
-export function removeDuplicates(nums: number[]): number {
+export function removeDuplicates1(nums: number[]): number {
     // 双指针解法
     // let i = 0;
     // let j = 1;
