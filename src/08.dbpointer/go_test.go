@@ -276,7 +276,7 @@ func TestDeleteDuplicates(t *testing.T) {
 			str2, _ := json.Marshal(params2)
 			res1, _ := json.Marshal(res)
 			desc := string(str1) + ", " + string(str2) + " should return " + string(res1)
-			utils.TestCondition(t, desc, IsSameList(CreateLintNode(params1), CreateLintNode(res)))
+			utils.TestCondition(t, desc, IsSameList(DeleteDuplicates(CreateLintNode(params1)), CreateLintNode(res)))
 		}
 
 		params1 = []int{1, 1, 2}

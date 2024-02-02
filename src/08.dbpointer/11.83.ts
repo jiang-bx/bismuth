@@ -15,10 +15,10 @@ export function CreateListNode(nums: number[]): ListNode | null {
         const node = new ListNode(v);
         if (!head) {
             head = node;
-            lastNode = node;
         } else {
             lastNode.next = node;
         }
+        lastNode = node;
     }
 
     return head;
@@ -40,5 +40,15 @@ export function IsSameListNode(
 }
 
 export function deleteDuplicates(head: ListNode | null): ListNode | null {
-    return new ListNode();
+    let curNode = head;
+
+    while (curNode && curNode.next) {
+        if (curNode.val === curNode.next.val) {
+            curNode.next = curNode.next.next;
+        } else {
+            curNode = curNode.next;
+        }
+    }
+
+    return head;
 }

@@ -26,15 +26,23 @@ func CreateLintNode(nums []int) *ListNode {
 
 		if head == nil {
 			head = node
-			lastNode = node
 		} else {
 			lastNode.Next = node
 		}
+		lastNode = node
 	}
 
 	return head
 }
 
 func DeleteDuplicates(head *ListNode) *ListNode {
+	curNode := head
+	for curNode != nil && curNode.Next != nil {
+		if curNode.Val == curNode.Next.Val {
+			curNode.Next = curNode.Next.Next
+		} else {
+			curNode = curNode.Next
+		}
+	}
 	return head
 }

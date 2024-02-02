@@ -8,7 +8,7 @@ import { trap } from "./07.42";
 import { removeElement } from "./08.27";
 import { removeDuplicates } from "./09.26";
 import { removeDuplicates1 } from "./10.80";
-import { CreateListNode, IsSameListNode } from "./11.83";
+import { CreateListNode, IsSameListNode, deleteDuplicates } from "./11.83";
 
 describe("345 测试用例", () => {
     test(`hello should return holle`, () => {
@@ -165,13 +165,26 @@ describe("83 测试用例", () => {
         const originListNode = CreateListNode([1, 1, 2]);
         const resListNode = CreateListNode([1, 2]);
 
-        expect(IsSameListNode(originListNode, resListNode)).toBe(true);
+        expect(
+            IsSameListNode(deleteDuplicates(originListNode), resListNode)
+        ).toBe(true);
     });
 
     test(`[1,1,2,3,3] should return [1,2,3] `, () => {
         const originListNode = CreateListNode([1, 1, 2, 3, 3]);
         const resListNode = CreateListNode([1, 2, 3]);
 
-        expect(IsSameListNode(originListNode, resListNode)).toBe(true);
+        expect(
+            IsSameListNode(deleteDuplicates(originListNode), resListNode)
+        ).toBe(true);
+    });
+
+    test(`[1,1,1] should return [1] `, () => {
+        const originListNode = CreateListNode([1, 1, 1]);
+        const resListNode = CreateListNode([1]);
+
+        expect(
+            IsSameListNode(deleteDuplicates(originListNode), resListNode)
+        ).toBe(true);
     });
 });
