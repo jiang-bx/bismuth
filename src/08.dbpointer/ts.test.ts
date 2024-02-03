@@ -9,6 +9,8 @@ import { removeElement } from "./08.27";
 import { removeDuplicates } from "./09.26";
 import { removeDuplicates1 } from "./10.80";
 import { CreateListNode, IsSameListNode, deleteDuplicates } from "./11.83";
+import { deleteDuplicates1 } from "./12.82";
+import { triangleNumber } from "./13.611";
 
 describe("345 测试用例", () => {
     test(`hello should return holle`, () => {
@@ -186,5 +188,35 @@ describe("83 测试用例", () => {
         expect(
             IsSameListNode(deleteDuplicates(originListNode), resListNode)
         ).toBe(true);
+    });
+});
+
+describe("82 测试用例", () => {
+    test(`[1,2,3,3,4,4,5] should return [1,2,5] `, () => {
+        const originListNode = CreateListNode([1, 2, 3, 3, 4, 4, 5]);
+        const resListNode = CreateListNode([1, 2, 5]);
+
+        expect(
+            IsSameListNode(deleteDuplicates1(originListNode), resListNode)
+        ).toBe(true);
+    });
+
+    test(`[1,1,1,2,3] should return [2,3] `, () => {
+        const originListNode = CreateListNode([1, 1, 1, 2, 3]);
+        const resListNode = CreateListNode([2, 3]);
+
+        expect(
+            IsSameListNode(deleteDuplicates1(originListNode), resListNode)
+        ).toBe(true);
+    });
+});
+
+describe("611 测试用例", () => {
+    test(`[2,2,3,4] should return 3 `, () => {
+        expect(triangleNumber([2, 2, 3, 4])).toBe(3);
+    });
+
+    test(`[4,2,3,4] should return 4 `, () => {
+        expect(triangleNumber([4, 2, 3, 4])).toBe(4);
     });
 });

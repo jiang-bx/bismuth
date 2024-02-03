@@ -288,3 +288,49 @@ func TestDeleteDuplicates(t *testing.T) {
 		testTemp()
 	})
 }
+
+func TestDeleteDuplicates1(t *testing.T) {
+	utils.TestWarp("82 测试用例", func() {
+		params1 := []int{}
+		params2 := 0
+		res := []int{}
+		testTemp := func() {
+			str1, _ := json.Marshal(params1)
+			str2, _ := json.Marshal(params2)
+			res1, _ := json.Marshal(res)
+			desc := string(str1) + ", " + string(str2) + " should return " + string(res1)
+			utils.TestCondition(t, desc, IsSameList(DeleteDuplicates1(CreateLintNode(params1)), CreateLintNode(res)))
+		}
+
+		params1 = []int{1, 2, 3, 3, 4, 4, 5}
+		res = []int{1, 2, 5}
+		testTemp()
+
+		params1 = []int{1, 1, 1, 2, 3}
+		res = []int{2, 3}
+		testTemp()
+	})
+}
+
+func TestTriangleNumber(t *testing.T) {
+	utils.TestWarp("611 测试用例", func() {
+		params1 := []int{}
+		params2 := 0
+		res := 0
+		testTemp := func() {
+			str1, _ := json.Marshal(params1)
+			str2, _ := json.Marshal(params2)
+			res1, _ := json.Marshal(res)
+			desc := string(str1) + ", " + string(str2) + " should return " + string(res1)
+			utils.TestCondition(t, desc, TriangleNumber(params1) == res)
+		}
+
+		params1 = []int{2, 2, 3, 4}
+		res = 3
+		testTemp()
+
+		params1 = []int{4, 2, 3, 4}
+		res = 4
+		testTemp()
+	})
+}
