@@ -11,6 +11,7 @@ import { removeDuplicates1 } from "./10.80";
 import { CreateListNode, IsSameListNode, deleteDuplicates } from "./11.83";
 import { deleteDuplicates1 } from "./12.82";
 import { triangleNumber } from "./13.611";
+import { findRepeatedDnaSequences } from "./14.187";
 
 describe("345 测试用例", () => {
     test(`hello should return holle`, () => {
@@ -218,5 +219,21 @@ describe("611 测试用例", () => {
 
     test(`[4,2,3,4] should return 4 `, () => {
         expect(triangleNumber([4, 2, 3, 4])).toBe(4);
+    });
+});
+
+describe("187 测试用例", () => {
+    test(`AAAAACCCCCAAAAACCCCCCAAAAAGGGTTT should return ["AAAAACCCCC","CCCCCAAAAA"]
+    `, () => {
+        expect(
+            findRepeatedDnaSequences("AAAAACCCCCAAAAACCCCCCAAAAAGGGTTT")
+        ).toEqual(["AAAAACCCCC", "CCCCCAAAAA"]);
+    });
+
+    test(`AAAAAAAAAAAAA should return ["AAAAAAAAAA"]
+    `, () => {
+        expect(findRepeatedDnaSequences("AAAAAAAAAAAAA")).toEqual([
+            "AAAAAAAAAA",
+        ]);
     });
 });
