@@ -357,3 +357,28 @@ func TestFindRepeatedDnaSequences(t *testing.T) {
 		testTemp()
 	})
 }
+
+func TestFindMaxAverage(t *testing.T) {
+	utils.TestWarp("643 测试用例", func() {
+		params1 := []int{}
+		params2 := 0
+		res := float64(0)
+		testTemp := func() {
+			str1, _ := json.Marshal(params1)
+			str2, _ := json.Marshal(params2)
+			res1, _ := json.Marshal(res)
+			desc := string(str1) + ", " + string(str2) + " should return " + string(res1)
+			utils.TestCondition(t, desc, FindMaxAverage(params1, params2) == res)
+		}
+
+		params1 = []int{1, 12, -5, -6, 50, 3}
+		params2 = 4
+		res = 12.75
+		testTemp()
+
+		params1 = []int{5}
+		params2 = 1
+		res = 5.00000
+		testTemp()
+	})
+}

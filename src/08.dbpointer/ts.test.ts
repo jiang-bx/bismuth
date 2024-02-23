@@ -12,6 +12,7 @@ import { CreateListNode, IsSameListNode, deleteDuplicates } from "./11.83";
 import { deleteDuplicates1 } from "./12.82";
 import { triangleNumber } from "./13.611";
 import { findRepeatedDnaSequences } from "./14.187";
+import { findMaxAverage } from "./15.643";
 
 describe("345 测试用例", () => {
     test(`hello should return holle`, () => {
@@ -235,5 +236,15 @@ describe("187 测试用例", () => {
         expect(findRepeatedDnaSequences("AAAAAAAAAAAAA")).toEqual([
             "AAAAAAAAAA",
         ]);
+    });
+});
+
+describe("643 测试用例", () => {
+    test(`[1,12,-5,-6,50,3], k = 4 should return 12.75`, () => {
+        expect(findMaxAverage([1, 12, -5, -6, 50, 3], 4)).toBe(12.75);
+    });
+
+    test(`[5], k = 1 should return 5`, () => {
+        expect(findMaxAverage([5], 1)).toBe(5);
     });
 });
