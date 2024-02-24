@@ -382,3 +382,26 @@ func TestFindMaxAverage(t *testing.T) {
 		testTemp()
 	})
 }
+
+func TestFindLengthOfLCIS(t *testing.T) {
+	utils.TestWarp("674 测试用例", func() {
+		params1 := []int{}
+		params2 := 0
+		res := 0
+		testTemp := func() {
+			str1, _ := json.Marshal(params1)
+			str2, _ := json.Marshal(params2)
+			res1, _ := json.Marshal(res)
+			desc := string(str1) + ", " + string(str2) + " should return " + string(res1)
+			utils.TestCondition(t, desc, FindLengthOfLCIS(params1) == res)
+		}
+
+		params1 = []int{1, 3, 5, 4, 7}
+		res = 3
+		testTemp()
+
+		params1 = []int{2, 2, 2, 2, 2}
+		res = 1
+		testTemp()
+	})
+}

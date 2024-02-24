@@ -13,6 +13,7 @@ import { deleteDuplicates1 } from "./12.82";
 import { triangleNumber } from "./13.611";
 import { findRepeatedDnaSequences } from "./14.187";
 import { findMaxAverage } from "./15.643";
+import { findLengthOfLCIS } from "./16.674";
 
 describe("345 测试用例", () => {
     test(`hello should return holle`, () => {
@@ -246,5 +247,15 @@ describe("643 测试用例", () => {
 
     test(`[5], k = 1 should return 5`, () => {
         expect(findMaxAverage([5], 1)).toBe(5);
+    });
+});
+
+describe("674 测试用例", () => {
+    test(`[1,3,5,4,7] should return 3`, () => {
+        expect(findLengthOfLCIS([1, 3, 5, 4, 7])).toBe(3);
+    });
+
+    test(`[2,2,2,2,2] should return 1`, () => {
+        expect(findLengthOfLCIS([2, 2, 2, 2, 2])).toBe(1);
     });
 });
