@@ -14,6 +14,7 @@ import { triangleNumber } from "./13.611";
 import { findRepeatedDnaSequences } from "./14.187";
 import { findMaxAverage } from "./15.643";
 import { findLengthOfLCIS } from "./16.674";
+import { minSubArrayLen } from "./17.209";
 
 describe("345 测试用例", () => {
     test(`hello should return holle`, () => {
@@ -255,7 +256,25 @@ describe("674 测试用例", () => {
         expect(findLengthOfLCIS([1, 3, 5, 4, 7])).toBe(3);
     });
 
+    test(`[1,3,5,7] should return 4`, () => {
+        expect(findLengthOfLCIS([1, 3, 5, 7])).toBe(4);
+    });
+
     test(`[2,2,2,2,2] should return 1`, () => {
         expect(findLengthOfLCIS([2, 2, 2, 2, 2])).toBe(1);
+    });
+});
+
+describe("209 测试用例", () => {
+    test(`7, nums = [2,3,1,2,4,3] should return 2`, () => {
+        expect(minSubArrayLen(7, [2, 3, 1, 2, 4, 3])).toBe(2);
+    });
+
+    test(`4, nums = [1,4,4] should return 1`, () => {
+        expect(minSubArrayLen(4, [1, 4, 4])).toBe(1);
+    });
+
+    test(`1, nums = [1,1,1,1,1,1,1,1] should return 0`, () => {
+        expect(minSubArrayLen(1, [1, 1, 1, 1, 1, 1, 1, 1])).toBe(0);
     });
 });

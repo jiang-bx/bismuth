@@ -405,3 +405,33 @@ func TestFindLengthOfLCIS(t *testing.T) {
 		testTemp()
 	})
 }
+
+func TestMinSubArrayLen(t *testing.T) {
+	utils.TestWarp("209 测试用例", func() {
+		params1 := 0
+		params2 := []int{}
+		res := 0
+		testTemp := func() {
+			str1, _ := json.Marshal(params1)
+			str2, _ := json.Marshal(params2)
+			res1, _ := json.Marshal(res)
+			desc := string(str1) + ", " + string(str2) + " should return " + string(res1)
+			utils.TestCondition(t, desc, MinSubArrayLen(params1, params2) == res)
+		}
+
+		params1 = 7
+		params2 = []int{2, 3, 1, 2, 4, 3}
+		res = 2
+		testTemp()
+
+		params1 = 4
+		params2 = []int{1, 4, 4}
+		res = 1
+		testTemp()
+
+		params1 = 11
+		params2 = []int{1, 1, 1, 1, 1, 1, 1, 1}
+		res = 0
+		testTemp()
+	})
+}
