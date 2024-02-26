@@ -435,3 +435,30 @@ func TestMinSubArrayLen(t *testing.T) {
 		testTemp()
 	})
 }
+
+func TestLengthOfLongestSubstring(t *testing.T) {
+	utils.TestWarp("3 测试用例", func() {
+		params1 := ""
+		params2 := []int{}
+		res := 0
+		testTemp := func() {
+			str1, _ := json.Marshal(params1)
+			str2, _ := json.Marshal(params2)
+			res1, _ := json.Marshal(res)
+			desc := string(str1) + ", " + string(str2) + " should return " + string(res1)
+			utils.TestCondition(t, desc, LengthOfLongestSubstring(params1) == res)
+		}
+
+		params1 = "abcabcbb"
+		res = 3
+		testTemp()
+
+		params1 = "bbbbb"
+		res = 1
+		testTemp()
+
+		params1 = "pwwkew"
+		res = 3
+		testTemp()
+	})
+}

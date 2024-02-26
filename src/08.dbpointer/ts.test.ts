@@ -274,7 +274,11 @@ describe("209 测试用例", () => {
         expect(minSubArrayLen(4, [1, 4, 4])).toBe(1);
     });
 
-    test(`1, nums = [1,1,1,1,1,1,1,1] should return 0`, () => {
-        expect(minSubArrayLen(1, [1, 1, 1, 1, 1, 1, 1, 1])).toBe(0);
+    test(`11, nums = [1,1,1,1,1,1,1,1] should return 0`, () => {
+        expect(minSubArrayLen(11, [1, 1, 1, 1, 1, 1, 1, 1])).toBe(0);
+    });
+
+    test(`213, nums = [12,28,83,4,25,26,25,2,25,25,25,12] should return 8`, () => {
+        expect(minSubArrayLen(213, [12,28,83,4,25,26,25,2,25,25,25,12])).toBe(8);
     });
 });
