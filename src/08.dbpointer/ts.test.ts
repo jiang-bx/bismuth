@@ -15,6 +15,8 @@ import { findRepeatedDnaSequences } from "./14.187";
 import { findMaxAverage } from "./15.643";
 import { findLengthOfLCIS } from "./16.674";
 import { minSubArrayLen } from "./17.209";
+import { lengthOfLongestSubstring } from "./18.3";
+import { findAnagrams } from "./19.438";
 
 describe("345 测试用例", () => {
     test(`hello should return holle`, () => {
@@ -279,6 +281,32 @@ describe("209 测试用例", () => {
     });
 
     test(`213, nums = [12,28,83,4,25,26,25,2,25,25,25,12] should return 8`, () => {
-        expect(minSubArrayLen(213, [12,28,83,4,25,26,25,2,25,25,25,12])).toBe(8);
+        expect(
+            minSubArrayLen(213, [12, 28, 83, 4, 25, 26, 25, 2, 25, 25, 25, 12])
+        ).toBe(8);
+    });
+});
+
+describe("3 测试用例", () => {
+    test(`abcabcbb should return 3`, () => {
+        expect(lengthOfLongestSubstring("abcabcbb")).toBe(3);
+    });
+
+    test(`bbbbb should return 1`, () => {
+        expect(lengthOfLongestSubstring("bbbbb")).toBe(1);
+    });
+
+    test(`pwwkew should return 3`, () => {
+        expect(lengthOfLongestSubstring("pwwkew")).toBe(3);
+    });
+});
+
+describe("438 测试用例", () => {
+    test(`cbaebabacd, abc should return [0, 6]`, () => {
+        expect(findAnagrams("abcabcbb", "abc")).toEqual([0, 6]);
+    });
+
+    test(`abab, ab should return [0, 1, 2]`, () => {
+        expect(findAnagrams("abab", "ab")).toEqual([0, 1, 2]);
     });
 });

@@ -462,3 +462,28 @@ func TestLengthOfLongestSubstring(t *testing.T) {
 		testTemp()
 	})
 }
+
+func TestFindAnagrams(t *testing.T) {
+	utils.TestWarp("438 测试用例", func() {
+		params1 := ""
+		params2 := ""
+		res := []int{}
+		testTemp := func() {
+			str1, _ := json.Marshal(params1)
+			str2, _ := json.Marshal(params2)
+			res1, _ := json.Marshal(res)
+			desc := string(str1) + ", " + string(str2) + " should return " + string(res1)
+			utils.TestCondition(t, desc, reflect.DeepEqual(FindAnagrams(params1, params2), res))
+		}
+
+		params1 = "cbaebabacd"
+		params2 = "abc"
+		res = []int{0, 6}
+		testTemp()
+
+		params1 = "abab"
+		params2 = "ab"
+		res = []int{0, 1, 2}
+		testTemp()
+	})
+}
