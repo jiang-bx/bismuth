@@ -17,6 +17,7 @@ import { findLengthOfLCIS } from "./16.674";
 import { minSubArrayLen } from "./17.209";
 import { lengthOfLongestSubstring } from "./18.3";
 import { findAnagrams } from "./19.438";
+import { checkInclusion } from "./20.567";
 
 describe("345 测试用例", () => {
     test(`hello should return holle`, () => {
@@ -303,10 +304,20 @@ describe("3 测试用例", () => {
 
 describe("438 测试用例", () => {
     test(`cbaebabacd, abc should return [0, 6]`, () => {
-        expect(findAnagrams("abcabcbb", "abc")).toEqual([0, 6]);
+        expect(findAnagrams("cbaebabacd", "abc")).toEqual([0, 6]);
     });
 
     test(`abab, ab should return [0, 1, 2]`, () => {
         expect(findAnagrams("abab", "ab")).toEqual([0, 1, 2]);
+    });
+});
+
+describe("567 测试用例", () => {
+    test(`ab, eidbaooo should return true`, () => {
+        expect(checkInclusion("ab", "eidbaooo")).toBe(true);
+    });
+
+    test(`ab, eidboaoo should return false`, () => {
+        expect(checkInclusion("ab", "eidboaoo")).toBe(false);
     });
 });
