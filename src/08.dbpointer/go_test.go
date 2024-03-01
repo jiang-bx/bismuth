@@ -512,3 +512,28 @@ func TestCheckInclusion(t *testing.T) {
 		testTemp()
 	})
 }
+
+func TestCharacterReplacement(t *testing.T) {
+	utils.TestWarp("424 测试用例", func() {
+		params1 := ""
+		params2 := 0
+		res := 0
+		testTemp := func() {
+			str1, _ := json.Marshal(params1)
+			str2, _ := json.Marshal(params2)
+			res1, _ := json.Marshal(res)
+			desc := string(str1) + ", " + string(str2) + " should return " + string(res1)
+			utils.TestCondition(t, desc, CharacterReplacement(params1, params2) == res)
+		}
+
+		params1 = "ABAB"
+		params2 = 2
+		res = 4
+		testTemp()
+
+		params1 = "AABABBA"
+		params2 = 1
+		res = 4
+		testTemp()
+	})
+}

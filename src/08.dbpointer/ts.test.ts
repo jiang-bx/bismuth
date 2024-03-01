@@ -18,6 +18,7 @@ import { minSubArrayLen } from "./17.209";
 import { lengthOfLongestSubstring } from "./18.3";
 import { findAnagrams } from "./19.438";
 import { checkInclusion } from "./20.567";
+import { characterReplacement } from "./21.424";
 
 describe("345 测试用例", () => {
     test(`hello should return holle`, () => {
@@ -319,5 +320,15 @@ describe("567 测试用例", () => {
 
     test(`ab, eidboaoo should return false`, () => {
         expect(checkInclusion("ab", "eidboaoo")).toBe(false);
+    });
+});
+
+describe("424 测试用例", () => {
+    test(`ABAB, 2 should return 4`, () => {
+        expect(characterReplacement("ABAB", 2)).toBe(4);
+    });
+
+    test(`AABABBA, 1 should return 4`, () => {
+        expect(characterReplacement("AABABBA", 1)).toBe(4);
     });
 });
