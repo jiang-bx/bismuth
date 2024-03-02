@@ -19,6 +19,7 @@ import { lengthOfLongestSubstring } from "./18.3";
 import { findAnagrams } from "./19.438";
 import { checkInclusion } from "./20.567";
 import { characterReplacement } from "./21.424";
+import { minWindow } from "./22.76";
 
 describe("345 测试用例", () => {
     test(`hello should return holle`, () => {
@@ -330,5 +331,19 @@ describe("424 测试用例", () => {
 
     test(`AABABBA, 1 should return 4`, () => {
         expect(characterReplacement("AABABBA", 1)).toBe(4);
+    });
+});
+
+describe("76 测试用例", () => {
+    test(`ADOBECODEBANC, ABC should return BANC`, () => {
+        expect(minWindow("ADOBECODEBANC", "ABC")).toBe("BANC");
+    });
+
+    test(`a, a should return a`, () => {
+        expect(minWindow("a", "a")).toBe("a");
+    });
+
+    test(`a, aa should return ""`, () => {
+        expect(minWindow("a", "aa")).toBe("");
     });
 });

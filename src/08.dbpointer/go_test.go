@@ -537,3 +537,33 @@ func TestCharacterReplacement(t *testing.T) {
 		testTemp()
 	})
 }
+
+func TestMinWindow(t *testing.T) {
+	utils.TestWarp("76 测试用例", func() {
+		params1 := ""
+		params2 := ""
+		res := ""
+		testTemp := func() {
+			str1, _ := json.Marshal(params1)
+			str2, _ := json.Marshal(params2)
+			res1, _ := json.Marshal(res)
+			desc := string(str1) + ", " + string(str2) + " should return " + string(res1)
+			utils.TestCondition(t, desc, MinWindow(params1, params2) == res)
+		}
+
+		params1 = "ADOBECODEBANC"
+		params2 = "ABC"
+		res = "BANC"
+		testTemp()
+
+		params1 = "a"
+		params2 = "a"
+		res = "a"
+		testTemp()
+
+		params1 = "a"
+		params2 = "aa"
+		res = ""
+		testTemp()
+	})
+}
