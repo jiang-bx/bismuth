@@ -20,6 +20,7 @@ import { findAnagrams } from "./19.438";
 import { checkInclusion } from "./20.567";
 import { characterReplacement } from "./21.424";
 import { minWindow } from "./22.76";
+import { findSubstring } from "./23.30";
 
 describe("345 测试用例", () => {
     test(`hello should return holle`, () => {
@@ -345,5 +346,30 @@ describe("76 测试用例", () => {
 
     test(`a, aa should return ""`, () => {
         expect(minWindow("a", "aa")).toBe("");
+    });
+});
+
+describe("30 测试用例", () => {
+    test(`s = "barfoothefoobarman", words = ["foo","bar"] should return [0,9]`, () => {
+        expect(findSubstring("barfoothefoobarman", ["foo", "bar"])).toEqual([
+            0, 9,
+        ]);
+    });
+
+    test(`s = "wordgoodgoodgoodbestword", words = ["word","good","best","word"] should return []`, () => {
+        expect(
+            findSubstring("wordgoodgoodgoodbestword", [
+                "word",
+                "good",
+                "best",
+                "word",
+            ])
+        ).toEqual([]);
+    });
+
+    test(`s = "barfoofoobarthefoobarman", words = ["bar","foo","the"] should return [6,9,12]`, () => {
+        expect(
+            findSubstring("barfoofoobarthefoobarman", ["bar", "foo", "the"])
+        ).toEqual([6, 9, 12]);
     });
 });

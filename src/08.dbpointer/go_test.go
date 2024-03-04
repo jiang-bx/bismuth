@@ -567,3 +567,33 @@ func TestMinWindow(t *testing.T) {
 		testTemp()
 	})
 }
+
+func TestFindSubstring(t *testing.T) {
+	utils.TestWarp("30 测试用例", func() {
+		params1 := ""
+		params2 := []string{}
+		res := []int{}
+		testTemp := func() {
+			str1, _ := json.Marshal(params1)
+			str2, _ := json.Marshal(params2)
+			res1, _ := json.Marshal(res)
+			desc := string(str1) + ", " + string(str2) + " should return " + string(res1)
+			utils.TestCondition(t, desc, reflect.DeepEqual(FindSubstring(params1, params2), res))
+		}
+
+		params1 = "barfoothefoobarman"
+		params2 = []string{"foo", "bar"}
+		res = []int{0, 9}
+		testTemp()
+
+		params1 = "wordgoodgoodgoodbestword"
+		params2 = []string{"word", "good", "best", "word"}
+		res = []int{}
+		testTemp()
+
+		params1 = "barfoofoobarthefoobarman"
+		params2 = []string{"bar", "foo", "the"}
+		res = []int{6, 9, 12}
+		testTemp()
+	})
+}
