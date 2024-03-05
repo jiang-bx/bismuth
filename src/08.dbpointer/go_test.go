@@ -597,3 +597,28 @@ func TestFindSubstring(t *testing.T) {
 		testTemp()
 	})
 }
+
+func TestPartition(t *testing.T) {
+	utils.TestWarp("86 测试用例", func() {
+		params1 := []int{}
+		params2 := 0
+		res := []int{}
+		testTemp := func() {
+			str1, _ := json.Marshal(params1)
+			str2, _ := json.Marshal(params2)
+			res1, _ := json.Marshal(res)
+			desc := string(str1) + ", " + string(str2) + " should return " + string(res1)
+			utils.TestCondition(t, desc, IsSameList(Partition(CreateLintNode(params1), params2), CreateLintNode(res)))
+		}
+
+		params1 = []int{1, 4, 3, 2, 5, 2}
+		params2 = 3
+		res = []int{1, 2, 2, 4, 3, 5}
+		testTemp()
+
+		params1 = []int{2, 1}
+		params2 = 2
+		res = []int{1, 2}
+		testTemp()
+	})
+}

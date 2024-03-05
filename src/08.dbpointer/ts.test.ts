@@ -21,6 +21,7 @@ import { checkInclusion } from "./20.567";
 import { characterReplacement } from "./21.424";
 import { minWindow } from "./22.76";
 import { findSubstring } from "./23.30";
+import { partition } from "./24.86";
 
 describe("345 测试用例", () => {
     test(`hello should return holle`, () => {
@@ -371,5 +372,25 @@ describe("30 测试用例", () => {
         expect(
             findSubstring("barfoofoobarthefoobarman", ["bar", "foo", "the"])
         ).toEqual([6, 9, 12]);
+    });
+});
+
+describe("86 测试用例", () => {
+    test(`[1,4,3,2,5,2], x = 3 should return [1,2,2,4,3,5] `, () => {
+        const originListNode = CreateListNode([1, 2, 2, 4, 3, 5]);
+        const resListNode = CreateListNode([1, 2, 2, 4, 3, 5]);
+
+        expect(IsSameListNode(partition(originListNode, 3), resListNode)).toBe(
+            true
+        );
+    });
+
+    test(`[2,1], x = 2 should return [1,2,2,4,3,5] `, () => {
+        const originListNode = CreateListNode([2, 1]);
+        const resListNode = CreateListNode([1, 2]);
+
+        expect(IsSameListNode(partition(originListNode, 2), resListNode)).toBe(
+            true
+        );
     });
 });
