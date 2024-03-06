@@ -22,6 +22,7 @@ import { characterReplacement } from "./21.424";
 import { minWindow } from "./22.76";
 import { findSubstring } from "./23.30";
 import { partition } from "./24.86";
+import { oddEvenList } from "./25.328";
 
 describe("345 测试用例", () => {
     test(`hello should return holle`, () => {
@@ -390,6 +391,26 @@ describe("86 测试用例", () => {
         const resListNode = CreateListNode([1, 2]);
 
         expect(IsSameListNode(partition(originListNode, 2), resListNode)).toBe(
+            true
+        );
+    });
+});
+
+describe("328 测试用例", () => {
+    test(`[1,2,3,4,5] should return [1,3,5,2,4] `, () => {
+        const originListNode = CreateListNode([1, 2, 3, 4, 5]);
+        const resListNode = CreateListNode([1, 3, 5, 2, 4]);
+
+        expect(IsSameListNode(oddEvenList(originListNode), resListNode)).toBe(
+            true
+        );
+    });
+
+    test(`[2,1,3,5,6,4,7] should return [2,3,6,7,1,5,4] `, () => {
+        const originListNode = CreateListNode([2, 1, 3, 5, 6, 4, 7]);
+        const resListNode = CreateListNode([2, 3, 6, 7, 1, 5, 4]);
+
+        expect(IsSameListNode(oddEvenList(originListNode), resListNode)).toBe(
             true
         );
     });

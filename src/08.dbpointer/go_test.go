@@ -622,3 +622,28 @@ func TestPartition(t *testing.T) {
 		testTemp()
 	})
 }
+
+func TestOddEvenList(t *testing.T) {
+	utils.TestWarp("328 测试用例", func() {
+		params1 := []int{}
+		params2 := 0
+		res := []int{}
+		testTemp := func() {
+			str1, _ := json.Marshal(params1)
+			str2, _ := json.Marshal(params2)
+			res1, _ := json.Marshal(res)
+			desc := string(str1) + ", " + string(str2) + " should return " + string(res1)
+			utils.TestCondition(t, desc, IsSameList(OddEvenList(CreateLintNode(params1)), CreateLintNode(res)))
+		}
+
+		params1 = []int{1, 2, 3, 4, 5}
+		params2 = 3
+		res = []int{1, 3, 5, 2, 4}
+		testTemp()
+
+		params1 = []int{2, 1, 3, 5, 6, 4, 7}
+		params2 = 3
+		res = []int{2, 3, 6, 7, 1, 5, 4}
+		testTemp()
+	})
+}
