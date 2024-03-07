@@ -23,6 +23,7 @@ import { minWindow } from "./22.76";
 import { findSubstring } from "./23.30";
 import { partition } from "./24.86";
 import { oddEvenList } from "./25.328";
+import { getIntersectionNode } from "./26.160";
 
 describe("345 测试用例", () => {
     test(`hello should return holle`, () => {
@@ -413,5 +414,31 @@ describe("328 测试用例", () => {
         expect(IsSameListNode(oddEvenList(originListNode), resListNode)).toBe(
             true
         );
+    });
+});
+
+describe("160 测试用例", () => {
+    test(`[4,1,8,4,5], [5,6,1,8,4,5] should return [8] `, () => {
+        const p1 = CreateListNode([4, 1, 8, 4, 5]);
+        const p2 = CreateListNode([5, 6, 1, 8, 4, 5]);
+        const res = CreateListNode([8]);
+
+        expect(IsSameListNode(getIntersectionNode(p1, p2), res)).toBe(true);
+    });
+
+    test(`[1,9,1,2,4], [3,2,4] should return [2] `, () => {
+        const p1 = CreateListNode([1, 9, 1, 2, 4]);
+        const p2 = CreateListNode([3, 2, 4]);
+        const res = CreateListNode([2]);
+
+        expect(IsSameListNode(getIntersectionNode(p1, p2), res)).toBe(true);
+    });
+
+    test(`[2,6,4], [1,5] should return [] `, () => {
+        const p1 = CreateListNode([2, 6, 4]);
+        const p2 = CreateListNode([1, 5]);
+        const res = CreateListNode([]);
+
+        expect(IsSameListNode(getIntersectionNode(p1, p2), res)).toBe(true);
     });
 });

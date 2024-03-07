@@ -647,3 +647,33 @@ func TestOddEvenList(t *testing.T) {
 		testTemp()
 	})
 }
+
+func TestGetIntersectionNode(t *testing.T) {
+	utils.TestWarp("160 测试用例", func() {
+		params1 := []int{}
+		params2 := []int{}
+		res := []int{}
+		testTemp := func() {
+			str1, _ := json.Marshal(params1)
+			str2, _ := json.Marshal(params2)
+			res1, _ := json.Marshal(res)
+			desc := string(str1) + ", " + string(str2) + " should return " + string(res1)
+			utils.TestCondition(t, desc, IsSameList(GetIntersectionNode(CreateLintNode(params1), CreateLintNode(params2)), CreateLintNode(res)))
+		}
+
+		params1 = []int{4, 1, 8, 4, 5}
+		params2 = []int{5, 6, 1, 8, 4, 5}
+		res = []int{8}
+		testTemp()
+
+		params1 = []int{1, 9, 1, 2, 4}
+		params2 = []int{3, 2, 4}
+		res = []int{2}
+		testTemp()
+
+		params1 = []int{2, 6, 4}
+		params2 = []int{1, 5}
+		res = []int{}
+		testTemp()
+	})
+}
