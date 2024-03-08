@@ -677,3 +677,44 @@ func TestGetIntersectionNode(t *testing.T) {
 		testTemp()
 	})
 }
+
+func TestMerge(t *testing.T) {
+	utils.TestWarp("88 测试用例", func() {
+		params1 := []int{}
+		params2 := 0
+		params3 := []int{}
+		params4 := 0
+		res := []int{}
+		testTemp := func() {
+			str1, _ := json.Marshal(params1)
+			str2, _ := json.Marshal(params2)
+			res1, _ := json.Marshal(res)
+			desc := string(str1) + ", " + string(str2) + " should return " + string(res1)
+
+			Merge(params1, params2, params3, params4)
+
+			utils.TestCondition(t, desc, reflect.DeepEqual(params1, res))
+		}
+
+		params1 = []int{1, 2, 3, 0, 0, 0}
+		params2 = 3
+		params3 = []int{2, 5, 6}
+		params4 = 3
+		res = []int{1, 2, 2, 3, 5, 6}
+		testTemp()
+
+		params1 = []int{1}
+		params2 = 1
+		params3 = []int{}
+		params4 = 0
+		res = []int{1}
+		testTemp()
+
+		params1 = []int{0}
+		params2 = 0
+		params3 = []int{1}
+		params4 = 1
+		res = []int{1}
+		testTemp()
+	})
+}

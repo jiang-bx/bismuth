@@ -24,6 +24,7 @@ import { findSubstring } from "./23.30";
 import { partition } from "./24.86";
 import { oddEvenList } from "./25.328";
 import { getIntersectionNode } from "./26.160";
+import { merge } from "./27.88";
 
 describe("345 测试用例", () => {
     test(`hello should return holle`, () => {
@@ -440,5 +441,31 @@ describe("160 测试用例", () => {
         const res = CreateListNode([]);
 
         expect(IsSameListNode(getIntersectionNode(p1, p2), res)).toBe(true);
+    });
+});
+
+describe("88 测试用例", () => {
+    test(`nums1 = [1,2,3,0,0,0], m = 3, nums2 = [2,5,6], n = 3 should return [1,2,2,3,5,6]`, () => {
+        const nums1 = [1, 2, 3, 0, 0, 0];
+
+        merge(nums1, 3, [2, 5, 6], 3);
+
+        expect(nums1).toEqual([1, 2, 2, 3, 5, 6]);
+    });
+
+    test(`nums1 = [1], m = 1, nums2 = [], n = 0 should return [1]`, () => {
+        const nums1 = [1];
+
+        merge(nums1, 1, [], 0);
+
+        expect(nums1).toEqual([1]);
+    });
+
+    test(`nums1 = [0], m = 0, nums2 = [1], n = 1 should return [1]`, () => {
+        const nums1 = [0];
+
+        merge(nums1, 0, [1], 1);
+
+        expect(nums1).toEqual([1]);
     });
 });
