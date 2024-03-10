@@ -25,6 +25,7 @@ import { partition } from "./24.86";
 import { oddEvenList } from "./25.328";
 import { getIntersectionNode } from "./26.160";
 import { merge } from "./27.88";
+import { findRadius } from "./28.475";
 
 describe("345 测试用例", () => {
     test(`hello should return holle`, () => {
@@ -467,5 +468,19 @@ describe("88 测试用例", () => {
         merge(nums1, 0, [1], 1);
 
         expect(nums1).toEqual([1]);
+    });
+});
+
+describe("475 测试用例", () => {
+    test(`houses = [1,2,3], heaters = [2] should return 1`, () => {
+        expect(findRadius([1, 2, 3], [2])).toBe(1);
+    });
+
+    test(`houses = [1,2,3, 4], heaters = [1, 4] should return 1`, () => {
+        expect(findRadius([1, 2, 3, 4], [1, 4])).toBe(1);
+    });
+
+    test(`houses = [1,5], heaters = [2] should return 3`, () => {
+        expect(findRadius([1, 5], [2])).toBe(3);
     });
 });
