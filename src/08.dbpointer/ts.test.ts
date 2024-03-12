@@ -26,6 +26,8 @@ import { oddEvenList } from "./25.328";
 import { getIntersectionNode } from "./26.160";
 import { merge } from "./27.88";
 import { findRadius } from "./28.475";
+import { hasCycle } from "./29.141";
+import { detectCycle } from "./30.142";
 
 describe("345 测试用例", () => {
     test(`hello should return holle`, () => {
@@ -482,5 +484,51 @@ describe("475 测试用例", () => {
 
     test(`houses = [1,5], heaters = [2] should return 3`, () => {
         expect(findRadius([1, 5], [2])).toBe(3);
+    });
+});
+
+describe("141 测试用例", () => {
+    test(`[3,2,0,-4] should return true `, () => {
+        const p1 = CreateListNode([3, 2, 0, -4]);
+        let cur = p1;
+        while (cur.next) {
+            cur = cur.next;
+        }
+        cur.next = p1.next;
+        expect(hasCycle(p1)).toBe(true);
+    });
+
+    test(`[1,2] should return true `, () => {
+        const p1 = CreateListNode([1, 2]);
+        p1.next.next = p1
+        expect(hasCycle(p1)).toBe(true);
+    });
+
+    test(`[1] should return false `, () => {
+        const p1 = CreateListNode([1]);
+        expect(hasCycle(p1)).toBe(false);
+    });
+});
+
+describe("142 测试用例", () => {
+    test(`[3,2,0,-4] should return [2]`, () => {
+        const p1 = CreateListNode([3, 2, 0, -4]);
+        let cur = p1;
+        while (cur.next) {
+            cur = cur.next;
+        }
+        cur.next = p1.next;
+        expect(IsSameListNode(detectCycle(p1), CreateListNode([2]))).toBe(true);
+    });
+
+    test(`[1,2] should return [1]`, () => {
+        const p1 = CreateListNode([1, 2]);
+        p1.next.next = p1
+        expect(IsSameListNode(detectCycle(p1), CreateListNode([1]))).toBe(true);
+    });
+
+    test(`[1] should return false []`, () => {
+        const p1 = CreateListNode([1]);
+        expect(IsSameListNode(detectCycle(p1), CreateListNode([]))).toBe(true);
     });
 });

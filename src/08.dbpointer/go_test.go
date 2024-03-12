@@ -752,26 +752,95 @@ func TestFindRadius(t *testing.T) {
 func TestHasCycle(t *testing.T) {
 	utils.TestWarp("141 测试用例", func() {
 		params1 := []int{}
-		params2 := []int{}
+		params2 := 1
 		res := false
 		testTemp := func() {
 			str1, _ := json.Marshal(params1)
 			str2, _ := json.Marshal(params2)
 			res1, _ := json.Marshal(res)
 			desc := string(str1) + ", " + string(str2) + " should return " + string(res1)
-			utils.TestCondition(t, desc, HasCycle(CreateLintNode(params1)) == res)
+
+			p1 := CreateLintNode(params1)
+
+			cur := p1
+			i := 0
+			pos := p1
+			for cur.Next != nil {
+				i++
+				if i == params2 {
+					pos = cur
+				}
+				cur = cur.Next
+			}
+
+			if params2 != -1 {
+				cur.Next = pos
+			}
+
+			utils.TestCondition(t, desc, HasCycle(p1) == res)
 		}
 
 		params1 = []int{3, 2, 0, -4}
+		params2 = 1
 		res = true
 		testTemp()
 
 		params1 = []int{1, 2}
+		params2 = 0
 		res = true
 		testTemp()
 
 		params1 = []int{1}
+		params2 = -1
 		res = false
+		testTemp()
+	})
+}
+
+func TestDetectCycle(t *testing.T) {
+	utils.TestWarp("142 测试用例", func() {
+		params1 := []int{}
+		params2 := 1
+		res := []int{}
+		testTemp := func() {
+			str1, _ := json.Marshal(params1)
+			str2, _ := json.Marshal(params2)
+			res1, _ := json.Marshal(res)
+			desc := string(str1) + ", " + string(str2) + " should return " + string(res1)
+
+			p1 := CreateLintNode(params1)
+
+			cur := p1
+			i := 0
+			pos := p1
+			for cur.Next != nil {
+				i++
+				if i == params2 {
+					pos = cur
+				}
+				cur = cur.Next
+			}
+
+			if params2 != -1 {
+				cur.Next = pos
+			}
+
+			utils.TestCondition(t, desc, IsSameList(DetectCycle(p1), CreateLintNode(res)))
+		}
+
+		params1 = []int{3, 2, 0, -4}
+		params2 = 1
+		res = []int{2}
+		testTemp()
+
+		params1 = []int{1, 2}
+		params2 = 0
+		res = []int{1}
+		testTemp()
+
+		params1 = []int{1}
+		params2 = -1
+		res = []int{}
 		testTemp()
 	})
 }
