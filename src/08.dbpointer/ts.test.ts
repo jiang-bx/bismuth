@@ -28,6 +28,7 @@ import { merge } from "./27.88";
 import { findRadius } from "./28.475";
 import { hasCycle } from "./29.141";
 import { detectCycle } from "./30.142";
+import { reorderList } from "./31.143";
 
 describe("345 测试用例", () => {
     test(`hello should return holle`, () => {
@@ -500,7 +501,7 @@ describe("141 测试用例", () => {
 
     test(`[1,2] should return true `, () => {
         const p1 = CreateListNode([1, 2]);
-        p1.next.next = p1
+        p1.next.next = p1;
         expect(hasCycle(p1)).toBe(true);
     });
 
@@ -518,17 +519,41 @@ describe("142 测试用例", () => {
             cur = cur.next;
         }
         cur.next = p1.next;
-        expect(IsSameListNode(detectCycle(p1), CreateListNode([2]))).toBe(true);
+
+        const res = detectCycle(p1);
+        if (res) {
+            res.next = null;
+        }
+
+        expect(IsSameListNode(res, CreateListNode([2]))).toBe(true);
     });
 
     test(`[1,2] should return [1]`, () => {
         const p1 = CreateListNode([1, 2]);
-        p1.next.next = p1
-        expect(IsSameListNode(detectCycle(p1), CreateListNode([1]))).toBe(true);
+        p1.next.next = p1;
+        const res = detectCycle(p1);
+        if (res) {
+            res.next = null;
+        }
+        expect(IsSameListNode(res, CreateListNode([1]))).toBe(true);
     });
 
     test(`[1] should return false []`, () => {
         const p1 = CreateListNode([1]);
         expect(IsSameListNode(detectCycle(p1), CreateListNode([]))).toBe(true);
+    });
+});
+
+describe("143 测试用例", () => {
+    test(`[1,2,3,4] should return [1,4,2,3]`, () => {
+        const p1 = CreateListNode([1, 2, 3, 4]);
+        reorderList(p1);
+        expect(IsSameListNode(p1, CreateListNode([1, 4, 2, 3]))).toBe(true);
+    });
+
+    test(`[1,2,3,4,5] should return [1,5,2,4,3]`, () => {
+        const p1 = CreateListNode([1, 2, 3, 4, 5]);
+        reorderList(p1);
+        expect(IsSameListNode(p1, CreateListNode([1, 5, 2, 4, 3]))).toBe(true);
     });
 });

@@ -825,6 +825,11 @@ func TestDetectCycle(t *testing.T) {
 				cur.Next = pos
 			}
 
+			val := DetectCycle(p1)
+			if val != nil {
+				val.Next = nil
+			}
+
 			utils.TestCondition(t, desc, IsSameList(DetectCycle(p1), CreateLintNode(res)))
 		}
 
@@ -841,6 +846,34 @@ func TestDetectCycle(t *testing.T) {
 		params1 = []int{1}
 		params2 = -1
 		res = []int{}
+		testTemp()
+	})
+}
+
+func TestReorderList(t *testing.T) {
+	utils.TestWarp("143 测试用例", func() {
+		params1 := []int{}
+		params2 := ""
+		res := []int{}
+		testTemp := func() {
+			str1, _ := json.Marshal(params1)
+			str2, _ := json.Marshal(params2)
+			res1, _ := json.Marshal(res)
+			desc := string(str1) + ", " + string(str2) + " should return " + string(res1)
+
+			p1 := CreateLintNode(params1)
+			ReorderList(p1)
+			r1 := CreateLintNode(res)
+
+			utils.TestCondition(t, desc, IsSameList(p1, r1))
+		}
+
+		params1 = []int{1, 2, 3, 4}
+		res = []int{1, 4, 2, 3}
+		testTemp()
+
+		params1 = []int{1, 2, 3, 4, 5}
+		res = []int{1, 5, 2, 4, 3}
 		testTemp()
 	})
 }
