@@ -29,6 +29,7 @@ import { findRadius } from "./28.475";
 import { hasCycle } from "./29.141";
 import { detectCycle } from "./30.142";
 import { reorderList } from "./31.143";
+import { isPalindrome } from "./32.234";
 
 describe("345 测试用例", () => {
     test(`hello should return holle`, () => {
@@ -555,5 +556,17 @@ describe("143 测试用例", () => {
         const p1 = CreateListNode([1, 2, 3, 4, 5]);
         reorderList(p1);
         expect(IsSameListNode(p1, CreateListNode([1, 5, 2, 4, 3]))).toBe(true);
+    });
+});
+
+describe("234 测试用例", () => {
+    test(`[1,2,2,1] should return true`, () => {
+        const p1 = CreateListNode([1, 2, 2, 1]);
+        expect(isPalindrome(p1)).toBe(true);
+    });
+
+    test(`[1,2] should return false`, () => {
+        const p1 = CreateListNode([1, 2]);
+        expect(isPalindrome(p1)).toBe(false);
     });
 });

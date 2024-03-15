@@ -877,3 +877,29 @@ func TestReorderList(t *testing.T) {
 		testTemp()
 	})
 }
+
+func TestIsPalindrome(t *testing.T) {
+	utils.TestWarp("234 测试用例", func() {
+		params1 := []int{}
+		params2 := ""
+		res := false
+		testTemp := func() {
+			str1, _ := json.Marshal(params1)
+			str2, _ := json.Marshal(params2)
+			res1, _ := json.Marshal(res)
+			desc := string(str1) + ", " + string(str2) + " should return " + string(res1)
+
+			p1 := CreateLintNode(params1)
+
+			utils.TestCondition(t, desc, IsPalindrome(p1) == res)
+		}
+
+		params1 = []int{1, 2, 2, 1}
+		res = true
+		testTemp()
+
+		params1 = []int{1, 2}
+		res = false
+		testTemp()
+	})
+}
