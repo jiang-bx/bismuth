@@ -30,6 +30,7 @@ import { hasCycle } from "./29.141";
 import { detectCycle } from "./30.142";
 import { reorderList } from "./31.143";
 import { isPalindrome } from "./32.234";
+import { circularArrayLoop } from "./33.457";
 
 describe("345 测试用例", () => {
     test(`hello should return holle`, () => {
@@ -568,5 +569,19 @@ describe("234 测试用例", () => {
     test(`[1,2] should return false`, () => {
         const p1 = CreateListNode([1, 2]);
         expect(isPalindrome(p1)).toBe(false);
+    });
+});
+
+describe("457 测试用例", () => {
+    test(`[2,-1,1,2,2] should return true`, () => {
+        expect(circularArrayLoop([2, -1, 1, 2, 2])).toBe(true);
+    });
+
+    test(`[-1,2] should return false`, () => {
+        expect(circularArrayLoop([-1, 2])).toBe(false);
+    });
+
+    test(`[-2,1,-1,-2,-2] should return false`, () => {
+        expect(circularArrayLoop([-2, 1, -1, -2, -2])).toBe(false);
     });
 });
