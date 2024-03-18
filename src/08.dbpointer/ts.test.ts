@@ -31,6 +31,7 @@ import { detectCycle } from "./30.142";
 import { reorderList } from "./31.143";
 import { isPalindrome } from "./32.234";
 import { circularArrayLoop } from "./33.457";
+import { findDuplicate } from "./34.287";
 
 describe("345 测试用例", () => {
     test(`hello should return holle`, () => {
@@ -583,5 +584,19 @@ describe("457 测试用例", () => {
 
     test(`[-2,1,-1,-2,-2] should return false`, () => {
         expect(circularArrayLoop([-2, 1, -1, -2, -2])).toBe(false);
+    });
+});
+
+describe("287 测试用例", () => {
+    test(`[1,3,4,2,2] should return 2`, () => {
+        expect(findDuplicate([1, 3, 4, 2, 2])).toBe(2);
+    });
+
+    test(`[3,1,3,4,2] should return 3`, () => {
+        expect(findDuplicate([3, 1, 3, 4, 2])).toBe(3);
+    });
+
+    test(`[3,3,3,3,3] should return 3`, () => {
+        expect(findDuplicate([3, 3, 3, 3, 3])).toBe(3);
     });
 });

@@ -931,3 +931,31 @@ func TestCircularArrayLoop(t *testing.T) {
 		testTemp()
 	})
 }
+
+func TestFindDuplicate(t *testing.T) {
+	utils.TestWarp("287 测试用例", func() {
+		params1 := []int{}
+		params2 := ""
+		res := 1
+		testTemp := func() {
+			str1, _ := json.Marshal(params1)
+			str2, _ := json.Marshal(params2)
+			res1, _ := json.Marshal(res)
+			desc := string(str1) + ", " + string(str2) + " should return " + string(res1)
+
+			utils.TestCondition(t, desc, FindDuplicate(params1) == res)
+		}
+
+		params1 = []int{1, 3, 4, 2, 2}
+		res = 2
+		testTemp()
+
+		params1 = []int{3, 1, 3, 4, 2}
+		res = 3
+		testTemp()
+
+		params1 = []int{3, 3, 3, 3, 3}
+		res = 3
+		testTemp()
+	})
+}
