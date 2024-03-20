@@ -18,17 +18,34 @@ export function CreateTree(nums: number[]): TreeNode | null {
     const nodes = nums.map((item) => new TreeNode(item));
 
     for (let i = 0; i < nodes.length / 2; i++) {
-        if (2 * i + 1 < nodes.length && nodes[2 * i + 1].val !== -Infinity) {
-            nodes[i].left = nodes[2 * i + 1];
+        const leftIndex = 2 * i + 1;
+        const rightIndex = 2 * i + 2;
+        if (leftIndex < nodes.length) {
+            nodes[i].left = nodes[leftIndex];
+            if (nodes[leftIndex].val === -Infinity) {
+                nodes[i].left = null;
+            }
         }
-        if (2 * i + 2 < nodes.length && nodes[2 * i + 1].val !== -Infinity) {
-            nodes[i].right = nodes[2 * i + 2];
+        if (rightIndex < nodes.length) {
+            nodes[i].right = nodes[rightIndex];
+            if (nodes[rightIndex].val === -Infinity) {
+                nodes[i].right = null;
+            }
         }
     }
 
-    return nodes[0];
+    return nodes.length ? nodes[0] : null;
 }
 
 export function IsSameTree(p: TreeNode | null, q: TreeNode | null): boolean {
-    return false;
+    if (p === null && q === null) {
+        return true;
+    }
+    if (p === null || q === null) {
+        return false;
+    }
+    if (p.val !== q.val) {
+        return false;
+    }
+    return IsSameTree(p.left, q.left) && IsSameTree(p.right, q.right);
 }
