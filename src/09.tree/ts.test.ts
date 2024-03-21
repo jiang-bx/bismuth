@@ -1,5 +1,6 @@
 import { CreateTree, IsSameTree } from "./01.100";
 import { countNodes } from "./02.222";
+import { isSymmetric } from "./03.101";
 
 describe("100 测试用例", () => {
     test(`p = [1,2,3], q = [1,2,3] should return true`, () => {
@@ -35,5 +36,17 @@ describe("222 测试用例", () => {
     test(`[1] should return 1`, () => {
         const p = CreateTree([1]);
         expect(countNodes(p)).toBe(1);
+    });
+});
+
+describe("101 测试用例", () => {
+    test(`[1,2,2,3,4,4,3] should return true`, () => {
+        const p = CreateTree([1, 2, 2, 3, 4, 4, 3]);
+        expect(isSymmetric(p)).toBe(true);
+    });
+
+    test(`[1,2,2,-Infinity,3,-Infinity,3] should return false`, () => {
+        const p = CreateTree([1, 2, 2, -Infinity, 3, -Infinity, 3]);
+        expect(isSymmetric(p)).toBe(false);
     });
 });

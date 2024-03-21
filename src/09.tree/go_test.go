@@ -65,3 +65,27 @@ func TestCountNodes(t *testing.T) {
 		testTemp()
 	})
 }
+
+func TestIsSymmetric(t *testing.T) {
+	utils.TestWarp("101 测试用例", func() {
+		params1 := []int{}
+		params2 := []int{}
+		res := false
+		testTemp := func() {
+			str1, _ := json.Marshal(params1)
+			str2, _ := json.Marshal(params2)
+			res1, _ := json.Marshal(res)
+			desc := string(str1) + ", " + string(str2) + " should return " + string(res1)
+
+			utils.TestCondition(t, desc, IsSymmetric(CreateTree(params1)) == res)
+		}
+
+		params1 = []int{1, 2, 2, 3, 4, 4, 3}
+		res = true
+		testTemp()
+
+		params1 = []int{1, 2, 2, math.MinInt, 3, math.MinInt, 3}
+		res = false
+		testTemp()
+	})
+}
