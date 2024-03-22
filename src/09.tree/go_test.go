@@ -89,3 +89,34 @@ func TestIsSymmetric(t *testing.T) {
 		testTemp()
 	})
 }
+
+func TestInvertTree(t *testing.T) {
+	utils.TestWarp("226 测试用例", func() {
+		params1 := []int{}
+		params2 := []int{}
+		res := []int{}
+		testTemp := func() {
+			str1, _ := json.Marshal(params1)
+			str2, _ := json.Marshal(params2)
+			res1, _ := json.Marshal(res)
+			desc := string(str1) + ", " + string(str2) + " should return " + string(res1)
+
+			p1 := CreateTree(params1)
+			p2 := CreateTree(res)
+
+			utils.TestCondition(t, desc, IsSameTree(InvertTree(p1), p2) == true)
+		}
+
+		params1 = []int{4, 2, 7, 1, 3, 6, 9}
+		res = []int{4, 7, 2, 9, 6, 3, 1}
+		testTemp()
+
+		params1 = []int{2, 1, 3}
+		res = []int{2, 3, 1}
+		testTemp()
+
+		params1 = []int{}
+		res = []int{}
+		testTemp()
+	})
+}
