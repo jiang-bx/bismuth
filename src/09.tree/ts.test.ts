@@ -2,6 +2,7 @@ import { CreateTree, IsSameTree } from "./01.100";
 import { countNodes } from "./02.222";
 import { isSymmetric } from "./03.101";
 import { invertTree } from "./04.226";
+import { pathSum } from "./05.437";
 
 describe("100 测试用例", () => {
     test(`p = [1,2,3], q = [1,2,3] should return true`, () => {
@@ -69,5 +70,43 @@ describe("226 测试用例", () => {
         const p = CreateTree([]);
         const p2 = CreateTree([]);
         expect(IsSameTree(invertTree(p), p2)).toBe(true);
+    });
+});
+
+describe("437 测试用例", () => {
+    test(`[10,5,-3,3,2,null,11,3,-2,null,1], 8 should return 3`, () => {
+        const p = CreateTree([
+            10,
+            5,
+            -3,
+            3,
+            2,
+            -Infinity,
+            11,
+            3,
+            -2,
+            -Infinity,
+            1,
+        ]);
+        expect(pathSum(p, 8)).toBe(3);
+    });
+
+    test(`[ 5,4,8,11,-Infinity,13,4,7,2,-Infinity,-Infinity,5,1], 22 should return 3`, () => {
+        const p = CreateTree([
+            5,
+            4,
+            8,
+            11,
+            -Infinity,
+            13,
+            4,
+            7,
+            2,
+            -Infinity,
+            -Infinity,
+            5,
+            1,
+        ]);
+        expect(pathSum(p, 22)).toBe(3);
     });
 });
