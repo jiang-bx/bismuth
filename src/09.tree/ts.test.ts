@@ -3,6 +3,7 @@ import { countNodes } from "./02.222";
 import { isSymmetric } from "./03.101";
 import { invertTree } from "./04.226";
 import { pathSum } from "./05.437";
+import { findTilt } from "./06.563";
 
 describe("100 测试用例", () => {
     test(`p = [1,2,3], q = [1,2,3] should return true`, () => {
@@ -91,7 +92,8 @@ describe("437 测试用例", () => {
         expect(pathSum(p, 8)).toBe(3);
     });
 
-    test(`[ 5,4,8,11,-Infinity,13,4,7,2,-Infinity,-Infinity,5,1], 22 should return 3`, () => {
+    test(`[ 5,4,8,11,-Infinity,13,4,7,2,-Infinity,-Infinity,-Infinity,
+        -Infinity,5,1], 22 should return 3`, () => {
         const p = CreateTree([
             5,
             4,
@@ -104,9 +106,28 @@ describe("437 测试用例", () => {
             2,
             -Infinity,
             -Infinity,
+            -Infinity,
+            -Infinity,
             5,
             1,
         ]);
         expect(pathSum(p, 22)).toBe(3);
+    });
+});
+
+describe("653 测试用例", () => {
+    test(`[1,2,3] should return 1`, () => {
+        const p = CreateTree([1, 2, 3]);
+        expect(findTilt(p)).toBe(1);
+    });
+
+    test(`[4,2,9,3,5,-Infinity,7] should return 15`, () => {
+        const p = CreateTree([4, 2, 9, 3, 5, -Infinity, 7]);
+        expect(findTilt(p)).toBe(15);
+    });
+
+    test(`[21,7,14,1,1,2,2,3,3] should return 9`, () => {
+        const p = CreateTree([21, 7, 14, 1, 1, 2, 2, 3, 3]);
+        expect(findTilt(p)).toBe(9);
     });
 });
