@@ -178,3 +178,33 @@ func TestFindTilt(t *testing.T) {
 		testTemp()
 	})
 }
+
+func TestMergeTrees(t *testing.T) {
+	utils.TestWarp("617 测试用例", func() {
+		params1 := []int{}
+		params2 := []int{}
+		res := []int{}
+		testTemp := func() {
+			str1, _ := json.Marshal(params1)
+			str2, _ := json.Marshal(params2)
+			res1, _ := json.Marshal(res)
+			desc := string(str1) + ", " + string(str2) + " should return " + string(res1)
+
+			p1 := CreateTree(params1)
+			p2 := CreateTree(params2)
+			r1 := CreateTree(res)
+
+			utils.TestCondition(t, desc, IsSameTree(MergeTrees(p1, p2), r1) == true)
+		}
+
+		params1 = []int{1, 3, 2, 5}
+		params2 = []int{2, 1, 3, math.MinInt, 4, math.MinInt, 7}
+		res = []int{3, 4, 5, 5, 4, math.MinInt, 7}
+		testTemp()
+
+		params1 = []int{1}
+		params2 = []int{1, 2}
+		res = []int{2, 2}
+		testTemp()
+	})
+}

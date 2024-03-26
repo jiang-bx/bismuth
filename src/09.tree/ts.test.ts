@@ -4,6 +4,7 @@ import { isSymmetric } from "./03.101";
 import { invertTree } from "./04.226";
 import { pathSum } from "./05.437";
 import { findTilt } from "./06.563";
+import { mergeTrees } from "./07.617";
 
 describe("100 测试用例", () => {
     test(`p = [1,2,3], q = [1,2,3] should return true`, () => {
@@ -115,7 +116,7 @@ describe("437 测试用例", () => {
     });
 });
 
-describe("653 测试用例", () => {
+describe("563 测试用例", () => {
     test(`[1,2,3] should return 1`, () => {
         const p = CreateTree([1, 2, 3]);
         expect(findTilt(p)).toBe(1);
@@ -129,5 +130,21 @@ describe("653 测试用例", () => {
     test(`[21,7,14,1,1,2,2,3,3] should return 9`, () => {
         const p = CreateTree([21, 7, 14, 1, 1, 2, 2, 3, 3]);
         expect(findTilt(p)).toBe(9);
+    });
+});
+
+describe("617 测试用例", () => {
+    test(`[1,3,2,5] should return [3,4,5,5,4,null,7]`, () => {
+        const p1 = CreateTree([1, 3, 2, 5]);
+        const p2 = CreateTree([2, 1, 3, -Infinity, 4, -Infinity, 7]);
+        const r1 = CreateTree([3, 4, 5, 5, 4, -Infinity, 7]);
+        expect(IsSameTree(mergeTrees(p1, p2), r1)).toBe(true);
+    });
+
+    test(`[1] should return [2,2]`, () => {
+        const p1 = CreateTree([1]);
+        const p2 = CreateTree([1, 2]);
+        const r1 = CreateTree([2, 2]);
+        expect(IsSameTree(mergeTrees(p1, p2), r1)).toBe(true);
     });
 });
