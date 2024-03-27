@@ -5,6 +5,7 @@ import { invertTree } from "./04.226";
 import { pathSum } from "./05.437";
 import { findTilt } from "./06.563";
 import { mergeTrees } from "./07.617";
+import { findFrequentTreeSum } from "./08.508";
 
 describe("100 测试用例", () => {
     test(`p = [1,2,3], q = [1,2,3] should return true`, () => {
@@ -146,5 +147,17 @@ describe("617 测试用例", () => {
         const p2 = CreateTree([1, 2]);
         const r1 = CreateTree([2, 2]);
         expect(IsSameTree(mergeTrees(p1, p2), r1)).toBe(true);
+    });
+});
+
+describe("508 测试用例", () => {
+    test(`[5,2,-3] should return [2,-3,4]`, () => {
+        const p1 = CreateTree([5, 2, -3]);
+        expect(findFrequentTreeSum(p1)).toEqual([2, -3, 4]);
+    });
+
+    test(`[5,2,-5] should return [2]`, () => {
+        const p1 = CreateTree([5, 2, -5]);
+        expect(findFrequentTreeSum(p1)).toEqual([2]);
     });
 });
