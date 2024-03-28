@@ -233,5 +233,38 @@ func TestFindFrequentTreeSum(t *testing.T) {
 		params1 = []int{5, 2, -5}
 		res = []int{2}
 		testTemp()
+
+		params1 = []int{1}
+		res = []int{1}
+		testTemp()
+	})
+}
+
+func TestIsSubtree(t *testing.T) {
+	utils.TestWarp("572 测试用例", func() {
+		params1 := []int{}
+		params2 := []int{}
+		res := false
+		testTemp := func() {
+			str1, _ := json.Marshal(params1)
+			str2, _ := json.Marshal(params2)
+			res1, _ := json.Marshal(res)
+			desc := string(str1) + ", " + string(str2) + " should return " + string(res1)
+
+			p1 := CreateTree(params1)
+			p2 := CreateTree(params2)
+
+			utils.TestCondition(t, desc, IsSubtree(p1, p2) == res)
+		}
+
+		params1 = []int{3, 4, 5, 1, 2}
+		params2 = []int{4, 1, 2}
+		res = true
+		testTemp()
+
+		params1 = []int{3, 4, 5, 1, 2, math.MinInt, math.MinInt, math.MinInt, math.MinInt, 0}
+		params2 = []int{4, 1, 2}
+		res = false
+		testTemp()
 	})
 }
