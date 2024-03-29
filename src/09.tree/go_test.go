@@ -268,3 +268,29 @@ func TestIsSubtree(t *testing.T) {
 		testTemp()
 	})
 }
+
+func TestDiameterOfBinaryTree(t *testing.T) {
+	utils.TestWarp("543 测试用例", func() {
+		params1 := []int{}
+		params2 := []int{}
+		res := 0
+		testTemp := func() {
+			str1, _ := json.Marshal(params1)
+			str2, _ := json.Marshal(params2)
+			res1, _ := json.Marshal(res)
+			desc := string(str1) + ", " + string(str2) + " should return " + string(res1)
+
+			p1 := CreateTree(params1)
+
+			utils.TestCondition(t, desc, DiameterOfBinaryTree(p1) == res)
+		}
+
+		params1 = []int{1, 2, 3, 4, 5}
+		res = 3
+		testTemp()
+
+		params1 = []int{1, 2}
+		res = 1
+		testTemp()
+	})
+}

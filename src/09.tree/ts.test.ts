@@ -7,6 +7,7 @@ import { findTilt } from "./06.563";
 import { mergeTrees } from "./07.617";
 import { findFrequentTreeSum } from "./08.508";
 import { isSubtree } from "./09.572";
+import { diameterOfBinaryTree } from "./10.543";
 
 describe("100 测试用例", () => {
     test(`p = [1,2,3], q = [1,2,3] should return true`, () => {
@@ -170,7 +171,7 @@ describe("572 测试用例", () => {
         expect(isSubtree(p1, p2)).toEqual(true);
     });
 
-    test(`[3,4,5,1,2,null,null,null,null,0], [4,1,2] should return true`, () => {
+    test(`[3,4,5,1,2,null,null,null,null,0], [4,1,2] should return false`, () => {
         const p1 = CreateTree([
             3,
             4,
@@ -184,6 +185,24 @@ describe("572 测试用例", () => {
             0,
         ]);
         const p2 = CreateTree([4, 1, 2]);
+        expect(isSubtree(p1, p2)).toEqual(false);
+    });
+
+    test(`[1, 1], [1] should return true`, () => {
+        const p1 = CreateTree([1, 1]);
+        const p2 = CreateTree([1]);
         expect(isSubtree(p1, p2)).toEqual(true);
+    });
+});
+
+describe("543 测试用例", () => {
+    test(`[1,2,3,4,5] should return 3`, () => {
+        const p1 = CreateTree([1, 2, 3, 4, 5]);
+        expect(diameterOfBinaryTree(p1)).toBe(3);
+    });
+
+    test(`[1,2] should return 1`, () => {
+        const p1 = CreateTree([1, 2]);
+        expect(diameterOfBinaryTree(p1)).toBe(1);
     });
 });
