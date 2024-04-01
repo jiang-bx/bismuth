@@ -294,3 +294,29 @@ func TestDiameterOfBinaryTree(t *testing.T) {
 		testTemp()
 	})
 }
+
+func TestConstructMaximumBinaryTree(t *testing.T) {
+	utils.TestWarp("654 测试用例", func() {
+		params1 := []int{}
+		params2 := []int{}
+		res := []int{}
+		testTemp := func() {
+			str1, _ := json.Marshal(params1)
+			str2, _ := json.Marshal(params2)
+			res1, _ := json.Marshal(res)
+			desc := string(str1) + ", " + string(str2) + " should return " + string(res1)
+
+			p1 := CreateTree(res)
+
+			utils.TestCondition(t, desc, IsSameTree(ConstructMaximumBinaryTree(params1), p1) == true)
+		}
+
+		params1 = []int{3, 2, 1, 6, 0, 5}
+		res = []int{6, 3, 5, math.MinInt, 2, 0, math.MinInt, math.MinInt, 1}
+		testTemp()
+
+		params1 = []int{3, 2, 1}
+		res = []int{3, math.MinInt, 2, math.MinInt, 1}
+		testTemp()
+	})
+}

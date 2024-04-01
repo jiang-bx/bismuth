@@ -8,6 +8,7 @@ import { mergeTrees } from "./07.617";
 import { findFrequentTreeSum } from "./08.508";
 import { isSubtree } from "./09.572";
 import { diameterOfBinaryTree } from "./10.543";
+import { constructMaximumBinaryTree } from "./11.654";
 
 describe("100 测试用例", () => {
     test(`p = [1,2,3], q = [1,2,3] should return true`, () => {
@@ -204,5 +205,29 @@ describe("543 测试用例", () => {
     test(`[1,2] should return 1`, () => {
         const p1 = CreateTree([1, 2]);
         expect(diameterOfBinaryTree(p1)).toBe(1);
+    });
+});
+
+describe("654 测试用例", () => {
+    test(`[3,2,1,6,0,5] should return [6,3,5,null,2,0,null,null,1]`, () => {
+        const p1 = constructMaximumBinaryTree([3, 2, 1, 6, 0, 5]);
+        const p2 = CreateTree([
+            6,
+            3,
+            5,
+            -Infinity,
+            2,
+            0,
+            -Infinity,
+            -Infinity,
+            1,
+        ]);
+        expect(IsSameTree(p1, p2)).toBe(true);
+    });
+
+    test(`[3,2,1] should return [3,null,2,null,1]`, () => {
+        const p1 = constructMaximumBinaryTree([3, 2, 1]);
+        const p2 = CreateTree([3, -Infinity, 2, -Infinity, 1]);
+        expect(IsSameTree(p1, p2)).toBe(true);
     });
 });
