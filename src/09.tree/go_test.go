@@ -312,11 +312,37 @@ func TestConstructMaximumBinaryTree(t *testing.T) {
 		}
 
 		params1 = []int{3, 2, 1, 6, 0, 5}
-		res = []int{6, 3, 5, math.MinInt, 2, 0, math.MinInt, math.MinInt, 1}
+		res = []int{6, 3, 5, math.MinInt, 2, 0, math.MinInt, math.MinInt, math.MinInt, math.MinInt, 1}
 		testTemp()
 
 		params1 = []int{3, 2, 1}
-		res = []int{3, math.MinInt, 2, math.MinInt, 1}
+		res = []int{3, math.MinInt, 2, math.MinInt, math.MinInt, math.MinInt, 1}
+		testTemp()
+	})
+}
+
+func TestLongestUnivaluePath(t *testing.T) {
+	utils.TestWarp("687 测试用例", func() {
+		params1 := []int{}
+		params2 := []int{}
+		res := 1
+		testTemp := func() {
+			str1, _ := json.Marshal(params1)
+			str2, _ := json.Marshal(params2)
+			res1, _ := json.Marshal(res)
+			desc := string(str1) + ", " + string(str2) + " should return " + string(res1)
+
+			p1 := CreateTree(params1)
+
+			utils.TestCondition(t, desc, LongestUnivaluePath(p1) == res)
+		}
+
+		params1 = []int{5, 4, 5, 1, 1, math.MinInt, 5}
+		res = 2
+		testTemp()
+
+		params1 = []int{1, 4, 5, 4, 4, math.MinInt, 5}
+		res = 2
 		testTemp()
 	})
 }

@@ -9,6 +9,7 @@ import { findFrequentTreeSum } from "./08.508";
 import { isSubtree } from "./09.572";
 import { diameterOfBinaryTree } from "./10.543";
 import { constructMaximumBinaryTree } from "./11.654";
+import { longestUnivaluePath } from "./12.687";
 
 describe("100 测试用例", () => {
     test(`p = [1,2,3], q = [1,2,3] should return true`, () => {
@@ -220,6 +221,8 @@ describe("654 测试用例", () => {
             0,
             -Infinity,
             -Infinity,
+            -Infinity,
+            -Infinity,
             1,
         ]);
         expect(IsSameTree(p1, p2)).toBe(true);
@@ -227,7 +230,27 @@ describe("654 测试用例", () => {
 
     test(`[3,2,1] should return [3,null,2,null,1]`, () => {
         const p1 = constructMaximumBinaryTree([3, 2, 1]);
-        const p2 = CreateTree([3, -Infinity, 2, -Infinity, 1]);
+        const p2 = CreateTree([
+            3,
+            -Infinity,
+            2,
+            -Infinity,
+            -Infinity,
+            -Infinity,
+            1,
+        ]);
         expect(IsSameTree(p1, p2)).toBe(true);
+    });
+});
+
+describe("687 测试用例", () => {
+    test(`[5,4,5,1,1,5] should return 2`, () => {
+        const p1 = CreateTree([5, 4, 5, 1, 1, -Infinity, 5]);
+        expect(longestUnivaluePath(p1)).toBe(2);
+    });
+
+    test(`[1,4,5,4,4,5] should return 2`, () => {
+        const p1 = CreateTree([1, 4, 5, 4, 4, -Infinity, 5]);
+        expect(longestUnivaluePath(p1)).toBe(2);
     });
 });
