@@ -346,3 +346,34 @@ func TestLongestUnivaluePath(t *testing.T) {
 		testTemp()
 	})
 }
+
+func TestIsScramble(t *testing.T) {
+	utils.TestWarp("87 测试用例", func() {
+		params1 := ""
+		params2 := ""
+		res := true
+		testTemp := func() {
+			str1, _ := json.Marshal(params1)
+			str2, _ := json.Marshal(params2)
+			res1, _ := json.Marshal(res)
+			desc := string(str1) + ", " + string(str2) + " should return " + string(res1)
+
+			utils.TestCondition(t, desc, IsScramble(params1, params2) == res)
+		}
+
+		params1 = "great"
+		params1 = "rgeat"
+		res = true
+		testTemp()
+
+		params1 = "abcde"
+		params1 = "caebd"
+		res = false
+		testTemp()
+
+		params1 = "a"
+		params1 = "a"
+		res = true
+		testTemp()
+	})
+}

@@ -10,6 +10,7 @@ import { isSubtree } from "./09.572";
 import { diameterOfBinaryTree } from "./10.543";
 import { constructMaximumBinaryTree } from "./11.654";
 import { longestUnivaluePath } from "./12.687";
+import { isScramble } from "./13.87";
 
 describe("100 测试用例", () => {
     test(`p = [1,2,3], q = [1,2,3] should return true`, () => {
@@ -252,5 +253,24 @@ describe("687 测试用例", () => {
     test(`[1,4,5,4,4,5] should return 2`, () => {
         const p1 = CreateTree([1, 4, 5, 4, 4, -Infinity, 5]);
         expect(longestUnivaluePath(p1)).toBe(2);
+    });
+
+    test(`[1, 2, 3] should return 0`, () => {
+        const p1 = CreateTree([1]);
+        expect(longestUnivaluePath(p1)).toBe(0);
+    });
+});
+
+describe("87 测试用例", () => {
+    test(`s1 = "great", s2 = "rgeat" should return true`, () => {
+        expect(isScramble("great", "rgeat")).toBe(true);
+    });
+
+    test(`s1 = "abcde", s2 = "caebd" should return false`, () => {
+        expect(isScramble("abcde", "caebd")).toBe(false);
+    });
+
+    test(`s1 = "a", s2 = "a" should return true`, () => {
+        expect(isScramble("a", "a")).toBe(true);
     });
 });
