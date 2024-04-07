@@ -11,6 +11,7 @@ import { diameterOfBinaryTree } from "./10.543";
 import { constructMaximumBinaryTree } from "./11.654";
 import { longestUnivaluePath } from "./12.687";
 import { isScramble } from "./13.87";
+import { levelOrder } from "./14.102";
 
 describe("100 测试用例", () => {
     test(`p = [1,2,3], q = [1,2,3] should return true`, () => {
@@ -272,5 +273,26 @@ describe("87 测试用例", () => {
 
     test(`s1 = "a", s2 = "a" should return true`, () => {
         expect(isScramble("a", "a")).toBe(true);
+    });
+
+    test(`s1 = "ab", s2 = "ba" should return true`, () => {
+        expect(isScramble("ab", "ba")).toBe(true);
+    });
+});
+
+describe("102 测试用例", () => {
+    test(`[3,9,20,-Infinity,-Infinity,15,7] should return [[3],[9,20],[15,7]]`, () => {
+        const p1 = CreateTree([3, 9, 20, -Infinity, -Infinity, 15, 7]);
+        expect(levelOrder(p1)).toEqual([[3], [9, 20], [15, 7]]);
+    });
+
+    test(`[1] should return [[1]]`, () => {
+        const p1 = CreateTree([1]);
+        expect(levelOrder(p1)).toEqual([[1]]);
+    });
+
+    test(`[] should return [[]]`, () => {
+        const p1 = CreateTree([]);
+        expect(levelOrder(p1)).toEqual([[]]);
     });
 });

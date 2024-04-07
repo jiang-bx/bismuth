@@ -362,18 +362,54 @@ func TestIsScramble(t *testing.T) {
 		}
 
 		params1 = "great"
-		params1 = "rgeat"
+		params2 = "rgeat"
 		res = true
 		testTemp()
 
 		params1 = "abcde"
-		params1 = "caebd"
+		params2 = "caebd"
 		res = false
 		testTemp()
 
 		params1 = "a"
-		params1 = "a"
+		params2 = "a"
 		res = true
+		testTemp()
+	})
+}
+
+func TestLevelOrder(t *testing.T) {
+	utils.TestWarp("102 测试用例", func() {
+		params1 := []int{}
+		params2 := []int{}
+		res := [][]int{}
+		testTemp := func() {
+			str1, _ := json.Marshal(params1)
+			str2, _ := json.Marshal(params2)
+			res1, _ := json.Marshal(res)
+			desc := string(str1) + ", " + string(str2) + " should return " + string(res1)
+
+			p1 := CreateTree(params1)
+
+			utils.TestCondition(t, desc, reflect.DeepEqual(LevelOrder(p1), res))
+		}
+
+		params1 = []int{3, 9, 20, math.MinInt, math.MinInt, 15, 7}
+		res = [][]int{
+			{3},
+			{9, 20},
+			{15, 7},
+		}
+		testTemp()
+
+		params1 = []int{1}
+		res = [][]int{
+			{1},
+		}
+		testTemp()
+
+		params1 = []int{}
+		res = [][]int{}
 		testTemp()
 	})
 }
