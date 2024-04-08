@@ -291,8 +291,25 @@ describe("102 测试用例", () => {
         expect(levelOrder(p1)).toEqual([[1]]);
     });
 
-    test(`[] should return [[]]`, () => {
+    test(`[] should return []`, () => {
         const p1 = CreateTree([]);
-        expect(levelOrder(p1)).toEqual([[]]);
+        expect(levelOrder(p1)).toEqual([]);
+    });
+});
+
+describe("690 测试用例", () => {
+    test(`[3,9,20,-Infinity,-Infinity,15,7] should return [[3],[9,20],[15,7]]`, () => {
+        const p1 = CreateTree([3, 9, 20, -Infinity, -Infinity, 15, 7]);
+        expect(levelOrder(p1)).toEqual([[3], [9, 20], [15, 7]]);
+    });
+
+    test(`[1] should return [[1]]`, () => {
+        const p1 = CreateTree([1]);
+        expect(levelOrder(p1)).toEqual([[1]]);
+    });
+
+    test(`[] should return []`, () => {
+        const p1 = CreateTree([]);
+        expect(levelOrder(p1)).toEqual([]);
     });
 });
