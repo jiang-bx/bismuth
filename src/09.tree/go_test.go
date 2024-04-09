@@ -413,3 +413,62 @@ func TestLevelOrder(t *testing.T) {
 		testTemp()
 	})
 }
+
+func TestGetImportance(t *testing.T) {
+	utils.TestWarp("690 测试用例", func() {
+		params1 := []*Employee{}
+		params2 := 0
+		res := 0
+		testTemp := func() {
+			str1, _ := json.Marshal(params1)
+			str2, _ := json.Marshal(params2)
+			res1, _ := json.Marshal(res)
+			desc := string(str1) + ", " + string(str2) + " should return " + string(res1)
+
+			utils.TestCondition(t, desc, GetImportance(params1, params2) == res)
+		}
+
+		params1 = []*Employee{
+			{
+				Id:           1,
+				Importance:   5,
+				Subordinates: []int{2, 3},
+			},
+			{
+				Id:           2,
+				Importance:   3,
+				Subordinates: []int{},
+			},
+			{
+				Id:           3,
+				Importance:   3,
+				Subordinates: []int{},
+			},
+		}
+		params2 = 1
+		res = 11
+		testTemp()
+	})
+}
+
+func TestWidthOfBinaryTree(t *testing.T) {
+	utils.TestWarp("662 测试用例", func() {
+		params1 := []int{}
+		params2 := []int{}
+		res := 1
+		testTemp := func() {
+			str1, _ := json.Marshal(params1)
+			str2, _ := json.Marshal(params2)
+			res1, _ := json.Marshal(res)
+			desc := string(str1) + ", " + string(str2) + " should return " + string(res1)
+
+			p1 := CreateTree(params1)
+
+			utils.TestCondition(t, desc, WidthOfBinaryTree(p1) == res)
+		}
+
+		params1 = []int{1, 3, 2, 5, 3, math.MinInt, 9}
+		res = 4
+		testTemp()
+	})
+}

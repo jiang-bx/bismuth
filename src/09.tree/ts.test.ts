@@ -12,6 +12,7 @@ import { constructMaximumBinaryTree } from "./11.654";
 import { longestUnivaluePath } from "./12.687";
 import { isScramble } from "./13.87";
 import { levelOrder } from "./14.102";
+import { CreateEmployee, getImportance } from "./15.690";
 
 describe("100 测试用例", () => {
     test(`p = [1,2,3], q = [1,2,3] should return true`, () => {
@@ -298,18 +299,19 @@ describe("102 测试用例", () => {
 });
 
 describe("690 测试用例", () => {
-    test(`[3,9,20,-Infinity,-Infinity,15,7] should return [[3],[9,20],[15,7]]`, () => {
-        const p1 = CreateTree([3, 9, 20, -Infinity, -Infinity, 15, 7]);
-        expect(levelOrder(p1)).toEqual([[3], [9, 20], [15, 7]]);
+    test(`[[1, 5, [2, 3]], [2, 3, []], [3, 3, []]], 1 should return [[3],[9,20],[15,7]]`, () => {
+        const p1 = CreateEmployee([
+            [1, 5, [2, 3]],
+            [2, 3, []],
+            [3, 3, []],
+        ]);
+        expect(getImportance(p1, 1)).toBe(11);
     });
+});
 
-    test(`[1] should return [[1]]`, () => {
-        const p1 = CreateTree([1]);
-        expect(levelOrder(p1)).toEqual([[1]]);
-    });
-
-    test(`[] should return []`, () => {
-        const p1 = CreateTree([]);
-        expect(levelOrder(p1)).toEqual([]);
+describe("662 测试用例", () => {
+    test(`[1,3,2,5,3,-Infinity,9] should return 4`, () => {
+        const p1 = CreateTree([1, 3, 2, 5, 3, -Infinity, 9]);
+        expect(levelOrder(p1)).toBe(4);
     });
 });
