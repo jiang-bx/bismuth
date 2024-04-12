@@ -13,6 +13,7 @@ import { longestUnivaluePath } from "./12.687";
 import { isScramble } from "./13.87";
 import { levelOrder } from "./14.102";
 import { CreateEmployee, getImportance } from "./15.690";
+import { widthOfBinaryTree } from "./16.662";
 
 describe("100 测试用例", () => {
     test(`p = [1,2,3], q = [1,2,3] should return true`, () => {
@@ -312,6 +313,18 @@ describe("690 测试用例", () => {
 describe("662 测试用例", () => {
     test(`[1,3,2,5,3,-Infinity,9] should return 4`, () => {
         const p1 = CreateTree([1, 3, 2, 5, 3, -Infinity, 9]);
-        expect(levelOrder(p1)).toBe(4);
+        expect(widthOfBinaryTree(p1)).toBe(4);
+    });
+});
+
+describe("671 测试用例", () => {
+    test(`[2, 2, 5, -Infinity, -Infinity, 5, 7] should return 5`, () => {
+        const p1 = CreateTree([2, 2, 5, -Infinity, -Infinity, 5, 7]);
+        expect(widthOfBinaryTree(p1)).toBe(5);
+    });
+
+    test(`[2,2,2] should return -1`, () => {
+        const p1 = CreateTree([2, 2, 2]);
+        expect(widthOfBinaryTree(p1)).toBe(-1);
     });
 });
