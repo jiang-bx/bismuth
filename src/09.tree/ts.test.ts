@@ -14,6 +14,8 @@ import { isScramble } from "./13.87";
 import { levelOrder } from "./14.102";
 import { CreateEmployee, getImportance } from "./15.690";
 import { widthOfBinaryTree } from "./16.662";
+import { findSecondMinimumValue } from "./17.671";
+import { findBottomLeftValue } from "./18.513";
 
 describe("100 测试用例", () => {
     test(`p = [1,2,3], q = [1,2,3] should return true`, () => {
@@ -320,11 +322,41 @@ describe("662 测试用例", () => {
 describe("671 测试用例", () => {
     test(`[2, 2, 5, -Infinity, -Infinity, 5, 7] should return 5`, () => {
         const p1 = CreateTree([2, 2, 5, -Infinity, -Infinity, 5, 7]);
-        expect(widthOfBinaryTree(p1)).toBe(5);
+        expect(findSecondMinimumValue(p1)).toBe(5);
     });
 
     test(`[2,2,2] should return -1`, () => {
         const p1 = CreateTree([2, 2, 2]);
-        expect(widthOfBinaryTree(p1)).toBe(-1);
+        expect(findSecondMinimumValue(p1)).toBe(-1);
+    });
+
+    test(`[1,1,3,1,1,3,4,3,1] should return 3`, () => {
+        const p1 = CreateTree([1, 1, 3, 1, 1, 3, 4, 3, 1]);
+        expect(findSecondMinimumValue(p1)).toBe(3);
+    });
+});
+
+describe("513 测试用例", () => {
+    test(`[2,1,3] should return 1`, () => {
+        const p1 = CreateTree([2, 1, 3]);
+        expect(findBottomLeftValue(p1)).toBe(1);
+    });
+
+    test(`[1, 2, 3, 4, -Infinity, 5, 6, -Infinity, -Infinity, -Infinity, -Infinity, 7,] should return 7`, () => {
+        const p1 = CreateTree([
+            1,
+            2,
+            3,
+            4,
+            -Infinity,
+            5,
+            6,
+            -Infinity,
+            -Infinity,
+            -Infinity,
+            -Infinity,
+            7,
+        ]);
+        expect(findBottomLeftValue(p1)).toBe(7);
     });
 });

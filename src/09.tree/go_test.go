@@ -498,3 +498,29 @@ func TestFindSecondMinimumValue(t *testing.T) {
 		testTemp()
 	})
 }
+
+func TestFindBottomLeftValue(t *testing.T) {
+	utils.TestWarp("513 测试用例", func() {
+		params1 := []int{}
+		params2 := []int{}
+		res := 1
+		testTemp := func() {
+			str1, _ := json.Marshal(params1)
+			str2, _ := json.Marshal(params2)
+			res1, _ := json.Marshal(res)
+			desc := string(str1) + ", " + string(str2) + " should return " + string(res1)
+
+			p1 := CreateTree(params1)
+
+			utils.TestCondition(t, desc, FindBottomLeftValue(p1) == res)
+		}
+
+		params1 = []int{2, 1, 3}
+		res = 1
+		testTemp()
+
+		params1 = []int{1, 2, 3, 4, math.MinInt, 5, 6, math.MinInt, math.MinInt, math.MinInt, math.MinInt, 7}
+		res = 7
+		testTemp()
+	})
+}
