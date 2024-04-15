@@ -16,6 +16,7 @@ import { CreateEmployee, getImportance } from "./15.690";
 import { widthOfBinaryTree } from "./16.662";
 import { findSecondMinimumValue } from "./17.671";
 import { findBottomLeftValue } from "./18.513";
+import { largestValues } from "./19.515";
 
 describe("100 测试用例", () => {
     test(`p = [1,2,3], q = [1,2,3] should return true`, () => {
@@ -358,5 +359,17 @@ describe("513 测试用例", () => {
             7,
         ]);
         expect(findBottomLeftValue(p1)).toBe(7);
+    });
+});
+
+describe("515 测试用例", () => {
+    test(`[2,1,3] should return [2, 3]`, () => {
+        const p1 = CreateTree([2, 1, 3]);
+        expect(largestValues(p1)).toEqual([2, 3]);
+    });
+
+    test(`[1,3,2,5,3,null,9] should return [1,3,9]`, () => {
+        const p1 = CreateTree([1, 3, 2, 5, 3, -Infinity, 9]);
+        expect(largestValues(p1)).toEqual([1, 3, 9]);
     });
 });
