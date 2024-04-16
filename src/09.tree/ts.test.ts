@@ -373,3 +373,15 @@ describe("515 测试用例", () => {
         expect(largestValues(p1)).toEqual([1, 3, 9]);
     });
 });
+
+describe("637 测试用例", () => {
+    test(`[3,9,20,null,null,15,7] should return [3.00000,14.50000,11.00000]`, () => {
+        const p1 = CreateTree([3, 9, 20, -Infinity, -Infinity, 15, 7]);
+        expect(largestValues(p1)).toEqual([3.0, 14.5, 11.0]);
+    });
+
+    test(`[3,9,20,15,7] should return [3.0, 14.5, 11.0]`, () => {
+        const p1 = CreateTree([3, 9, 20, 15, 7]);
+        expect(largestValues(p1)).toEqual([3.0, 14.5, 11.0]);
+    });
+});

@@ -541,12 +541,38 @@ func TestLargestValues(t *testing.T) {
 			utils.TestCondition(t, desc, reflect.DeepEqual(LargestValues(p1), res))
 		}
 
-		params1 = []int{1, 3, 2, 5, 3, math.MaxInt, 9}
+		params1 = []int{1, 3, 2, 5, 3, math.MinInt, 9}
 		res = []int{1, 3, 9}
 		testTemp()
 
 		params1 = []int{1, 2, 3}
 		res = []int{1, 3}
+		testTemp()
+	})
+}
+
+func TestAverageOfLevels(t *testing.T) {
+	utils.TestWarp("637 测试用例", func() {
+		params1 := []int{}
+		params2 := []int{}
+		res := []float64{}
+		testTemp := func() {
+			str1, _ := json.Marshal(params1)
+			str2, _ := json.Marshal(params2)
+			res1, _ := json.Marshal(res)
+			desc := string(str1) + ", " + string(str2) + " should return " + string(res1)
+
+			p1 := CreateTree(params1)
+
+			utils.TestCondition(t, desc, reflect.DeepEqual(AverageOfLevels(p1), res))
+		}
+
+		params1 = []int{3, 9, 20, math.MinInt, math.MinInt, 15, 7}
+		res = []float64{3.00000, 14.50000, 11.00000}
+		testTemp()
+
+		params1 = []int{3, 9, 20, 15, 7}
+		res = []float64{3.00000, 14.50000, 11.00000}
 		testTemp()
 	})
 }
