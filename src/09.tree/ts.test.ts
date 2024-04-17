@@ -17,6 +17,8 @@ import { widthOfBinaryTree } from "./16.662";
 import { findSecondMinimumValue } from "./17.671";
 import { findBottomLeftValue } from "./18.513";
 import { largestValues } from "./19.515";
+import { averageOfLevels } from "./20.637";
+import { zigzagLevelOrder } from "./21.103";
 
 describe("100 测试用例", () => {
     test(`p = [1,2,3], q = [1,2,3] should return true`, () => {
@@ -377,11 +379,28 @@ describe("515 测试用例", () => {
 describe("637 测试用例", () => {
     test(`[3,9,20,null,null,15,7] should return [3.00000,14.50000,11.00000]`, () => {
         const p1 = CreateTree([3, 9, 20, -Infinity, -Infinity, 15, 7]);
-        expect(largestValues(p1)).toEqual([3.0, 14.5, 11.0]);
+        expect(averageOfLevels(p1)).toEqual([3.0, 14.5, 11.0]);
     });
 
     test(`[3,9,20,15,7] should return [3.0, 14.5, 11.0]`, () => {
         const p1 = CreateTree([3, 9, 20, 15, 7]);
-        expect(largestValues(p1)).toEqual([3.0, 14.5, 11.0]);
+        expect(averageOfLevels(p1)).toEqual([3.0, 14.5, 11.0]);
+    });
+});
+
+describe("103 测试用例", () => {
+    test(`[3,9,20,null,null,15,7] should return [[3],[20,9],[15,7]]`, () => {
+        const p1 = CreateTree([3, 9, 20, -Infinity, -Infinity, 15, 7]);
+        expect(zigzagLevelOrder(p1)).toEqual([[3], [20, 9], [15, 7]]);
+    });
+
+    test(`[1] should return [[1]]`, () => {
+        const p1 = CreateTree([1]);
+        expect(zigzagLevelOrder(p1)).toEqual([[1]]);
+    });
+
+    test(`[] should return [[]]`, () => {
+        const p1 = CreateTree([]);
+        expect(zigzagLevelOrder(p1)).toEqual([[]]);
     });
 });
