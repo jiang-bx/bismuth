@@ -602,7 +602,76 @@ func TestZigzagLevelOrder(t *testing.T) {
 		testTemp()
 
 		params1 = []int{}
-		res = [][]int{{}}
+		res = [][]int{}
+		testTemp()
+	})
+}
+
+func TestCopy(t *testing.T) {
+	ans := []int{1, 2, 3, 4, 5}
+	ans = append(ans, -1)
+
+	// 把 ans[0:] 所有得内容, 复制到 ans[1:] 中, 超出得抛弃
+	copy(ans[1:], ans[0:])
+	ans[0] = -1
+}
+
+func TestLevelOrderBottom(t *testing.T) {
+	utils.TestWarp("107 测试用例", func() {
+		params1 := []int{}
+		params2 := []int{}
+		res := [][]int{}
+		testTemp := func() {
+			str1, _ := json.Marshal(params1)
+			str2, _ := json.Marshal(params2)
+			res1, _ := json.Marshal(res)
+			desc := string(str1) + ", " + string(str2) + " should return " + string(res1)
+
+			p1 := CreateTree(params1)
+
+			utils.TestCondition(t, desc, reflect.DeepEqual(LevelOrderBottom(p1), res))
+		}
+
+		params1 = []int{3, 9, 20, math.MinInt, math.MinInt, 15, 7}
+		res = [][]int{{15, 7}, {9, 20}, {3}}
+		testTemp()
+
+		params1 = []int{1}
+		res = [][]int{{1}}
+		testTemp()
+
+		params1 = []int{}
+		res = [][]int{}
+		testTemp()
+	})
+}
+
+func TestBinaryTreePaths(t *testing.T) {
+	utils.TestWarp("257 测试用例", func() {
+		params1 := []int{}
+		params2 := []int{}
+		res := []string{}
+		testTemp := func() {
+			str1, _ := json.Marshal(params1)
+			str2, _ := json.Marshal(params2)
+			res1, _ := json.Marshal(res)
+			desc := string(str1) + ", " + string(str2) + " should return " + string(res1)
+
+			p1 := CreateTree(params1)
+
+			utils.TestCondition(t, desc, reflect.DeepEqual(BinaryTreePaths(p1), res))
+		}
+
+		params1 = []int{1, 2, 3, math.MinInt, 5}
+		res = []string{"1->2->5", "1->3"}
+		testTemp()
+
+		params1 = []int{1}
+		res = []string{"1"}
+		testTemp()
+
+		params1 = []int{}
+		res = []string{}
 		testTemp()
 	})
 }

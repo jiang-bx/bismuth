@@ -3,13 +3,12 @@ package tree
 import "slices"
 
 // BFS
-func ZigzagLevelOrder(root *TreeNode) [][]int {
+func LevelOrderBottom(root *TreeNode) [][]int {
 	ans := [][]int{}
 	if root == nil {
 		return ans
 	}
 	queue := []*TreeNode{root}
-	k := 0
 
 	for len(queue) > 0 {
 		size := len(queue)
@@ -30,12 +29,10 @@ func ZigzagLevelOrder(root *TreeNode) [][]int {
 			}
 		}
 
-		if k%2 == 1 {
-			slices.Reverse(temp)
-		}
-		k++
 		ans = append(ans, temp)
 	}
+
+	slices.Reverse(ans)
 
 	return ans
 }

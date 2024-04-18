@@ -19,6 +19,8 @@ import { findBottomLeftValue } from "./18.513";
 import { largestValues } from "./19.515";
 import { averageOfLevels } from "./20.637";
 import { zigzagLevelOrder } from "./21.103";
+import { levelOrderBottom } from "./22.107";
+import { binaryTreePaths } from "./23.257";
 
 describe("100 测试用例", () => {
     test(`p = [1,2,3], q = [1,2,3] should return true`, () => {
@@ -399,8 +401,42 @@ describe("103 测试用例", () => {
         expect(zigzagLevelOrder(p1)).toEqual([[1]]);
     });
 
-    test(`[] should return [[]]`, () => {
+    test(`[] should return []`, () => {
         const p1 = CreateTree([]);
-        expect(zigzagLevelOrder(p1)).toEqual([[]]);
+        expect(zigzagLevelOrder(p1)).toEqual([]);
+    });
+});
+
+describe("107 测试用例", () => {
+    test(`[3,9,20,null,null,15,7] should return [[15,7],[9,20],[3]]`, () => {
+        const p1 = CreateTree([3, 9, 20, -Infinity, -Infinity, 15, 7]);
+        expect(levelOrderBottom(p1)).toEqual([[15, 7], [9, 20], [3]]);
+    });
+
+    test(`[1] should return [[1]]`, () => {
+        const p1 = CreateTree([1]);
+        expect(levelOrderBottom(p1)).toEqual([[1]]);
+    });
+
+    test(`[] should return []`, () => {
+        const p1 = CreateTree([]);
+        expect(levelOrderBottom(p1)).toEqual([]);
+    });
+});
+
+describe("257 测试用例", () => {
+    test(`[1,2,3, -Infinity,5] should return ["1->2->5","1->3"]`, () => {
+        const p1 = CreateTree([1, 2, 3, -Infinity, 5]);
+        expect(binaryTreePaths(p1)).toEqual(["1->2->5", "1->3"]);
+    });
+
+    test(`[1] should return ["1"]`, () => {
+        const p1 = CreateTree([1]);
+        expect(binaryTreePaths(p1)).toEqual(["1"]);
+    });
+
+    test(`[] should return []`, () => {
+        const p1 = CreateTree([]);
+        expect(levelOrderBottom(p1)).toEqual([]);
     });
 });
