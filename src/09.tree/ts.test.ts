@@ -21,6 +21,8 @@ import { averageOfLevels } from "./20.637";
 import { zigzagLevelOrder } from "./21.103";
 import { levelOrderBottom } from "./22.107";
 import { binaryTreePaths } from "./23.257";
+import { addOneRow } from "./24.623";
+import { findTarget } from "./25.653";
 
 describe("100 测试用例", () => {
     test(`p = [1,2,3], q = [1,2,3] should return true`, () => {
@@ -438,5 +440,74 @@ describe("257 测试用例", () => {
     test(`[] should return []`, () => {
         const p1 = CreateTree([]);
         expect(levelOrderBottom(p1)).toEqual([]);
+    });
+});
+
+describe("623 测试用例", () => {
+    test(`[4,2,6,3,1,5], val = 1, depth = 2 should return [4,1,1,2,null,null,6,3,1,5]`, () => {
+        const p1 = CreateTree([4, 2, 6, 3, 1, 5]);
+        const p2 = CreateTree([
+            4,
+            1,
+            1,
+            2,
+            -Infinity,
+            -Infinity,
+            6,
+            3,
+            1,
+            -Infinity,
+            -Infinity,
+            -Infinity,
+            -Infinity,
+            5,
+        ]);
+        expect(IsSameTree(addOneRow(p1, 1, 2), p2)).toBe(true);
+    });
+
+    test(`[4,2,null,3,1], val = 1, depth = 3 should return [4,2,null,1,1,3,null,null,1]`, () => {
+        const p1 = CreateTree([4, 2, -Infinity, 3, 1]);
+        const p2 = CreateTree([
+            4,
+            2,
+            -Infinity,
+            1,
+            1,
+            -Infinity,
+            -Infinity,
+            3,
+            -Infinity,
+            -Infinity,
+            1,
+        ]);
+        expect(IsSameTree(addOneRow(p1, 1, 3), p2)).toBe(true);
+    });
+
+    test(`[1,2,3,4], val = 5, depth = 4 should return [1, 2, 3, 4, 5, 5]`, () => {
+        const p1 = CreateTree([1, 2, 3, 4]);
+        const p2 = CreateTree([
+            1,
+            2,
+            3,
+            4,
+            -Infinity,
+            -Infinity,
+            -Infinity,
+            5,
+            5,
+        ]);
+        expect(IsSameTree(addOneRow(p1, 5, 4), p2)).toBe(true);
+    });
+});
+
+describe("653 测试用例", () => {
+    test(`[5,3,6,2,4,null,7], k = 9 should return true`, () => {
+        const p1 = CreateTree([5, 3, 6, 2, 4, -Infinity, 7]);
+        expect(findTarget(p1, 9)).toBe(true);
+    });
+
+    test(`[5,3,6,2,4,null,7], k = 28 should return false`, () => {
+        const p1 = CreateTree([5, 3, 6, 2, 4, -Infinity, 7]);
+        expect(findTarget(p1, 28)).toBe(false);
     });
 });

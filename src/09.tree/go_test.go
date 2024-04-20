@@ -675,3 +675,68 @@ func TestBinaryTreePaths(t *testing.T) {
 		testTemp()
 	})
 }
+
+func TestAddOneRow(t *testing.T) {
+	utils.TestWarp("623 测试用例", func() {
+		params1 := []int{}
+		params2 := 0
+		params3 := 0
+		res := []int{}
+		testTemp := func() {
+			str1, _ := json.Marshal(params1)
+			str2, _ := json.Marshal(params2)
+			str3, _ := json.Marshal(params3)
+			res1, _ := json.Marshal(res)
+			desc := string(str1) + ", " + string(str2) + ", " + string(str3) + " should return " + string(res1)
+
+			p1 := CreateTree(params1)
+			p2 := CreateTree(res)
+
+			val := AddOneRow(p1, params2, params3)
+
+			utils.TestCondition(t, desc, IsSameTree(val, p2) == true)
+		}
+
+		params1 = []int{4, 2, 6, 3, 1, 5}
+		params2 = 1
+		params3 = 2
+		res = []int{4, 1, 1, 2, math.MinInt, math.MinInt, 6, 3, 1, math.MinInt, math.MinInt, math.MinInt, math.MinInt, 5}
+		testTemp()
+
+		params1 = []int{4, 2, math.MinInt, 3, 1}
+		params2 = 1
+		params3 = 3
+		res = []int{4, 2, math.MinInt, 1, 1, math.MinInt, math.MinInt, 3, math.MinInt, math.MinInt, 1}
+		testTemp()
+	})
+}
+
+func TestFindTarget(t *testing.T) {
+	utils.TestWarp("653 测试用例", func() {
+		params1 := []int{}
+		params2 := 0
+		params3 := 0
+		res := false
+		testTemp := func() {
+			str1, _ := json.Marshal(params1)
+			str2, _ := json.Marshal(params2)
+			str3, _ := json.Marshal(params3)
+			res1, _ := json.Marshal(res)
+			desc := string(str1) + ", " + string(str2) + ", " + string(str3) + " should return " + string(res1)
+
+			p1 := CreateTree(params1)
+
+			utils.TestCondition(t, desc, FindTarget(p1, params2) == res)
+		}
+
+		params1 = []int{5, 3, 6, 2, 4, math.MinInt, 7}
+		params2 = 9
+		res = true
+		testTemp()
+
+		params1 = []int{5, 3, 6, 2, 4, math.MinInt, 7}
+		params2 = 28
+		res = false
+		testTemp()
+	})
+}
