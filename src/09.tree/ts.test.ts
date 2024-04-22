@@ -23,6 +23,8 @@ import { levelOrderBottom } from "./22.107";
 import { binaryTreePaths } from "./23.257";
 import { addOneRow } from "./24.623";
 import { findTarget } from "./25.653";
+import { maxDepth } from "./26.104";
+import { minDepth } from "./27.111";
 
 describe("100 测试用例", () => {
     test(`p = [1,2,3], q = [1,2,3] should return true`, () => {
@@ -509,5 +511,30 @@ describe("653 测试用例", () => {
     test(`[5,3,6,2,4,null,7], k = 28 should return false`, () => {
         const p1 = CreateTree([5, 3, 6, 2, 4, -Infinity, 7]);
         expect(findTarget(p1, 28)).toBe(false);
+    });
+});
+
+describe("104 测试用例", () => {
+    test(`[3, 9, 20, -Infinity, -Infinity, 15, 7], k = 9 should return 3`, () => {
+        const p1 = CreateTree([3, 9, 20, -Infinity, -Infinity, 15, 7]);
+        expect(maxDepth(p1)).toBe(3);
+    });
+
+    test(`[5,3,6,2,4,null,7], k = 28 should return 2`, () => {
+        const p1 = CreateTree([1, -Infinity, 2]);
+        expect(maxDepth(p1)).toBe(2);
+    });
+});
+
+
+describe("111 测试用例", () => {
+    test(`[3, 9, 20, -Infinity, -Infinity, 15, 7], k = 9 should return 3`, () => {
+        const p1 = CreateTree([3, 9, 20, -Infinity, -Infinity, 15, 7]);
+        expect(minDepth(p1)).toBe(3);
+    });
+
+    test(`[5,3,6,2,4,null,7], k = 28 should return 2`, () => {
+        const p1 = CreateTree([1, -Infinity, 2]);
+        expect(minDepth(p1)).toBe(2);
     });
 });

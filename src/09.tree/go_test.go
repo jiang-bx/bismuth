@@ -740,3 +740,59 @@ func TestFindTarget(t *testing.T) {
 		testTemp()
 	})
 }
+
+func TestMaxDepth(t *testing.T) {
+	utils.TestWarp("104 测试用例", func() {
+		params1 := []int{}
+		params2 := 0
+		params3 := 0
+		res := 0
+		testTemp := func() {
+			str1, _ := json.Marshal(params1)
+			str2, _ := json.Marshal(params2)
+			str3, _ := json.Marshal(params3)
+			res1, _ := json.Marshal(res)
+			desc := string(str1) + ", " + string(str2) + ", " + string(str3) + " should return " + string(res1)
+
+			p1 := CreateTree(params1)
+
+			utils.TestCondition(t, desc, MaxDepth(p1) == res)
+		}
+
+		params1 = []int{3, 9, 20, math.MinInt, math.MinInt, 15, 7}
+		res = 3
+		testTemp()
+
+		params1 = []int{1, math.MinInt, 2}
+		res = 2
+		testTemp()
+	})
+}
+
+func TestMinDepth(t *testing.T) {
+	utils.TestWarp("111 测试用例", func() {
+		params1 := []int{}
+		params2 := 0
+		params3 := 0
+		res := 0
+		testTemp := func() {
+			str1, _ := json.Marshal(params1)
+			str2, _ := json.Marshal(params2)
+			str3, _ := json.Marshal(params3)
+			res1, _ := json.Marshal(res)
+			desc := string(str1) + ", " + string(str2) + ", " + string(str3) + " should return " + string(res1)
+
+			p1 := CreateTree(params1)
+
+			utils.TestCondition(t, desc, MinDepth(p1) == res)
+		}
+
+		params1 = []int{3, 9, 20, math.MinInt, math.MinInt, 15, 7}
+		res = 3
+		testTemp()
+
+		params1 = []int{1, math.MinInt, 2}
+		res = 2
+		testTemp()
+	})
+}
