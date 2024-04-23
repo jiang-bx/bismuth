@@ -5,12 +5,16 @@ func MinDepth(root *TreeNode) int {
 		return 0
 	}
 
-	lMax := MinDepth(root.Left) + 1
-	rMax := MinDepth(root.Right) + 1
+	lMin := MinDepth(root.Left)
+	rMin := MinDepth(root.Right)
 
-	if lMax > rMax {
-		return lMax
+	if root.Left == nil || root.Right == nil {
+		return lMin + rMin + 1
 	}
 
-	return rMax
+	if lMin < rMin {
+		return lMin + 1
+	}
+
+	return rMin + 1
 }

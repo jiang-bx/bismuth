@@ -25,6 +25,7 @@ import { addOneRow } from "./24.623";
 import { findTarget } from "./25.653";
 import { maxDepth } from "./26.104";
 import { minDepth } from "./27.111";
+import { hasPathSum } from "./28.112";
 
 describe("100 测试用例", () => {
     test(`p = [1,2,3], q = [1,2,3] should return true`, () => {
@@ -520,21 +521,60 @@ describe("104 测试用例", () => {
         expect(maxDepth(p1)).toBe(3);
     });
 
-    test(`[5,3,6,2,4,null,7], k = 28 should return 2`, () => {
+    test(`[1, -Infinity, 2], k = 28 should return 2`, () => {
         const p1 = CreateTree([1, -Infinity, 2]);
         expect(maxDepth(p1)).toBe(2);
     });
 });
 
-
 describe("111 测试用例", () => {
-    test(`[3, 9, 20, -Infinity, -Infinity, 15, 7], k = 9 should return 3`, () => {
+    test(`[3, 9, 20, -Infinity, -Infinity, 15, 7], k = 9 should return 2`, () => {
         const p1 = CreateTree([3, 9, 20, -Infinity, -Infinity, 15, 7]);
-        expect(minDepth(p1)).toBe(3);
+        expect(minDepth(p1)).toBe(2);
     });
 
-    test(`[5,3,6,2,4,null,7], k = 28 should return 2`, () => {
-        const p1 = CreateTree([1, -Infinity, 2]);
-        expect(minDepth(p1)).toBe(2);
+    test(`[2,-Infinity,3], k = 28 should return 3`, () => {
+        const p1 = CreateTree([
+            2,
+            -Infinity,
+            3,
+            -Infinity,
+            -Infinity,
+            -Infinity,
+            4,
+        ]);
+        expect(minDepth(p1)).toBe(3);
+    });
+});
+
+describe("112 测试用例", () => {
+    test(`[5, 4, 8, 11, -Infinity, -Infinity, 13, 4, 7, 2, -Infinity, -Infinity, -Infinity, 1,], k = 22 should return true`, () => {
+        const p1 = CreateTree([
+            5,
+            4,
+            8,
+            11,
+            -Infinity,
+            -Infinity,
+            13,
+            4,
+            7,
+            2,
+            -Infinity,
+            -Infinity,
+            -Infinity,
+            1,
+        ]);
+        expect(hasPathSum(p1, 22)).toBe(true);
+    });
+
+    test(`[1,2,3], k = 5 should return false`, () => {
+        const p1 = CreateTree([1, 2, 3]);
+        expect(hasPathSum(p1, 5)).toBe(false);
+    });
+
+    test(`[], k = 0 should return false`, () => {
+        const p1 = CreateTree([]);
+        expect(hasPathSum(p1, 0)).toBe(false);
     });
 });
