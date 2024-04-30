@@ -555,11 +555,12 @@ describe("112 测试用例", () => {
             8,
             11,
             -Infinity,
-            -Infinity,
             13,
             4,
             7,
             2,
+            -Infinity,
+            -Infinity,
             -Infinity,
             -Infinity,
             -Infinity,
@@ -576,5 +577,41 @@ describe("112 测试用例", () => {
     test(`[], k = 0 should return false`, () => {
         const p1 = CreateTree([]);
         expect(hasPathSum(p1, 0)).toBe(false);
+    });
+});
+
+describe("113 测试用例", () => {
+    test(`[5, 4, 8, 11, -Infinity, 13, 4, 7, 2, -Infinity, -Infinity, -Infinity, -Infinity, 5, 1,], k = 22 should return [[5,4,11,2],[5,8,4,5]]`, () => {
+        const p1 = CreateTree([
+            5,
+            4,
+            8,
+            11,
+            -Infinity,
+            13,
+            4,
+            7,
+            2,
+            -Infinity,
+            -Infinity,
+            -Infinity,
+            -Infinity,
+            5,
+            1,
+        ]);
+        expect(pathSum(p1, 22)).toEqual([
+            [5, 4, 11, 2],
+            [5, 8, 4, 5],
+        ]);
+    });
+
+    test(`[1,2,3], k = 5 should return false`, () => {
+        const p1 = CreateTree([1, 2, 3]);
+        expect(pathSum(p1, 5)).toEqual([]);
+    });
+
+    test(`[], k = 0 should return []`, () => {
+        const p1 = CreateTree([]);
+        expect(pathSum(p1, 0)).toEqual([]);
     });
 });

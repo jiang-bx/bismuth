@@ -815,7 +815,7 @@ func TestHasPathSum(t *testing.T) {
 			utils.TestCondition(t, desc, HasPathSum(p1, params2) == res)
 		}
 
-		params1 = []int{5, 4, 8, 11, math.MinInt, math.MaxInt, 13, 4, 7, 2, math.MinInt, math.MinInt, math.MinInt, 1}
+		params1 = []int{5, 4, 8, 11, math.MinInt, 13, 4, 7, 2, math.MinInt, math.MinInt, math.MaxInt, math.MaxInt, math.MinInt, 1}
 		params2 = 22
 		res = true
 		testTemp()
@@ -828,6 +828,41 @@ func TestHasPathSum(t *testing.T) {
 		params1 = []int{}
 		params2 = 0
 		res = false
+		testTemp()
+	})
+}
+
+func TestPathSum1(t *testing.T) {
+	utils.TestWarp("113 测试用例", func() {
+		params1 := []int{}
+		params2 := 0
+		params3 := 0
+		res := [][]int{}
+		testTemp := func() {
+			str1, _ := json.Marshal(params1)
+			str2, _ := json.Marshal(params2)
+			str3, _ := json.Marshal(params3)
+			res1, _ := json.Marshal(res)
+			desc := string(str1) + ", " + string(str2) + ", " + string(str3) + " should return " + string(res1)
+
+			p1 := CreateTree(params1)
+
+			utils.TestCondition(t, desc, reflect.DeepEqual(PathSum1(p1, params2), res))
+		}
+
+		params1 = []int{5, 4, 8, 11, math.MinInt, 13, 4, 7, 2, math.MinInt, math.MinInt, math.MaxInt, math.MaxInt, 5, 1}
+		params2 = 22
+		res = [][]int{{5, 4, 11, 2}, {5, 8, 4, 5}}
+		testTemp()
+
+		params1 = []int{1, 2, 3}
+		params2 = 5
+		res = [][]int{}
+		testTemp()
+
+		params1 = []int{}
+		params2 = 0
+		res = [][]int{}
 		testTemp()
 	})
 }
