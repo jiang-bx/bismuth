@@ -26,6 +26,9 @@ import { findTarget } from "./25.653";
 import { maxDepth } from "./26.104";
 import { minDepth } from "./27.111";
 import { hasPathSum } from "./28.112";
+import { pathSum1 } from "./29.113";
+import { sumNumbers } from "./30.129";
+import { sumOfLeftLeaves } from "./31.404";
 
 describe("100 测试用例", () => {
     test(`p = [1,2,3], q = [1,2,3] should return true`, () => {
@@ -599,7 +602,7 @@ describe("113 测试用例", () => {
             5,
             1,
         ]);
-        expect(pathSum(p1, 22)).toEqual([
+        expect(pathSum1(p1, 22)).toEqual([
             [5, 4, 11, 2],
             [5, 8, 4, 5],
         ]);
@@ -607,11 +610,35 @@ describe("113 测试用例", () => {
 
     test(`[1,2,3], k = 5 should return false`, () => {
         const p1 = CreateTree([1, 2, 3]);
-        expect(pathSum(p1, 5)).toEqual([]);
+        expect(pathSum1(p1, 5)).toEqual([]);
     });
 
     test(`[], k = 0 should return []`, () => {
         const p1 = CreateTree([]);
-        expect(pathSum(p1, 0)).toEqual([]);
+        expect(pathSum1(p1, 0)).toEqual([]);
+    });
+});
+
+describe("129 测试用例", () => {
+    test(`[1,2,3] should return 25`, () => {
+        const p1 = CreateTree([1, 2, 3]);
+        expect(sumNumbers(p1)).toBe(25);
+    });
+
+    test(`[4,9,0,5,1] should return 1026`, () => {
+        const p1 = CreateTree([4, 9, 0, 5, 1]);
+        expect(sumNumbers(p1)).toBe(1026);
+    });
+});
+
+describe("404 测试用例", () => {
+    test(`[3,9,20,null,null,15,7] should return 24`, () => {
+        const p1 = CreateTree([3, 9, 20, -Infinity, -Infinity, 15, 7]);
+        expect(sumOfLeftLeaves(p1)).toBe(24);
+    });
+
+    test(`[1] should return 0`, () => {
+        const p1 = CreateTree([1]);
+        expect(sumOfLeftLeaves(p1)).toBe(0);
     });
 });
