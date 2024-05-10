@@ -29,6 +29,8 @@ import { hasPathSum } from "./28.112";
 import { pathSum1 } from "./29.113";
 import { sumNumbers } from "./30.129";
 import { sumOfLeftLeaves } from "./31.404";
+import { rightSideView } from "./32.199";
+import { printTree } from "./33.655";
 
 describe("100 测试用例", () => {
     test(`p = [1,2,3], q = [1,2,3] should return true`, () => {
@@ -640,5 +642,41 @@ describe("404 测试用例", () => {
     test(`[1] should return 0`, () => {
         const p1 = CreateTree([1]);
         expect(sumOfLeftLeaves(p1)).toBe(0);
+    });
+});
+
+describe("199 测试用例", () => {
+    test(`[1,2,3,null,5,null,4] should return [1,3,4]`, () => {
+        const p1 = CreateTree([1, 2, 3, -Infinity, 5, -Infinity, 4]);
+        expect(rightSideView(p1)).toEqual([1, 3, 4]);
+    });
+
+    test(`[1,null,3] should return [1,3,4]`, () => {
+        const p1 = CreateTree([1, -Infinity, 3]);
+        expect(rightSideView(p1)).toEqual([1, 3]);
+    });
+
+    test(`[] should return []`, () => {
+        const p1 = CreateTree([]);
+        expect(rightSideView(p1)).toEqual([]);
+    });
+});
+
+describe("655 测试用例", () => {
+    test(`[1,2] should return [["","1",""],["2","",""]]`, () => {
+        const p1 = CreateTree([1, 2]);
+        expect(printTree(p1)).toEqual([
+            ["", "1", ""],
+            ["2", "", ""],
+        ]);
+    });
+
+    test(`[1,2,3,null,4] should return [["","","","1","","",""],["","2","","","","3",""],["","","4","","","",""]]`, () => {
+        const p1 = CreateTree([1, 2, 3, -Infinity, 4]);
+        expect(printTree(p1)).toEqual([
+            ["", "", "", "1", "", "", ""],
+            ["", "2", "", "", "", "3", ""],
+            ["", "", "4", "", "", "", ""],
+        ]);
     });
 });

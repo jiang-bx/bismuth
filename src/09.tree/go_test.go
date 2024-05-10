@@ -914,11 +914,78 @@ func TestSumOfLeftLeaves(t *testing.T) {
 		}
 
 		params1 = []int{3, 9, 20, math.MinInt, math.MinInt, 15, 7}
-		res = 45
+		res = 24
 		testTemp()
 
 		params1 = []int{1}
 		res = 0
+		testTemp()
+	})
+}
+
+func TestRightSideView(t *testing.T) {
+	utils.TestWarp("199 测试用例", func() {
+		params1 := []int{}
+		params2 := 0
+		params3 := 0
+		res := []int{}
+		testTemp := func() {
+			str1, _ := json.Marshal(params1)
+			str2, _ := json.Marshal(params2)
+			str3, _ := json.Marshal(params3)
+			res1, _ := json.Marshal(res)
+			desc := string(str1) + ", " + string(str2) + ", " + string(str3) + " should return " + string(res1)
+
+			p1 := CreateTree(params1)
+
+			utils.TestCondition(t, desc, reflect.DeepEqual(RightSideView(p1), res))
+		}
+
+		params1 = []int{1, 2, 3, math.MinInt, 5, math.MinInt, 4}
+		res = []int{1, 3, 4}
+		testTemp()
+
+		params1 = []int{1, math.MinInt, 3}
+		res = []int{1, 3}
+		testTemp()
+
+		params1 = []int{}
+		res = []int{}
+		testTemp()
+	})
+}
+
+func TestPrintTree(t *testing.T) {
+	utils.TestWarp("655 测试用例", func() {
+		params1 := []int{}
+		params2 := 0
+		params3 := 0
+		res := [][]string{}
+		testTemp := func() {
+			str1, _ := json.Marshal(params1)
+			str2, _ := json.Marshal(params2)
+			str3, _ := json.Marshal(params3)
+			res1, _ := json.Marshal(res)
+			desc := string(str1) + ", " + string(str2) + ", " + string(str3) + " should return " + string(res1)
+
+			p1 := CreateTree(params1)
+
+			utils.TestCondition(t, desc, reflect.DeepEqual(PrintTree(p1), res))
+		}
+
+		params1 = []int{1, 2, 3, math.MinInt, 4}
+		res = [][]string{
+			{"", "", "", "1", "", "", ""},
+			{"", "2", "", "", "", "3", ""},
+			{"", "", "4", "", "", "", ""},
+		}
+		testTemp()
+
+		params1 = []int{1, 2}
+		res = [][]string{
+			{"", "1", ""},
+			{"2", "", ""},
+		}
 		testTemp()
 	})
 }
