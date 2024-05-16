@@ -989,3 +989,71 @@ func TestPrintTree(t *testing.T) {
 		testTemp()
 	})
 }
+
+func TestPreorderTraversal(t *testing.T) {
+	utils.TestWarp("144 测试用例", func() {
+		params1 := []int{}
+		params2 := 0
+		params3 := 0
+		res := []int{}
+		testTemp := func() {
+			str1, _ := json.Marshal(params1)
+			str2, _ := json.Marshal(params2)
+			str3, _ := json.Marshal(params3)
+			res1, _ := json.Marshal(res)
+			desc := string(str1) + ", " + string(str2) + ", " + string(str3) + " should return " + string(res1)
+
+			p1 := CreateTree(params1)
+
+			utils.TestCondition(t, desc, reflect.DeepEqual(PreorderTraversal(p1), res))
+		}
+
+		params1 = []int{1, math.MinInt, 2, math.MinInt, math.MinInt, 3}
+		res = []int{1, 2, 3}
+		testTemp()
+
+		params1 = []int{1, math.MinInt, 2}
+		res = []int{1, 2}
+		testTemp()
+
+		params1 = []int{1, 2}
+		res = []int{1, 2}
+		testTemp()
+
+		params1 = []int{1}
+		res = []int{1}
+		testTemp()
+
+		params1 = []int{}
+		res = []int{}
+		testTemp()
+	})
+}
+
+func TestTree2str(t *testing.T) {
+	utils.TestWarp("606 测试用例", func() {
+		params1 := []int{}
+		params2 := 0
+		params3 := 0
+		res := ""
+		testTemp := func() {
+			str1, _ := json.Marshal(params1)
+			str2, _ := json.Marshal(params2)
+			str3, _ := json.Marshal(params3)
+			res1, _ := json.Marshal(res)
+			desc := string(str1) + ", " + string(str2) + ", " + string(str3) + " should return " + string(res1)
+
+			p1 := CreateTree(params1)
+
+			utils.TestCondition(t, desc, Tree2str(p1) == res)
+		}
+
+		params1 = []int{1, 2, 3, 4}
+		res = "1(2(4))(3)"
+		testTemp()
+
+		params1 = []int{1, 2, 3, math.MinInt, 4}
+		res = "1(2()(4))(3)"
+		testTemp()
+	})
+}

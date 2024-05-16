@@ -31,6 +31,8 @@ import { sumNumbers } from "./30.129";
 import { sumOfLeftLeaves } from "./31.404";
 import { rightSideView } from "./32.199";
 import { printTree } from "./33.655";
+import { preorderTraversal } from "./34.144";
+import { tree2str } from "./35.606";
 
 describe("100 测试用例", () => {
     test(`p = [1,2,3], q = [1,2,3] should return true`, () => {
@@ -678,5 +680,44 @@ describe("655 测试用例", () => {
             ["", "2", "", "", "", "3", ""],
             ["", "", "4", "", "", "", ""],
         ]);
+    });
+});
+
+describe("144 测试用例", () => {
+    test(`[1,null,2,3] should return [1,2,3]`, () => {
+        const p1 = CreateTree([1, -Infinity, 2, -Infinity, -Infinity, 3]);
+        expect(preorderTraversal(p1)).toEqual([1, 2, 3]);
+    });
+
+    test(`[] should return []`, () => {
+        const p1 = CreateTree([]);
+        expect(preorderTraversal(p1)).toEqual([]);
+    });
+
+    test(`[1] should return [1]`, () => {
+        const p1 = CreateTree([1]);
+        expect(preorderTraversal(p1)).toEqual([1]);
+    });
+
+    test(`[1,2] should return [1,2]`, () => {
+        const p1 = CreateTree([1, 2]);
+        expect(preorderTraversal(p1)).toEqual([1, 2]);
+    });
+
+    test(`[1,null,2] should return [1,2]`, () => {
+        const p1 = CreateTree([1, -Infinity, 2]);
+        expect(preorderTraversal(p1)).toEqual([1, 2]);
+    });
+});
+
+describe("606 测试用例", () => {
+    test(`[1,2,3,4] should return "1(2(4))(3)"`, () => {
+        const p1 = CreateTree([1, 2, 3, 4]);
+        expect(tree2str(p1)).toBe("1(2(4))(3)");
+    });
+
+    test(`[1,2,3, null, 4] should return "1(2()(4))(3)"`, () => {
+        const p1 = CreateTree([1, 2, 3, -Infinity, 4]);
+        expect(tree2str(p1)).toBe("1(2()(4))(3)");
     });
 });

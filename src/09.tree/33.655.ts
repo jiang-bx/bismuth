@@ -41,13 +41,14 @@ export function printTree(root: TreeNode | null): string[][] {
     const fillAns = (node: TreeNode | null, r: number, c: number) => {
         const val = node ? node.val + "" : "";
         ans[r][c] = val;
+        const k = Math.pow(2, height - r - 1)
 
         if (node.left) {
-            fillAns(node.left, r + 1, c - Math.pow(2, height - r - 1));
+            fillAns(node.left, r + 1, c - k);
         }
 
         if (node.right) {
-            fillAns(node.right, r + 1, c + Math.pow(2, height - r - 1));
+            fillAns(node.right, r + 1, c + k);
         }
     };
 
