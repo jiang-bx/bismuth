@@ -33,6 +33,7 @@ import { rightSideView } from "./32.199";
 import { printTree } from "./33.655";
 import { preorderTraversal } from "./34.144";
 import { tree2str } from "./35.606";
+import { isValidSerialization } from "./36.331";
 
 describe("100 测试用例", () => {
     test(`p = [1,2,3], q = [1,2,3] should return true`, () => {
@@ -719,5 +720,19 @@ describe("606 测试用例", () => {
     test(`[1,2,3, null, 4] should return "1(2()(4))(3)"`, () => {
         const p1 = CreateTree([1, 2, 3, -Infinity, 4]);
         expect(tree2str(p1)).toBe("1(2()(4))(3)");
+    });
+});
+
+describe("331 测试用例", () => {
+    test(`9,3,4,#,#,1,#,#,2,#,6,#,# should return true`, () => {
+        expect(isValidSerialization("9,3,4,#,#,1,#,#,2,#,6,#,#")).toBe(true);
+    });
+
+    test(`1,# should return false`, () => {
+        expect(isValidSerialization("1,#")).toBe(false);
+    });
+
+    test(`9,#,#,1 should return false`, () => {
+        expect(isValidSerialization("9,#,#,1")).toBe(false);
     });
 });

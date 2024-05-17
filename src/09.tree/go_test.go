@@ -1057,3 +1057,33 @@ func TestTree2str(t *testing.T) {
 		testTemp()
 	})
 }
+
+func TestIsValidSerialization(t *testing.T) {
+	utils.TestWarp("331 测试用例", func() {
+		params1 := ""
+		params2 := 0
+		params3 := 0
+		res := false
+		testTemp := func() {
+			str1, _ := json.Marshal(params1)
+			str2, _ := json.Marshal(params2)
+			str3, _ := json.Marshal(params3)
+			res1, _ := json.Marshal(res)
+			desc := string(str1) + ", " + string(str2) + ", " + string(str3) + " should return " + string(res1)
+
+			utils.TestCondition(t, desc, IsValidSerialization(params1) == res)
+		}
+
+		params1 = "9,3,4,#,#,1,#,#,2,#,6,#,#"
+		res = true
+		testTemp()
+
+		params1 = "1,#"
+		res = false
+		testTemp()
+
+		params1 = "9,#,#,1"
+		res = false
+		testTemp()
+	})
+}
