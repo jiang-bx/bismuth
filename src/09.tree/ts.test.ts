@@ -34,6 +34,7 @@ import { printTree } from "./33.655";
 import { preorderTraversal } from "./34.144";
 import { tree2str } from "./35.606";
 import { isValidSerialization } from "./36.331";
+import { findDuplicateSubtrees } from "./37.652";
 
 describe("100 测试用例", () => {
     test(`p = [1,2,3], q = [1,2,3] should return true`, () => {
@@ -734,5 +735,78 @@ describe("331 测试用例", () => {
 
     test(`9,#,#,1 should return false`, () => {
         expect(isValidSerialization("9,#,#,1")).toBe(false);
+    });
+});
+
+describe("331 测试用例", () => {
+    test(`[1,2,3,4,null,2,4,null,null,4] should return [[2,4],[4]]`, () => {
+        const p1 = CreateTree([
+            1,
+            2,
+            3,
+            4,
+            -Infinity,
+            2,
+            4,
+            -Infinity,
+            -Infinity,
+            4,
+        ]);
+
+        const res = [[2, 4], [4]];
+        const val = findDuplicateSubtrees(p1);
+        let isErr = true;
+
+        if (val.length !== res.length) {
+            isErr = false;
+        } else {
+            for (let i = 0; i < val.length; i++) {
+                if (!IsSameTree(val[i], CreateTree(res[i])) && isErr) {
+                    isErr = false;
+                }
+            }
+        }
+
+        expect(isErr).toBe(true);
+    });
+
+    test(`[2,1,1] should return [[1]]`, () => {
+        const p1 = CreateTree([2, 1, 1]);
+
+        const res = [[1]];
+        const val = findDuplicateSubtrees(p1);
+        let isErr = true;
+
+        if (val.length !== res.length) {
+            isErr = false;
+        } else {
+            for (let i = 0; i < val.length; i++) {
+                if (!IsSameTree(val[i], CreateTree(res[i])) && isErr) {
+                    isErr = false;
+                }
+            }
+        }
+
+        expect(isErr).toBe(true);
+    });
+
+    test(`[2,2,2,3,null,3,null] should return [[2,3],[3]]`, () => {
+        const p1 = CreateTree([2, 2, 2, 3, -Infinity, 3, -Infinity]);
+
+        const res = [[2, 3], [3]];
+        const val = findDuplicateSubtrees(p1);
+        let isErr = true;
+
+        if (val.length !== res.length) {
+            isErr = false;
+        } else {
+            for (let i = 0; i < val.length; i++) {
+                if (!IsSameTree(val[i], CreateTree(res[i])) && isErr) {
+                    isErr = false;
+                }
+            }
+        }
+
+        expect(isErr).toBe(true);
     });
 });
