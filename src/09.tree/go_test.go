@@ -1120,10 +1120,10 @@ func TestFindDuplicateSubtrees(t *testing.T) {
 			utils.TestCondition(t, desc, isErr)
 		}
 
-		params1 = []int{1, 2, 3, 4, math.MinInt, 2, 4, math.MinInt, math.MinInt, 4}
+		params1 = []int{1, 2, 3, 4, math.MinInt, 2, 4, math.MinInt, math.MinInt, math.MinInt, math.MinInt, 4}
 		res = [][]int{
-			{2, 4},
 			{4},
+			{2, 4},
 		}
 		testTemp()
 
@@ -1135,9 +1135,46 @@ func TestFindDuplicateSubtrees(t *testing.T) {
 
 		params1 = []int{2, 2, 2, 3, math.MinInt, 3, math.MinInt}
 		res = [][]int{
-			{2, 3},
 			{3},
+			{2, 3},
 		}
+		testTemp()
+	})
+}
+
+func TestSerializeAndDeserialize(t *testing.T) {
+	utils.TestWarp("297 测试用例", func() {
+		params1 := []int{}
+		params2 := 0
+		params3 := 0
+		res := []int{}
+		testTemp := func() {
+			str1, _ := json.Marshal(params1)
+			str2, _ := json.Marshal(params2)
+			str3, _ := json.Marshal(params3)
+			res1, _ := json.Marshal(res)
+			desc := string(str1) + ", " + string(str2) + ", " + string(str3) + " should return " + string(res1)
+
+			val := Deserialize(Serialize(CreateTree(params1)))
+			r1 := CreateTree(res)
+
+			utils.TestCondition(t, desc, IsSameTree(val, r1))
+		}
+
+		params1 = []int{1, 2, 3, math.MinInt, math.MinInt, 4, 5}
+		res = []int{1, 2, 3, math.MinInt, math.MinInt, 4, 5}
+		testTemp()
+
+		params1 = []int{1, 2}
+		res = []int{1, 2}
+		testTemp()
+
+		params1 = []int{1}
+		res = []int{1}
+		testTemp()
+
+		params1 = []int{}
+		res = []int{}
 		testTemp()
 	})
 }

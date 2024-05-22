@@ -35,6 +35,7 @@ import { preorderTraversal } from "./34.144";
 import { tree2str } from "./35.606";
 import { isValidSerialization } from "./36.331";
 import { findDuplicateSubtrees } from "./37.652";
+import { deserialize, serialize } from "./38.297";
 
 describe("100 测试用例", () => {
     test(`p = [1,2,3], q = [1,2,3] should return true`, () => {
@@ -738,7 +739,7 @@ describe("331 测试用例", () => {
     });
 });
 
-describe("331 测试用例", () => {
+describe("652 测试用例", () => {
     test(`[1,2,3,4,null,2,4,null,null,4] should return [[2,4],[4]]`, () => {
         const p1 = CreateTree([
             1,
@@ -750,10 +751,12 @@ describe("331 测试用例", () => {
             4,
             -Infinity,
             -Infinity,
+            -Infinity,
+            -Infinity,
             4,
         ]);
 
-        const res = [[2, 4], [4]];
+        const res = [[4], [2, 4]];
         const val = findDuplicateSubtrees(p1);
         let isErr = true;
 
@@ -793,7 +796,7 @@ describe("331 测试用例", () => {
     test(`[2,2,2,3,null,3,null] should return [[2,3],[3]]`, () => {
         const p1 = CreateTree([2, 2, 2, 3, -Infinity, 3, -Infinity]);
 
-        const res = [[2, 3], [3]];
+        const res = [[3], [2, 3]];
         const val = findDuplicateSubtrees(p1);
         let isErr = true;
 
@@ -807,6 +810,36 @@ describe("331 测试用例", () => {
             }
         }
 
+        expect(isErr).toBe(true);
+    });
+});
+
+describe("297 测试用例", () => {
+    test(`[1,2,3,null,null,4,5] should return [1,2,3,null,null,4,5]`, () => {
+        const p1 = CreateTree([1, 2, 3, -Infinity, -Infinity, 4, 5]);
+        const val = deserialize(serialize(p1));
+        const isErr = IsSameTree(p1, val);
+        expect(isErr).toBe(true);
+    });
+
+    test(`[1,2] should return [1,2]`, () => {
+        const p1 = CreateTree([1, 2]);
+        const val = deserialize(serialize(p1));
+        const isErr = IsSameTree(p1, val);
+        expect(isErr).toBe(true);
+    });
+
+    test(`[1] should return [1]`, () => {
+        const p1 = CreateTree([1]);
+        const val = deserialize(serialize(p1));
+        const isErr = IsSameTree(p1, val);
+        expect(isErr).toBe(true);
+    });
+
+    test(`[] should return []`, () => {
+        const p1 = CreateTree([]);
+        const val = deserialize(serialize(p1));
+        const isErr = IsSameTree(p1, val);
         expect(isErr).toBe(true);
     });
 });
