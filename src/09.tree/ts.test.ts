@@ -36,6 +36,8 @@ import { tree2str } from "./35.606";
 import { isValidSerialization } from "./36.331";
 import { findDuplicateSubtrees } from "./37.652";
 import { deserialize, serialize } from "./38.297";
+import { deserialize449, serialize449 } from "./39.449";
+import { postorderTraversal } from "./40.145";
 
 describe("100 测试用例", () => {
     test(`p = [1,2,3], q = [1,2,3] should return true`, () => {
@@ -841,5 +843,38 @@ describe("297 测试用例", () => {
         const val = deserialize(serialize(p1));
         const isErr = IsSameTree(p1, val);
         expect(isErr).toBe(true);
+    });
+});
+
+describe("449 测试用例", () => {
+    test(`[2,1,3] should return [2,1,3]`, () => {
+        const p1 = CreateTree([2, 1, 3]);
+        const val = deserialize449(serialize449(p1));
+        const isErr = IsSameTree(p1, val);
+        expect(isErr).toBe(true);
+    });
+
+    test(`[] should return []`, () => {
+        const p1 = CreateTree([]);
+        const val = deserialize(serialize(p1));
+        const isErr = IsSameTree(p1, val);
+        expect(isErr).toBe(true);
+    });
+});
+
+describe("145 测试用例", () => {
+    test(`[1,null,2,3] should return [3,2,1]`, () => {
+        const p1 = CreateTree([1, -Infinity, 2, -Infinity, -Infinity, 3]);
+        expect(postorderTraversal(p1)).toEqual([3, 2, 1]);
+    });
+
+    test(`[] should return []`, () => {
+        const p1 = CreateTree([]);
+        expect(preorderTraversal(p1)).toEqual([]);
+    });
+
+    test(`[1] should return [1]`, () => {
+        const p1 = CreateTree([1]);
+        expect(preorderTraversal(p1)).toEqual([1]);
     });
 });
