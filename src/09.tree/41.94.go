@@ -1,6 +1,6 @@
 package tree
 
-func PostorderTraversal(root *TreeNode) []int {
+func InorderTraversal(root *TreeNode) []int {
 	var dfs func(node *TreeNode)
 	ans := []int{}
 	dfs = func(node *TreeNode) {
@@ -9,8 +9,8 @@ func PostorderTraversal(root *TreeNode) []int {
 		}
 
 		dfs(node.Left)
-		dfs(node.Right)
 		ans = append(ans, node.Val)
+		dfs(node.Right)
 	}
 	dfs(root)
 	return ans

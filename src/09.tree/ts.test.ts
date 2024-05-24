@@ -38,6 +38,9 @@ import { findDuplicateSubtrees } from "./37.652";
 import { deserialize, serialize } from "./38.297";
 import { deserialize449, serialize449 } from "./39.449";
 import { postorderTraversal } from "./40.145";
+import { inorderTraversal } from "./41.94";
+import { searchBST } from "./42.700";
+import { getMinimumDifference } from "./43.530";
 
 describe("100 测试用例", () => {
     test(`p = [1,2,3], q = [1,2,3] should return true`, () => {
@@ -876,5 +879,48 @@ describe("145 测试用例", () => {
     test(`[1] should return [1]`, () => {
         const p1 = CreateTree([1]);
         expect(preorderTraversal(p1)).toEqual([1]);
+    });
+});
+
+describe("94 测试用例", () => {
+    test(`[1,null,2,3] should return [1,3,2]`, () => {
+        const p1 = CreateTree([1, -Infinity, 2, -Infinity, -Infinity, 3]);
+        expect(inorderTraversal(p1)).toEqual([1, 3, 2]);
+    });
+
+    test(`[] should return []`, () => {
+        const p1 = CreateTree([]);
+        expect(inorderTraversal(p1)).toEqual([]);
+    });
+
+    test(`[1] should return [1]`, () => {
+        const p1 = CreateTree([1]);
+        expect(inorderTraversal(p1)).toEqual([1]);
+    });
+});
+
+describe("700 测试用例", () => {
+    test(`[4,2,7,1,3], val = 2 should return [2,1,3]`, () => {
+        const p1 = searchBST(CreateTree([4, 2, 7, 1, 3]), 2);
+        const res = CreateTree([2, 1, 3]);
+        expect(IsSameTree(p1, res)).toBe(true);
+    });
+
+    test(`[4,2,7,1,3], val = 5 should return [2,1,3]`, () => {
+        const p1 = searchBST(CreateTree([4, 2, 7, 1, 3]), 5);
+        const res = CreateTree([]);
+        expect(IsSameTree(p1, res)).toBe(true);
+    });
+});
+
+describe("530 测试用例", () => {
+    test(`[4,2,6,1,3] should return 1`, () => {
+        const p1 = CreateTree([4, 2, 6, 1, 3]);
+        expect(getMinimumDifference(p1)).toBe(1);
+    });
+
+    test(`[1,0,48,null,null,12,49] should return 1`, () => {
+        const p1 = CreateTree([1, 0, 48, -Infinity, -Infinity, 12, 49]);
+        expect(getMinimumDifference(p1)).toBe(1);
     });
 });
