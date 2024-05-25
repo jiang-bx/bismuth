@@ -41,6 +41,7 @@ import { postorderTraversal } from "./40.145";
 import { inorderTraversal } from "./41.94";
 import { searchBST } from "./42.700";
 import { getMinimumDifference } from "./43.530";
+import { convertBST } from "./44.538";
 
 describe("100 测试用例", () => {
     test(`p = [1,2,3], q = [1,2,3] should return true`, () => {
@@ -922,5 +923,70 @@ describe("530 测试用例", () => {
     test(`[1,0,48,null,null,12,49] should return 1`, () => {
         const p1 = CreateTree([1, 0, 48, -Infinity, -Infinity, 12, 49]);
         expect(getMinimumDifference(p1)).toBe(1);
+    });
+
+    test(`[236,104,701,null,227,null,911] should return 9`, () => {
+        const p1 = CreateTree([236, 104, 701, -Infinity, 227, -Infinity, 911]);
+        expect(getMinimumDifference(p1)).toBe(9);
+    });
+});
+
+describe("538 测试用例", () => {
+    test(`[4,1,6,0,2,5,7,null,null,null,3,null,null,null,8] should return [30,36,21,36,35,26,15,null,null,null,33,null,null,null,8]`, () => {
+        const p1 = convertBST(
+            CreateTree([
+                4,
+                1,
+                6,
+                0,
+                2,
+                5,
+                7,
+                -Infinity,
+                -Infinity,
+                -Infinity,
+                3,
+                -Infinity,
+                -Infinity,
+                -Infinity,
+                8,
+            ])
+        );
+        const r1 = CreateTree([
+            30,
+            36,
+            21,
+            36,
+            35,
+            26,
+            15,
+            -Infinity,
+            -Infinity,
+            -Infinity,
+            33,
+            -Infinity,
+            -Infinity,
+            -Infinity,
+            8,
+        ]);
+        expect(IsSameTree(p1, r1)).toBe(true);
+    });
+
+    test(`[0,null,1] should return [1,null,1]`, () => {
+        const p1 = convertBST(CreateTree([0, -Infinity, 1]));
+        const r1 = CreateTree([1, -Infinity, 1]);
+        expect(IsSameTree(p1, r1)).toBe(true);
+    });
+
+    test(`[1,0,2] should return [3,3,2]`, () => {
+        const p1 = convertBST(CreateTree([1, 0, 2]));
+        const r1 = CreateTree([3, 3, 2]);
+        expect(IsSameTree(p1, r1)).toBe(true);
+    });
+
+    test(`[3,2,4,1] should return [7,9,4,10]`, () => {
+        const p1 = convertBST(CreateTree([3, 2, 4, 1]));
+        const r1 = CreateTree([7, 9, 4, 10]);
+        expect(IsSameTree(p1, r1)).toBe(true);
     });
 });

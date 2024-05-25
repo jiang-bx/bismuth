@@ -1330,3 +1330,40 @@ func TestGetMinimumDifference(t *testing.T) {
 		testTemp()
 	})
 }
+
+func TestConvertBST(t *testing.T) {
+	utils.TestWarp("538 测试用例", func() {
+		params1 := []int{}
+		params2 := 0
+		params3 := 0
+		res := []int{}
+		testTemp := func() {
+			str1, _ := json.Marshal(params1)
+			str2, _ := json.Marshal(params2)
+			str3, _ := json.Marshal(params3)
+			res1, _ := json.Marshal(res)
+			desc := string(str1) + ", " + string(str2) + ", " + string(str3) + " should return " + string(res1)
+
+			val := ConvertBST(CreateTree(params1))
+			r := CreateTree(res)
+
+			utils.TestCondition(t, desc, IsSameTree(val, r))
+		}
+
+		params1 = []int{4, 1, 6, 0, 2, 5, 7, math.MinInt, math.MinInt, math.MinInt, 3, math.MinInt, math.MinInt, math.MinInt, 8}
+		res = []int{30, 36, 21, 36, 35, 26, 15, math.MinInt, math.MinInt, math.MinInt, 33, math.MinInt, math.MinInt, math.MinInt, 8}
+		testTemp()
+
+		params1 = []int{0, math.MinInt, 1}
+		res = []int{1, math.MinInt, 1}
+		testTemp()
+
+		params1 = []int{1, 0, 2}
+		res = []int{3, 3, 2}
+		testTemp()
+
+		params1 = []int{3, 2, 4, 1}
+		res = []int{7, 9, 4, 10}
+		testTemp()
+	})
+}
