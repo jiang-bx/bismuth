@@ -1367,3 +1367,33 @@ func TestConvertBST(t *testing.T) {
 		testTemp()
 	})
 }
+
+func TestKthSmallest(t *testing.T) {
+	utils.TestWarp("230 测试用例", func() {
+		params1 := []int{}
+		params2 := 0
+		params3 := 0
+		res := 0
+		testTemp := func() {
+			str1, _ := json.Marshal(params1)
+			str2, _ := json.Marshal(params2)
+			str3, _ := json.Marshal(params3)
+			res1, _ := json.Marshal(res)
+			desc := string(str1) + ", " + string(str2) + ", " + string(str3) + " should return " + string(res1)
+
+			val := CreateTree(params1)
+
+			utils.TestCondition(t, desc, KthSmallest(val, params2) == res)
+		}
+
+		params1 = []int{3, 1, 4, math.MinInt, 2}
+		params2 = 1
+		res = 1
+		testTemp()
+
+		params1 = []int{5, 3, 6, 2, 4, math.MinInt, math.MinInt, 1}
+		params2 = 3
+		res = 3
+		testTemp()
+	})
+}
