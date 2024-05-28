@@ -1,21 +1,21 @@
 package tree
 
-func KthSmallest(root *TreeNode, k int) int {
+import "math"
+
+func IsValidBST(root *TreeNode) bool {
 	var dfs func(node *TreeNode)
-	ans := 0
+	ans := true
+	pre := math.MinInt64
 	dfs = func(node *TreeNode) {
 		if node == nil {
 			return
 		}
-
 		dfs(node.Left)
-
-		if k == 1 {
-			ans = node.Val
-			k--
+		if pre != math.MinInt64 && pre >= node.Val {
+			ans = false
 			return
 		}
-		k--
+		pre = node.Val
 		dfs(node.Right)
 	}
 

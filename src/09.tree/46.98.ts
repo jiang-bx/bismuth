@@ -1,22 +1,22 @@
 import { TreeNode } from "./01.100";
 
-export function kthSmallest(root: TreeNode | null, k: number): number {
-    let ans = 0;
+export function isValidBST(root: TreeNode | null): boolean {
+    let pre = Infinity;
+    let ans = true;
     const dfs = (node: TreeNode | null) => {
         if (!node) {
             return;
         }
-
         dfs(node.left);
-        if (k === 1) {
-            ans = node.val;
-            k--;
+        if (pre !== Infinity && pre >= node.val) {
+            ans = false;
             return;
         }
-        k--;
+        pre = node.val;
         dfs(node.right);
     };
 
     dfs(root);
+
     return ans;
 }

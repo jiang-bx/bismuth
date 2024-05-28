@@ -42,6 +42,9 @@ import { inorderTraversal } from "./41.94";
 import { searchBST } from "./42.700";
 import { getMinimumDifference } from "./43.530";
 import { convertBST } from "./44.538";
+import { kthSmallest } from "./45.230";
+import { isValidBST } from "./46.98";
+import { BSTIterator } from "./47.173";
 
 describe("100 测试用例", () => {
     test(`p = [1,2,3], q = [1,2,3] should return true`, () => {
@@ -988,5 +991,68 @@ describe("538 测试用例", () => {
         const p1 = convertBST(CreateTree([3, 2, 4, 1]));
         const r1 = CreateTree([7, 9, 4, 10]);
         expect(IsSameTree(p1, r1)).toBe(true);
+    });
+});
+
+describe("230 测试用例", () => {
+    test(`[3,1,4,null,2], k = 1 should return 1`, () => {
+        const p1 = CreateTree([3, 1, 4, -Infinity, 2]);
+        expect(kthSmallest(p1, 1)).toBe(1);
+    });
+
+    test(`[5,3,6,2,4,null,null,1], k = 3 should return 3`, () => {
+        const p1 = CreateTree([5, 3, 6, 2, 4, -Infinity, -Infinity, 1]);
+        expect(kthSmallest(p1, 3)).toBe(3);
+    });
+});
+
+describe("98 测试用例", () => {
+    test(`[2,1,3] should return true`, () => {
+        const p1 = CreateTree([2, 1, 3]);
+        expect(isValidBST(p1)).toBe(true);
+    });
+
+    test(`[5,1,4,null,null,3,6] should return false`, () => {
+        const p1 = CreateTree([5, 1, 4, -Infinity, -Infinity, 3, 6]);
+        expect(isValidBST(p1)).toBe(false);
+    });
+
+    test(`[5,4,6,null,null,3,7] should return false`, () => {
+        const p1 = CreateTree([5, 4, 6, -Infinity, -Infinity, 3, 7]);
+        expect(isValidBST(p1)).toBe(false);
+    });
+});
+
+describe("173 测试用例", () => {
+    test(`["BSTIterator", "next", "next", "hasNext", "next", "hasNext", "next", "hasNext", "next", "hasNext"], [7, 3, 15, -Infinity, -Infinity, 9, 20] should return null37true9true15true20false`, () => {
+        let val = "";
+        let b: BSTIterator = null;
+        const p1 = [
+            "BSTIterator",
+            "next",
+            "next",
+            "hasNext",
+            "next",
+            "hasNext",
+            "next",
+            "hasNext",
+            "next",
+            "hasNext",
+        ];
+
+        p1.forEach((item) => {
+            if (item === "BSTIterator") {
+                b = new BSTIterator(
+                    CreateTree([7, 3, 15, -Infinity, -Infinity, 9, 20])
+                );
+                val += "null";
+            } else if (item === "next") {
+                val += b.next();
+            } else {
+                val += b.hasNext();
+            }
+        });
+
+        expect(val).toBe("null37true9true15true20false");
     });
 });
