@@ -1,13 +1,29 @@
 import { TreeNode } from "./01.100";
 
 export class BSTIterator {
-    constructor(root: TreeNode | null) {}
+    list: number[];
+    index: number;
+    constructor(root: TreeNode | null) {
+        this.list = [];
+        this.index = 0;
+        this.dfs(root);
+    }
+
+    dfs(node: TreeNode | null) {
+        if (!node) {
+            return;
+        }
+
+        this.dfs(node.left);
+        this.list.push(node.val);
+        this.dfs(node.right);
+    }
 
     next(): number {
-        return 1;
+        return this.list[this.index++];
     }
 
     hasNext(): boolean {
-        return false;
+        return this.index < this.list.length;
     }
 }

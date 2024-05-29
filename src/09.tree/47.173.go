@@ -1,16 +1,36 @@
 package tree
 
 type BSTIterator struct {
+	list  []int
+	index int
 }
 
 func Constructor(root *TreeNode) BSTIterator {
-	return BSTIterator{}
+	b := BSTIterator{
+		list:  []int{},
+		index: 0,
+	}
+
+	b.dfs(root)
+
+	return b
 }
 
-func (this *BSTIterator) Next() int {
-	return 1
+func (b *BSTIterator) dfs(node *TreeNode) {
+	if node == nil {
+		return
+	}
+	b.dfs(node.Left)
+	b.list = append(b.list, node.Val)
+	b.dfs(node.Right)
 }
 
-func (this *BSTIterator) HasNext() bool {
-	return false
+func (b *BSTIterator) Next() int {
+	val := b.list[b.index]
+	b.index++
+	return val
+}
+
+func (b *BSTIterator) HasNext() bool {
+	return b.index < len(b.list)
 }

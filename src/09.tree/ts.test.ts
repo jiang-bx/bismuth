@@ -45,6 +45,7 @@ import { convertBST } from "./44.538";
 import { kthSmallest } from "./45.230";
 import { isValidBST } from "./46.98";
 import { BSTIterator } from "./47.173";
+import { trimBST } from "./48.669";
 
 describe("100 测试用例", () => {
     test(`p = [1,2,3], q = [1,2,3] should return true`, () => {
@@ -1054,5 +1055,34 @@ describe("173 测试用例", () => {
         });
 
         expect(val).toBe("null37true9true15true20false");
+    });
+});
+
+describe("669 测试用例", () => {
+    test(`[1,0,2], low = 1, high = 2 should return [1,null,2]`, () => {
+        const p1 = trimBST(CreateTree([1, 0, 2]), 1, 2);
+        const r1 = CreateTree([1, -Infinity, 2]);
+        expect(IsSameTree(p1, r1)).toBe(true);
+    });
+
+    test(`[3,0,4,null,2,null,null,1], low = 1, high = 3 should return [3,2,null,1]`, () => {
+        const p1 = trimBST(
+            CreateTree([
+                3,
+                0,
+                4,
+                -Infinity,
+                2,
+                -Infinity,
+                -Infinity,
+                -Infinity,
+                -Infinity,
+                1,
+            ]),
+            1,
+            3
+        );
+        const r1 = CreateTree([3, 2, -Infinity, 1]);
+        expect(IsSameTree(p1, r1)).toBe(true);
     });
 });
