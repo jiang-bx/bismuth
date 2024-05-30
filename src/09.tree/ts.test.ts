@@ -46,6 +46,7 @@ import { kthSmallest } from "./45.230";
 import { isValidBST } from "./46.98";
 import { BSTIterator } from "./47.173";
 import { trimBST } from "./48.669";
+import { deleteNode } from "./49.450";
 
 describe("100 测试用例", () => {
     test(`p = [1,2,3], q = [1,2,3] should return true`, () => {
@@ -1065,6 +1066,12 @@ describe("669 测试用例", () => {
         expect(IsSameTree(p1, r1)).toBe(true);
     });
 
+    test(`[1,0,2], low = 2, high = 2 should return [2]`, () => {
+        const p1 = trimBST(CreateTree([1, 0, 2]), 2, 2);
+        const r1 = CreateTree([2]);
+        expect(IsSameTree(p1, r1)).toBe(true);
+    });
+
     test(`[3,0,4,null,2,null,null,1], low = 1, high = 3 should return [3,2,null,1]`, () => {
         const p1 = trimBST(
             CreateTree([
@@ -1083,6 +1090,26 @@ describe("669 测试用例", () => {
             3
         );
         const r1 = CreateTree([3, 2, -Infinity, 1]);
+        expect(IsSameTree(p1, r1)).toBe(true);
+    });
+});
+
+describe("669 测试用例", () => {
+    test(`[5, 3, 6, 2, 4, null, 7], key = 3 should return [5, 4, 6, 2, -Infinity, -Infinity, 7]`, () => {
+        const p1 = deleteNode(CreateTree([5, 3, 6, 2, 4, -Infinity, 7]), 3);
+        const r1 = CreateTree([5, 4, 6, 2, -Infinity, -Infinity, 7]);
+        expect(IsSameTree(p1, r1)).toBe(true);
+    });
+
+    test(`[5, 3, 6, 2, 4, null, 7], key = 0 should return [5, 3, 6, 2, 4, null, 7]`, () => {
+        const p1 = deleteNode(CreateTree([5, 3, 6, 2, 4, -Infinity, 7]), 0);
+        const r1 = CreateTree([5, 3, 6, 2, 4, -Infinity, 7]);
+        expect(IsSameTree(p1, r1)).toBe(true);
+    });
+
+    test(`[], key = 0 should return []`, () => {
+        const p1 = deleteNode(CreateTree([]), 0);
+        const r1 = CreateTree([]);
         expect(IsSameTree(p1, r1)).toBe(true);
     });
 });
