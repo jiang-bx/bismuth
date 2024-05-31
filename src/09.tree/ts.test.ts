@@ -47,6 +47,8 @@ import { isValidBST } from "./46.98";
 import { BSTIterator } from "./47.173";
 import { trimBST } from "./48.669";
 import { deleteNode } from "./49.450";
+import { isBalanced } from "./50.110";
+import { generateTrees } from "./51.95";
 
 describe("100 测试用例", () => {
     test(`p = [1,2,3], q = [1,2,3] should return true`, () => {
@@ -1094,7 +1096,7 @@ describe("669 测试用例", () => {
     });
 });
 
-describe("669 测试用例", () => {
+describe("450 测试用例", () => {
     test(`[5, 3, 6, 2, 4, null, 7], key = 3 should return [5, 4, 6, 2, -Infinity, -Infinity, 7]`, () => {
         const p1 = deleteNode(CreateTree([5, 3, 6, 2, 4, -Infinity, 7]), 3);
         const r1 = CreateTree([5, 4, 6, 2, -Infinity, -Infinity, 7]);
@@ -1111,5 +1113,54 @@ describe("669 测试用例", () => {
         const p1 = deleteNode(CreateTree([]), 0);
         const r1 = CreateTree([]);
         expect(IsSameTree(p1, r1)).toBe(true);
+    });
+});
+
+describe("110 测试用例", () => {
+    test(`[3,9,20,null,null,15,7] should return true`, () => {
+        const p1 = CreateTree([3, 9, 20, -Infinity, -Infinity, 15, 7]);
+        expect(isBalanced(p1)).toBe(true);
+    });
+
+    test(`[1,2,2,3,3,null,null,4,4] should return false`, () => {
+        const p1 = CreateTree([1, 2, 2, 3, 3, -Infinity, -Infinity, 4, 4]);
+        expect(isBalanced(p1)).toBe(false);
+    });
+
+    test(`[] should return true`, () => {
+        const p1 = CreateTree([]);
+        expect(isBalanced(p1)).toBe(true);
+    });
+});
+
+describe("95 测试用例", () => {
+    test(`3 should return [[1,null,2,null,3],[1,null,3,2],[2,1,3],[3,1,null,null,2],[3,2,null,1]]`, () => {
+        const res = [
+            [1, -Infinity, 2, -Infinity, -Infinity, -Infinity, 3],
+            [1, -Infinity, 3, -Infinity, -Infinity, 2],
+            [2, 1, 3],
+            [3, 1, -Infinity, -Infinity, 2],
+            [3, 2, -Infinity, 1],
+        ];
+        const val = generateTrees(3);
+        let isValid = true;
+        val.forEach((v, i) => {
+            if (isValid) {
+                isValid = IsSameTree(v, CreateTree(res[i]));
+            }
+        });
+        expect(isValid).toBe(true);
+    });
+
+    test(`1 should return [[1]]`, () => {
+        const res = [[1]];
+        const val = generateTrees(1);
+        let isValid = true;
+        val.forEach((v, i) => {
+            if (isValid) {
+                isValid = IsSameTree(v, CreateTree(res[i]));
+            }
+        });
+        expect(isValid).toBe(true);
     });
 });

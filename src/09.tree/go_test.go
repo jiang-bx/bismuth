@@ -1534,3 +1534,77 @@ func TestDeleteNode(t *testing.T) {
 		testTemp()
 	})
 }
+
+func TestIsBalanced(t *testing.T) {
+	utils.TestWarp("110 测试用例", func() {
+		params1 := []int{}
+		params2 := 0
+		params3 := 0
+		res := false
+		testTemp := func() {
+			str1, _ := json.Marshal(params1)
+			str2, _ := json.Marshal(params2)
+			str3, _ := json.Marshal(params3)
+			res1, _ := json.Marshal(res)
+			desc := string(str1) + ", " + string(str2) + ", " + string(str3) + " should return " + string(res1)
+
+			val := CreateTree(params1)
+
+			utils.TestCondition(t, desc, IsBalanced(val) == res)
+		}
+
+		params1 = []int{3, 9, 20, math.MinInt, math.MinInt, 15, 7}
+		res = true
+		testTemp()
+
+		params1 = []int{1, 2, 2, 3, 3, math.MinInt, math.MinInt, 4, 4}
+		res = false
+		testTemp()
+
+		params1 = []int{}
+		res = true
+		testTemp()
+	})
+}
+
+func TestGenerateTrees(t *testing.T) {
+	utils.TestWarp("95 测试用例", func() {
+		params1 := 0
+		params2 := 0
+		params3 := 0
+		res := [][]int{}
+		testTemp := func() {
+			str1, _ := json.Marshal(params1)
+			str2, _ := json.Marshal(params2)
+			str3, _ := json.Marshal(params3)
+			res1, _ := json.Marshal(res)
+			desc := string(str1) + ", " + string(str2) + ", " + string(str3) + " should return " + string(res1)
+
+			val := GenerateTrees(params1)
+
+			isValid := true
+			for i, v := range val {
+				if isValid {
+					isValid = IsSameTree(v, CreateTree(res[i]))
+					break
+				}
+			}
+
+			utils.TestCondition(t, desc, isValid)
+		}
+
+		params1 = 3
+		res = [][]int{
+			{1, math.MinInt, 2, math.MinInt, math.MinInt, math.MinInt, 3},
+			{1, math.MinInt, 3, math.MinInt, math.MinInt, 2},
+			{2, 1, 3},
+			{3, 1, math.MinInt, math.MinInt, 2},
+			{3, 2, math.MinInt, 1},
+		}
+		testTemp()
+
+		params1 = 1
+		res = [][]int{{1}}
+		testTemp()
+	})
+}
