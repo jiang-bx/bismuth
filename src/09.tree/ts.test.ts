@@ -49,6 +49,7 @@ import { trimBST } from "./48.669";
 import { deleteNode } from "./49.450";
 import { isBalanced } from "./50.110";
 import { generateTrees } from "./51.95";
+import { sortedArrayToBST } from "./52.108";
 
 describe("100 测试用例", () => {
     test(`p = [1,2,3], q = [1,2,3] should return true`, () => {
@@ -1162,5 +1163,22 @@ describe("95 测试用例", () => {
             }
         });
         expect(isValid).toBe(true);
+    });
+});
+
+describe("108 测试用例", () => {
+    test(`[-10,-3,0,5,9] should return [0,-10,5,null,-3,null,9]`, () => {
+        expect(
+            IsSameTree(
+                sortedArrayToBST([-10, -3, 0, 5, 9]),
+                CreateTree([0, -10, 5, -Infinity, -3, -Infinity, 9])
+            )
+        ).toBe(true);
+    });
+
+    test(`[1,3] should return [3,1]`, () => {
+        expect(IsSameTree(sortedArrayToBST([1, 3]), CreateTree([3, 1]))).toBe(
+            true
+        );
     });
 });
