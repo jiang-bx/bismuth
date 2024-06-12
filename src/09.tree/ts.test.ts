@@ -1,3 +1,4 @@
+import { CreateListNode } from "../08.dbpointer/11.83";
 import { CreateTree, IsSameTree } from "./01.100";
 import { countNodes } from "./02.222";
 import { isSymmetric } from "./03.101";
@@ -50,6 +51,8 @@ import { deleteNode } from "./49.450";
 import { isBalanced } from "./50.110";
 import { generateTrees } from "./51.95";
 import { sortedArrayToBST } from "./52.108";
+import { sortedListToBST } from "./53.109";
+import { buildTree } from "./54.105";
 
 describe("100 测试用例", () => {
     test(`p = [1,2,3], q = [1,2,3] should return true`, () => {
@@ -1176,9 +1179,36 @@ describe("108 测试用例", () => {
         ).toBe(true);
     });
 
-    test(`[1,3] should return [3,1]`, () => {
-        expect(IsSameTree(sortedArrayToBST([1, 3]), CreateTree([3, 1]))).toBe(
-            true
-        );
+    test(`[1,3] should return [1, null, 3]`, () => {
+        expect(
+            IsSameTree(sortedArrayToBST([1, 3]), CreateTree([1, -Infinity, 3]))
+        ).toBe(true);
+    });
+});
+
+describe("109 测试用例", () => {
+    test(`[-10,-3,0,5,9] should return [0,-10,5,null,-3,null,9]`, () => {
+        const p1 = CreateListNode([-10, -3, 0, 5, 9]);
+        expect(
+            IsSameTree(
+                sortedListToBST(p1),
+                CreateTree([0, -10, 5, -Infinity, -3, -Infinity, 9])
+            )
+        ).toBe(true);
+    });
+});
+
+describe("105 测试用例", () => {
+    test(`[3,9,20,15,7], [9,3,15,20,7] should return [3,9,20,null,null,15,7]`, () => {
+        expect(
+            IsSameTree(
+                buildTree([3, 9, 20, 15, 7], [9, 3, 15, 20, 7]),
+                CreateTree([3, 9, 20, -Infinity, -Infinity, 15, 7])
+            )
+        ).toBe(true);
+    });
+
+    test(`[-1], [-1] should return [-1]`, () => {
+        expect(IsSameTree(buildTree([-1], [-1]), CreateTree([-1]))).toBe(true);
     });
 });
