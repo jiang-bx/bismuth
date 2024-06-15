@@ -53,6 +53,7 @@ import { generateTrees } from "./51.95";
 import { sortedArrayToBST } from "./52.108";
 import { sortedListToBST } from "./53.109";
 import { buildTree } from "./54.105";
+import { buildTree1 } from "./55.106";
 
 describe("100 测试用例", () => {
     test(`p = [1,2,3], q = [1,2,3] should return true`, () => {
@@ -1210,5 +1211,20 @@ describe("105 测试用例", () => {
 
     test(`[-1], [-1] should return [-1]`, () => {
         expect(IsSameTree(buildTree([-1], [-1]), CreateTree([-1]))).toBe(true);
+    });
+});
+
+describe("106 测试用例", () => {
+    test(`[9,3,15,20,7], [9,15,7,20,3] should return [3,9,20,null,null,15,7]`, () => {
+        expect(
+            IsSameTree(
+                buildTree1([9, 3, 15, 20, 7], [9, 15, 7, 20, 3]),
+                CreateTree([3, 9, 20, -Infinity, -Infinity, 15, 7])
+            )
+        ).toBe(true);
+    });
+
+    test(`[-1], [-1] should return [-1]`, () => {
+        expect(IsSameTree(buildTree1([-1], [-1]), CreateTree([-1]))).toBe(true);
     });
 });
