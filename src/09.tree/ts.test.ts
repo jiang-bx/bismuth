@@ -54,6 +54,8 @@ import { sortedArrayToBST } from "./52.108";
 import { sortedListToBST } from "./53.109";
 import { buildTree } from "./54.105";
 import { buildTree1 } from "./55.106";
+import { flatten } from "./56.114";
+import { lowestCommonAncestor } from "./57.235";
 
 describe("100 测试用例", () => {
     test(`p = [1,2,3], q = [1,2,3] should return true`, () => {
@@ -1226,5 +1228,78 @@ describe("106 测试用例", () => {
 
     test(`[-1], [-1] should return [-1]`, () => {
         expect(IsSameTree(buildTree1([-1], [-1]), CreateTree([-1]))).toBe(true);
+    });
+});
+
+describe("114 测试用例", () => {
+    test(`[1, 2, 5] should return [1, null, 2, null, null, null, 5]`, () => {
+        const p1 = CreateTree([1, 2, 5]);
+        const p2 = CreateTree([
+            1,
+            -Infinity,
+            2,
+            -Infinity,
+            -Infinity,
+            -Infinity,
+            5,
+        ]);
+        flatten(p1);
+        expect(IsSameTree(p1, p2)).toBe(true);
+    });
+
+    test(`[1] should return [1]`, () => {
+        const p1 = CreateTree([1]);
+        flatten(p1);
+        expect(IsSameTree(p1, CreateTree([1]))).toBe(true);
+    });
+
+    test(`[] should return []`, () => {
+        const p1 = CreateTree([]);
+        flatten(p1);
+        expect(IsSameTree(p1, CreateTree([]))).toBe(true);
+    });
+});
+
+describe("235 测试用例", () => {
+    test(`[6,2,8,0,4,7,9,null,null,3,5], p = 2, q = 8 should return [6]`, () => {
+        const p1 = CreateTree([
+            6,
+            2,
+            8,
+            0,
+            4,
+            7,
+            9,
+            -Infinity,
+            -Infinity,
+            3,
+            5,
+        ]);
+        const p2 = CreateTree([2]);
+        const p3 = CreateTree([8]);
+        const r1 = CreateTree([6]);
+
+        expect(IsSameTree(lowestCommonAncestor(p1, p2, p3), r1)).toBe(true);
+    });
+
+    test(`[6,2,8,0,4,7,9,null,null,3,5], p = 2, q = 4 should return [2]`, () => {
+        const p1 = CreateTree([
+            6,
+            2,
+            8,
+            0,
+            4,
+            7,
+            9,
+            -Infinity,
+            -Infinity,
+            3,
+            5,
+        ]);
+        const p2 = CreateTree([2]);
+        const p3 = CreateTree([4]);
+        const r1 = CreateTree([2]);
+
+        expect(IsSameTree(lowestCommonAncestor(p1, p2, p3), r1)).toBe(true);
     });
 });
