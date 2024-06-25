@@ -56,6 +56,8 @@ import { buildTree } from "./54.105";
 import { buildTree1 } from "./55.106";
 import { flatten } from "./56.114";
 import { lowestCommonAncestor } from "./57.235";
+import { lowestCommonAncestor1 } from "./58.236";
+import { findMode } from "./59.501";
 
 describe("100 测试用例", () => {
     test(`p = [1,2,3], q = [1,2,3] should return true`, () => {
@@ -1279,7 +1281,7 @@ describe("235 测试用例", () => {
         const p3 = CreateTree([8]);
         const r1 = CreateTree([6]);
 
-        expect(IsSameTree(lowestCommonAncestor(p1, p2, p3), r1)).toBe(true);
+        expect(lowestCommonAncestor(p1, p2, p3).val).toBe(r1.val);
     });
 
     test(`[6,2,8,0,4,7,9,null,null,3,5], p = 2, q = 4 should return [2]`, () => {
@@ -1300,6 +1302,83 @@ describe("235 测试用例", () => {
         const p3 = CreateTree([4]);
         const r1 = CreateTree([2]);
 
-        expect(IsSameTree(lowestCommonAncestor(p1, p2, p3), r1)).toBe(true);
+        expect(lowestCommonAncestor(p1, p2, p3).val).toBe(r1.val);
+    });
+});
+
+describe("236 测试用例", () => {
+    test(`[3,5,1,6,2,0,8,null,null,7,4], p = 5, q = 1 should return [3]`, () => {
+        const p1 = CreateTree([
+            3,
+            5,
+            1,
+            6,
+            2,
+            0,
+            8,
+            -Infinity,
+            -Infinity,
+            7,
+            4,
+        ]);
+        const p2 = CreateTree([5]);
+        const p3 = CreateTree([1]);
+        const r1 = CreateTree([3]);
+
+        expect(lowestCommonAncestor1(p1, p2, p3).val).toBe(r1.val);
+    });
+
+    test(`[3,5,1,6,2,0,8,null,null,7,4], p = 5, q = 4 should return [5]`, () => {
+        const p1 = CreateTree([
+            3,
+            5,
+            1,
+            6,
+            2,
+            0,
+            8,
+            -Infinity,
+            -Infinity,
+            7,
+            4,
+        ]);
+        const p2 = CreateTree([5]);
+        const p3 = CreateTree([4]);
+        const r1 = CreateTree([5]);
+
+        expect(lowestCommonAncestor1(p1, p2, p3).val).toBe(r1.val);
+    });
+
+    test(`[3,5,1,6,2,0,8,null,null,7,4], p = 5, q = 8 should return [3]`, () => {
+        const p1 = CreateTree([
+            3,
+            5,
+            1,
+            6,
+            2,
+            0,
+            8,
+            -Infinity,
+            -Infinity,
+            7,
+            4,
+        ]);
+        const p2 = CreateTree([5]);
+        const p3 = CreateTree([8]);
+        const r1 = CreateTree([3]);
+
+        expect(lowestCommonAncestor1(p1, p2, p3).val).toBe(r1.val);
+    });
+});
+
+describe("501 测试用例", () => {
+    test(`[1,null,2,2] should return [2]`, () => {
+        const t = CreateTree([1, -Infinity, 2, -Infinity, -Infinity, 2]);
+        expect(findMode(t)).toEqual([2]);
+    });
+
+    test(`[0] should return [0]`, () => {
+        const t = CreateTree([0]);
+        expect(findMode(t)).toEqual([0]);
     });
 });

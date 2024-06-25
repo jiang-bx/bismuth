@@ -1742,9 +1742,9 @@ func TestLowestCommonAncestor(t *testing.T) {
 			p3 := CreateTree(params3)
 			r1 := CreateTree(res)
 
-			LowestCommonAncestor(p1, p2, p3)
+			v := LowestCommonAncestor(p1, p2, p3)
 
-			utils.TestCondition(t, desc, IsSameTree(p1, r1))
+			utils.TestCondition(t, desc, v.Val == r1.Val)
 		}
 
 		params1 = []int{6, 2, 8, 0, 4, 7, 9, math.MinInt, math.MinInt, 3, 5}
@@ -1757,6 +1757,71 @@ func TestLowestCommonAncestor(t *testing.T) {
 		params2 = []int{2}
 		params3 = []int{4}
 		res = []int{2}
+		testTemp()
+	})
+}
+
+func TestLowestCommonAncestor1(t *testing.T) {
+	utils.TestWarp("236 测试用例", func() {
+		params1 := []int{}
+		params2 := []int{}
+		params3 := []int{}
+		res := []int{}
+		testTemp := func() {
+			str1, _ := json.Marshal(params1)
+			str2, _ := json.Marshal(params2)
+			str3, _ := json.Marshal(params3)
+			res1, _ := json.Marshal(res)
+			desc := string(str1) + ", " + string(str2) + ", " + string(str3) + " should return " + string(res1)
+
+			p1 := CreateTree(params1)
+			p2 := CreateTree(params2)
+			p3 := CreateTree(params3)
+			r1 := CreateTree(res)
+
+			v := LowestCommonAncestor1(p1, p2, p3)
+
+			utils.TestCondition(t, desc, v.Val == r1.Val)
+		}
+
+		params1 = []int{3, 5, 1, 6, 2, 0, 8, math.MinInt, math.MinInt, 7, 4}
+		params2 = []int{5}
+		params3 = []int{1}
+		res = []int{3}
+		testTemp()
+
+		params1 = []int{3, 5, 1, 6, 2, 0, 8, math.MinInt, math.MinInt, 7, 4}
+		params2 = []int{5}
+		params3 = []int{4}
+		res = []int{5}
+		testTemp()
+	})
+}
+
+func TestFindMode(t *testing.T) {
+	utils.TestWarp("501 测试用例", func() {
+		params1 := []int{}
+		params2 := []int{}
+		params3 := []int{}
+		res := []int{}
+		testTemp := func() {
+			str1, _ := json.Marshal(params1)
+			str2, _ := json.Marshal(params2)
+			str3, _ := json.Marshal(params3)
+			res1, _ := json.Marshal(res)
+			desc := string(str1) + ", " + string(str2) + ", " + string(str3) + " should return " + string(res1)
+
+			v := FindMode(CreateTree(params1))
+
+			utils.TestCondition(t, desc, reflect.DeepEqual(v, res))
+		}
+
+		params1 = []int{1, math.MinInt, 2, math.MinInt, math.MinInt, 2}
+		res = []int{2}
+		testTemp()
+
+		params1 = []int{0}
+		res = []int{0}
 		testTemp()
 	})
 }
