@@ -1382,3 +1382,21 @@ describe("501 测试用例", () => {
         expect(findMode(t)).toEqual([0]);
     });
 });
+
+describe("99 测试用例", () => {
+    test(`[1,3,null,null,2] should return [3,1,null,null,2]`, () => {
+        const t = CreateTree([1, 3, -Infinity, -Infinity, 2]);
+
+        expect(IsSameTree(t, CreateTree([3, 1, -Infinity, -Infinity, 2]))).toBe(
+            true
+        );
+    });
+
+    test(`[3,1,4,null,null,2] should return [3,1,null,null,2]`, () => {
+        const t = CreateTree([3, 1, 4, -Infinity, -Infinity, 2]);
+
+        expect(
+            IsSameTree(t, CreateTree([2, 1, 4, -Infinity, -Infinity, 3]))
+        ).toBe(true);
+    });
+});
