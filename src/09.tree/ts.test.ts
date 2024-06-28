@@ -58,6 +58,7 @@ import { flatten } from "./56.114";
 import { lowestCommonAncestor } from "./57.235";
 import { lowestCommonAncestor1 } from "./58.236";
 import { findMode } from "./59.501";
+import { recoverTree } from "./60.99";
 
 describe("100 测试用例", () => {
     test(`p = [1,2,3], q = [1,2,3] should return true`, () => {
@@ -1386,7 +1387,7 @@ describe("501 测试用例", () => {
 describe("99 测试用例", () => {
     test(`[1,3,null,null,2] should return [3,1,null,null,2]`, () => {
         const t = CreateTree([1, 3, -Infinity, -Infinity, 2]);
-
+        recoverTree(t);
         expect(IsSameTree(t, CreateTree([3, 1, -Infinity, -Infinity, 2]))).toBe(
             true
         );
@@ -1394,7 +1395,7 @@ describe("99 测试用例", () => {
 
     test(`[3,1,4,null,null,2] should return [3,1,null,null,2]`, () => {
         const t = CreateTree([3, 1, 4, -Infinity, -Infinity, 2]);
-
+        recoverTree(t);
         expect(
             IsSameTree(t, CreateTree([2, 1, 4, -Infinity, -Infinity, 3]))
         ).toBe(true);
