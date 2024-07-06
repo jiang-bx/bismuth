@@ -44,4 +44,8 @@ describe("397 测试用例", () => {
     test(`4 should return 2`, () => {
         expect(integerReplacement(4)).toBe(2)
     });
+
+    test(`65535 should return 17`, () => {
+        expect(integerReplacement(65535)).toBe(17)
+    });
 });
