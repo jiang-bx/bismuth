@@ -116,5 +116,35 @@ func TestCountArrangement(t *testing.T) {
 		params1 = 1
 		res = 1
 		testTemp()
+
+		params1 = 5
+		res = 10
+		testTemp()
+	})
+}
+
+func TestReadBinaryWatch(t *testing.T) {
+	utils.TestWarp("401 测试用例", func() {
+		params1 := 1
+		params2 := []int{}
+		params3 := []int{}
+		res := []string{}
+		testTemp := func() {
+			str1, _ := json.Marshal(params1)
+			str2, _ := json.Marshal(params2)
+			str3, _ := json.Marshal(params3)
+			res1, _ := json.Marshal(res)
+			desc := string(str1) + ", " + string(str2) + ", " + string(str3) + " should return " + string(res1)
+
+			utils.TestCondition(t, desc, reflect.DeepEqual(ReadBinaryWatch(params1), res))
+		}
+
+		params1 = 1
+		res = []string{"0:01", "0:02", "0:04", "0:08", "0:16", "0:32", "1:00", "2:00", "4:00", "8:00"}
+		testTemp()
+
+		params1 = 9
+		res = []string{}
+		testTemp()
 	})
 }

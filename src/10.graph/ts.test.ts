@@ -2,6 +2,7 @@ import { arrayNesting } from "./01.565";
 import { letterCombinations } from "./02.17";
 import { integerReplacement } from "./03.397";
 import { countArrangement } from "./04.526";
+import { readBinaryWatch } from "./05.401";
 
 describe("565 测试用例", () => {
     test(`[5,4,0,3,1,6,2] should return 4`, () => {
@@ -62,5 +63,30 @@ describe("526 测试用例", () => {
 
     test(`1 should return 1`, () => {
         expect(countArrangement(1)).toBe(1);
+    });
+
+    test(`5 should return 10`, () => {
+        expect(countArrangement(5)).toBe(10);
+    });
+});
+
+describe("401 测试用例", () => {
+    test(`1 should return ["0:01","0:02","0:04","0:08","0:16","0:32","1:00","2:00","4:00","8:00"]`, () => {
+        expect(readBinaryWatch(1)).toEqual([
+            "0:01",
+            "0:02",
+            "0:04",
+            "0:08",
+            "0:16",
+            "0:32",
+            "1:00",
+            "2:00",
+            "4:00",
+            "8:00",
+        ]);
+    });
+
+    test(`9 should return []`, () => {
+        expect(readBinaryWatch(9)).toEqual([]);
     });
 });
