@@ -148,3 +148,59 @@ func TestReadBinaryWatch(t *testing.T) {
 		testTemp()
 	})
 }
+
+func TestIsValidSudoku(t *testing.T) {
+	utils.TestWarp("36 测试用例", func() {
+		params1 := [][]string{}
+		params2 := []int{}
+		params3 := []int{}
+		res := false
+		testTemp := func() {
+			str1, _ := json.Marshal(params1)
+			str2, _ := json.Marshal(params2)
+			str3, _ := json.Marshal(params3)
+			res1, _ := json.Marshal(res)
+			desc := string(str1) + ", " + string(str2) + ", " + string(str3) + " should return " + string(res1)
+
+			p := [][]byte{}
+
+			for _, v1 := range params1 {
+				a := []byte{}
+				for _, v2 := range v1 {
+					a = append(a, []byte(v2)...)
+				}
+				p = append(p, a)
+			}
+
+			utils.TestCondition(t, desc, IsValidSudoku(p) == res)
+		}
+
+		params1 = [][]string{
+			{"5", "3", ".", ".", "7", ".", ".", ".", "."},
+			{"6", ".", ".", "1", "9", "5", ".", ".", "."},
+			{".", "9", "8", ".", ".", ".", ".", "6", "."},
+			{"8", ".", ".", ".", "6", ".", ".", ".", "3"},
+			{"4", ".", ".", "8", ".", "3", ".", ".", "1"},
+			{"7", ".", ".", ".", "2", ".", ".", ".", "6"},
+			{".", "6", ".", ".", ".", ".", "2", "8", "."},
+			{".", ".", ".", "4", "1", "9", ".", ".", "5"},
+			{".", ".", ".", ".", "8", ".", ".", "7", "9"},
+		}
+		res = true
+		testTemp()
+
+		params1 = [][]string{
+			{"8", "3", ".", ".", "7", ".", ".", ".", "."},
+			{"6", ".", ".", "1", "9", "5", ".", ".", "."},
+			{".", "9", "8", ".", ".", ".", ".", "6", "."},
+			{"8", ".", ".", ".", "6", ".", ".", ".", "3"},
+			{"4", ".", ".", "8", ".", "3", ".", ".", "1"},
+			{"7", ".", ".", ".", "2", ".", ".", ".", "6"},
+			{".", "6", ".", ".", ".", ".", "2", "8", "."},
+			{".", ".", ".", "4", "1", "9", ".", ".", "5"},
+			{".", ".", ".", ".", "8", ".", ".", "7", "9"},
+		}
+		res = false
+		testTemp()
+	})
+}
