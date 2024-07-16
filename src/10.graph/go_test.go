@@ -204,3 +204,66 @@ func TestIsValidSudoku(t *testing.T) {
 		testTemp()
 	})
 }
+
+func TestSolveSudoku(t *testing.T) {
+	utils.TestWarp("37 测试用例", func() {
+		params1 := [][]string{}
+		params2 := []int{}
+		params3 := []int{}
+		res := [][]string{}
+		testTemp := func() {
+			str1, _ := json.Marshal(params1)
+			str2, _ := json.Marshal(params2)
+			str3, _ := json.Marshal(params3)
+			res1, _ := json.Marshal(res)
+			desc := string(str1) + ", " + string(str2) + ", " + string(str3) + " should return " + string(res1)
+
+			p := [][]byte{}
+
+			for _, v1 := range params1 {
+				a := []byte{}
+				for _, v2 := range v1 {
+					a = append(a, []byte(v2)...)
+				}
+				p = append(p, a)
+			}
+
+			r := [][]byte{}
+			for _, v1 := range res {
+				a := []byte{}
+				for _, v2 := range v1 {
+					a = append(a, []byte(v2)...)
+				}
+				r = append(r, a)
+			}
+
+			SolveSudoku(p)
+
+			utils.TestCondition(t, desc, reflect.DeepEqual(p, r))
+		}
+
+		params1 = [][]string{
+			{"5", "3", ".", ".", "7", ".", ".", ".", "."},
+			{"6", ".", ".", "1", "9", "5", ".", ".", "."},
+			{".", "9", "8", ".", ".", ".", ".", "6", "."},
+			{"8", ".", ".", ".", "6", ".", ".", ".", "3"},
+			{"4", ".", ".", "8", ".", "3", ".", ".", "1"},
+			{"7", ".", ".", ".", "2", ".", ".", ".", "6"},
+			{".", "6", ".", ".", ".", ".", "2", "8", "."},
+			{".", ".", ".", "4", "1", "9", ".", ".", "5"},
+			{".", ".", ".", ".", "8", ".", ".", "7", "9"},
+		}
+		res = [][]string{
+			{"5", "3", "4", "6", "7", "8", "9", "1", "2"},
+			{"6", "7", "2", "1", "9", "5", "3", "4", "8"},
+			{"1", "9", "8", "3", "4", "2", "5", "6", "7"},
+			{"8", "5", "9", "7", "6", "1", "4", "2", "3"},
+			{"4", "2", "6", "8", "5", "3", "7", "9", "1"},
+			{"7", "1", "3", "9", "2", "4", "8", "5", "6"},
+			{"9", "6", "1", "5", "3", "7", "2", "8", "4"},
+			{"2", "8", "7", "4", "1", "9", "6", "3", "5"},
+			{"3", "4", "5", "2", "8", "6", "1", "7", "9"},
+		}
+		testTemp()
+	})
+}
