@@ -5,6 +5,7 @@ import { countArrangement } from "./04.526";
 import { readBinaryWatch } from "./05.401";
 import { isValidSudoku } from "./06.36";
 import { solveSudoku } from "./07.37";
+import { solveNQueens } from "./08.51";
 
 describe("565 测试用例", () => {
     test(`[5,4,0,3,1,6,2] should return 4`, () => {
@@ -154,5 +155,18 @@ describe("37 测试用例", () => {
             ["2", "8", "7", "4", "1", "9", "6", "3", "5"],
             ["3", "4", "5", "2", "8", "6", "1", "7", "9"],
         ]);
+    });
+});
+
+describe("51 测试用例", () => {
+    test(`4 should return test1`, () => {
+        expect(solveNQueens(4)).toEqual([
+            [".Q..", "...Q", "Q...", "..Q."],
+            ["..Q.", "Q...", "...Q", ".Q.."],
+        ]);
+    });
+
+    test(`1 should return test2`, () => {
+        expect(solveNQueens(1)).toEqual([["Q"]]);
     });
 });
