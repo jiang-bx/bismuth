@@ -286,13 +286,58 @@ func TestSolveNQueens(t *testing.T) {
 
 		params1 = 4
 		res = [][]string{
-			{".Q..", "...Q", "Q...", "..Q."},
-			{"..Q.", "Q...", "...Q", ".Q.."},
+			{
+				".Q..",
+				"...Q",
+				"Q...",
+				"..Q.",
+			},
+			{
+				"..Q.",
+				"Q...",
+				"...Q",
+				".Q..",
+			},
 		}
 		testTemp()
 
 		params1 = 1
 		res = [][]string{{"Q"}}
+		testTemp()
+	})
+}
+
+func TestCombine(t *testing.T) {
+	utils.TestWarp("77 测试用例", func() {
+		params1 := 1
+		params2 := 1
+		params3 := []int{}
+		res := [][]int{}
+		testTemp := func() {
+			str1, _ := json.Marshal(params1)
+			str2, _ := json.Marshal(params2)
+			str3, _ := json.Marshal(params3)
+			res1, _ := json.Marshal(res)
+			desc := string(str1) + ", " + string(str2) + ", " + string(str3) + " should return " + string(res1)
+
+			utils.TestCondition(t, desc, reflect.DeepEqual(Combine(params1, params2), res))
+		}
+
+		params1 = 4
+		params2 = 2
+		res = [][]int{
+			{2, 4},
+			{3, 4},
+			{2, 3},
+			{1, 2},
+			{1, 3},
+			{1, 4},
+		}
+		testTemp()
+
+		params1 = 1
+		params2 = 1
+		res = [][]int{{1}}
 		testTemp()
 	})
 }

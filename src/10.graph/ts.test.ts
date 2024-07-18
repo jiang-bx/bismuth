@@ -6,6 +6,7 @@ import { readBinaryWatch } from "./05.401";
 import { isValidSudoku } from "./06.36";
 import { solveSudoku } from "./07.37";
 import { solveNQueens } from "./08.51";
+import { combine } from "./09.77";
 
 describe("565 测试用例", () => {
     test(`[5,4,0,3,1,6,2] should return 4`, () => {
@@ -168,5 +169,22 @@ describe("51 测试用例", () => {
 
     test(`1 should return test2`, () => {
         expect(solveNQueens(1)).toEqual([["Q"]]);
+    });
+});
+
+describe("77 测试用例", () => {
+    test(`4, 2 should return test1`, () => {
+        expect(combine(4, 2)).toEqual([
+            [2, 4],
+            [3, 4],
+            [2, 3],
+            [1, 2],
+            [1, 3],
+            [1, 4],
+        ]);
+    });
+
+    test(`1, 1 should return test2`, () => {
+        expect(combine(1, 1)).toEqual([[1]]);
     });
 });
