@@ -7,6 +7,7 @@ import { isValidSudoku } from "./06.36";
 import { solveSudoku } from "./07.37";
 import { solveNQueens } from "./08.51";
 import { combine } from "./09.77";
+import { combinationSum } from "./10.39";
 
 describe("565 测试用例", () => {
     test(`[5,4,0,3,1,6,2] should return 4`, () => {
@@ -175,16 +176,34 @@ describe("51 测试用例", () => {
 describe("77 测试用例", () => {
     test(`4, 2 should return test1`, () => {
         expect(combine(4, 2)).toEqual([
-            [2, 4],
-            [3, 4],
-            [2, 3],
             [1, 2],
             [1, 3],
             [1, 4],
+            [2, 3],
+            [2, 4],
+            [3, 4],
         ]);
     });
 
     test(`1, 1 should return test2`, () => {
         expect(combine(1, 1)).toEqual([[1]]);
+    });
+});
+
+describe("39 测试用例", () => {
+    test(`[2,3,6,7], 7 should return test1`, () => {
+        expect(combinationSum([2, 3, 6, 7], 7)).toEqual([[2, 2, 3], [7]]);
+    });
+
+    test(`[2,3,5], 8 should return test2`, () => {
+        expect(combinationSum([2, 3, 5], 8)).toEqual([
+            [2, 2, 2, 2],
+            [2, 3, 3],
+            [3, 5],
+        ]);
+    });
+
+    test(`[2], 1 should return test3`, () => {
+        expect(combinationSum([2], 1)).toEqual([]);
     });
 });
