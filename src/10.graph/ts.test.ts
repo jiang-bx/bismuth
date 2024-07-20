@@ -8,6 +8,7 @@ import { solveSudoku } from "./07.37";
 import { solveNQueens } from "./08.51";
 import { combine } from "./09.77";
 import { combinationSum } from "./10.39";
+import { combinationSum3 } from "./11.216";
 
 describe("565 测试用例", () => {
     test(`[5,4,0,3,1,6,2] should return 4`, () => {
@@ -205,5 +206,23 @@ describe("39 测试用例", () => {
 
     test(`[2], 1 should return test3`, () => {
         expect(combinationSum([2], 1)).toEqual([]);
+    });
+});
+
+describe("216 测试用例", () => {
+    test(`3, 7 should return test1`, () => {
+        expect(combinationSum3(3, 7)).toEqual([[1, 2, 4]]);
+    });
+
+    test(`3, 9 should return test2`, () => {
+        expect(combinationSum3(3, 9)).toEqual([
+            [1, 2, 6],
+            [1, 3, 5],
+            [2, 3, 4],
+        ]);
+    });
+
+    test(`4, 1 should return test3`, () => {
+        expect(combinationSum3(4, 1)).toEqual([]);
     });
 });
