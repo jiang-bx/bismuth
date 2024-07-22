@@ -9,6 +9,7 @@ import { solveNQueens } from "./08.51";
 import { combine } from "./09.77";
 import { combinationSum } from "./10.39";
 import { combinationSum3 } from "./11.216";
+import { combinationSum21 } from "./12.40";
 
 describe("565 测试用例", () => {
     test(`[5,4,0,3,1,6,2] should return 4`, () => {
@@ -224,5 +225,20 @@ describe("216 测试用例", () => {
 
     test(`4, 1 should return test3`, () => {
         expect(combinationSum3(4, 1)).toEqual([]);
+    });
+});
+
+describe("40 测试用例", () => {
+    test(`[10,1,2,7,6,1,5], 8 should return test1`, () => {
+        expect(combinationSum21([10, 1, 2, 7, 6, 1, 5], 8)).toEqual([
+            [1, 1, 6],
+            [1, 2, 5],
+            [1, 7],
+            [2, 6],
+        ]);
+    });
+
+    test(`[2,5,2,1,2], 5 should return test1`, () => {
+        expect(combinationSum21([2, 5, 2, 1, 2], 5)).toEqual([[1, 2, 2], [5]]);
     });
 });
