@@ -10,6 +10,8 @@ import { combine } from "./09.77";
 import { combinationSum } from "./10.39";
 import { combinationSum3 } from "./11.216";
 import { combinationSum21 } from "./12.40";
+import { permute } from "./13.46";
+import { permuteUnique } from "./14.47";
 
 describe("565 测试用例", () => {
     test(`[5,4,0,3,1,6,2] should return 4`, () => {
@@ -240,5 +242,54 @@ describe("40 测试用例", () => {
 
     test(`[2,5,2,1,2], 5 should return test1`, () => {
         expect(combinationSum21([2, 5, 2, 1, 2], 5)).toEqual([[1, 2, 2], [5]]);
+    });
+});
+
+describe("46 测试用例", () => {
+    test(`[1,2,3] should return test1`, () => {
+        expect(permute([1, 2, 3])).toEqual([
+            [1, 2, 3],
+            [1, 3, 2],
+            [2, 1, 3],
+            [2, 3, 1],
+            [3, 1, 2],
+            [3, 2, 1],
+        ]);
+    });
+
+    test(`[0,1] should return test1`, () => {
+        expect(permute([0, 1])).toEqual([
+            [0, 1],
+            [1, 0],
+        ]);
+    });
+
+    test(`[1] should return test1`, () => {
+        expect(permute([1])).toEqual([[1]]);
+    });
+});
+
+describe("47 测试用例", () => {
+    test(`[1,1,2] should return test1`, () => {
+        expect(permuteUnique([1, 1, 2])).toEqual([
+            [1, 1, 2],
+            [1, 2, 1],
+            [2, 1, 1],
+        ]);
+    });
+
+    test(`[1,2,3] should return test1`, () => {
+        expect(permuteUnique([1, 2, 3])).toEqual([
+            [1, 2, 3],
+            [1, 3, 2],
+            [2, 1, 3],
+            [2, 3, 1],
+            [3, 1, 2],
+            [3, 2, 1],
+        ]);
+    });
+
+    test(`[1] should return test1`, () => {
+        expect(permuteUnique([1])).toEqual([[1]]);
     });
 });
