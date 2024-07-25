@@ -13,6 +13,7 @@ import { combinationSum21 } from "./12.40";
 import { permute } from "./13.46";
 import { permuteUnique } from "./14.47";
 import { nextPermutation } from "./15.31";
+import { nextGreaterElement } from "./16.556";
 
 describe("565 测试用例", () => {
     test(`[5,4,0,3,1,6,2] should return 4`, () => {
@@ -297,14 +298,30 @@ describe("47 测试用例", () => {
 
 describe("31 测试用例", () => {
     test(`[1,2,3] should return test1`, () => {
-        expect(nextPermutation([1, 2, 3])).toEqual([1, 3, 2]);
+        const p = [1, 2, 3];
+        nextPermutation(p);
+        expect(p).toEqual([1, 3, 2]);
     });
 
     test(`[3,2,1] should return [1,2,3]`, () => {
-        expect(nextPermutation([3, 2, 1])).toEqual([1, 2, 3]);
+        const p = [3, 2, 1];
+        nextPermutation(p);
+        expect(p).toEqual([1, 2, 3]);
     });
 
     test(`[1,1,5] should return [1,5,1]`, () => {
-        expect(nextPermutation([1, 1, 5])).toEqual([1, 5, 1]);
+        const p = [1, 1, 5];
+        nextPermutation(p);
+        expect(p).toEqual([1, 5, 1]);
+    });
+});
+
+describe("556 测试用例", () => {
+    test(`12 should return 21`, () => {
+        expect(nextGreaterElement(12)).toBe(21);
+    });
+
+    test(`21 should return -1`, () => {
+        expect(nextGreaterElement(21)).toBe(-1);
     });
 });
