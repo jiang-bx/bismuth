@@ -14,6 +14,7 @@ import { permute } from "./13.46";
 import { permuteUnique } from "./14.47";
 import { nextPermutation } from "./15.31";
 import { nextGreaterElement } from "./16.556";
+import { getPermutation } from "./17.60";
 
 describe("565 测试用例", () => {
     test(`[5,4,0,3,1,6,2] should return 4`, () => {
@@ -323,5 +324,23 @@ describe("556 测试用例", () => {
 
     test(`21 should return -1`, () => {
         expect(nextGreaterElement(21)).toBe(-1);
+    });
+
+    test(`2147483486 should return -1`, () => {
+        expect(nextGreaterElement(2147483486)).toBe(-1);
+    });
+});
+
+describe("60 测试用例", () => {
+    test(`3, 3 should return "213"`, () => {
+        expect(getPermutation(3, 3)).toBe("213");
+    });
+
+    test(`4, 9 should return "2314"`, () => {
+        expect(getPermutation(4, 9)).toBe("2314");
+    });
+
+    test(`3, 1 should return "123"`, () => {
+        expect(getPermutation(3, 1)).toBe("123");
     });
 });
