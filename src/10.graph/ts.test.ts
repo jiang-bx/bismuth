@@ -15,6 +15,7 @@ import { permuteUnique } from "./14.47";
 import { nextPermutation } from "./15.31";
 import { nextGreaterElement } from "./16.556";
 import { getPermutation } from "./17.60";
+import { findSubsequences } from "./18.491";
 
 describe("565 测试用例", () => {
     test(`[5,4,0,3,1,6,2] should return 4`, () => {
@@ -342,5 +343,24 @@ describe("60 测试用例", () => {
 
     test(`3, 1 should return "123"`, () => {
         expect(getPermutation(3, 1)).toBe("123");
+    });
+});
+
+describe("491 测试用例", () => {
+    test(`[4,6,7,7] should return test1`, () => {
+        expect(findSubsequences([4, 6, 7, 7])).toEqual([
+            [4, 6],
+            [4, 6, 7],
+            [4, 6, 7, 7],
+            [4, 7],
+            [4, 7, 7],
+            [6, 7],
+            [6, 7, 7],
+            [7, 7],
+        ]);
+    });
+
+    test(`[4,4,3,2,1] should return test2`, () => {
+        expect(findSubsequences([4, 4, 3, 2, 1])).toEqual([[4, 4]]);
     });
 });

@@ -617,19 +617,54 @@ func TestGetPermutation(t *testing.T) {
 			utils.TestCondition(t, desc, GetPermutation(params1, params2) == res)
 		}
 
-		params1 = 3
-		params2 = 3
-		res = "213"
-		testTemp()
-
 		params1 = 4
 		params2 = 9
 		res = "2314"
 		testTemp()
 
 		params1 = 3
+		params2 = 3
+		res = "213"
+		testTemp()
+
+		params1 = 3
 		params2 = 1
 		res = "123"
+		testTemp()
+	})
+}
+
+func TestFindSubsequences(t *testing.T) {
+	utils.TestWarp("491 测试用例", func() {
+		params1 := []int{}
+		params2 := 1
+		params3 := []int{}
+		res := [][]int{}
+		testTemp := func() {
+			str1, _ := json.Marshal(params1)
+			str2, _ := json.Marshal(params2)
+			str3, _ := json.Marshal(params3)
+			res1, _ := json.Marshal(res)
+			desc := string(str1) + ", " + string(str2) + ", " + string(str3) + " should return " + string(res1)
+
+			utils.TestCondition(t, desc, reflect.DeepEqual(FindSubsequences(params1), res))
+		}
+
+		params1 = []int{4, 6, 7, 7}
+		res = [][]int{
+			{4, 6},
+			{4, 6, 7},
+			{4, 6, 7, 7},
+			{4, 7},
+			{4, 7, 7},
+			{6, 7},
+			{6, 7, 7},
+			{7, 7},
+		}
+		testTemp()
+
+		params1 = []int{4, 4, 3, 2, 1}
+		res = [][]int{{4, 4}}
 		testTemp()
 	})
 }
