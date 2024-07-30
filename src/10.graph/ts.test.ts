@@ -16,6 +16,9 @@ import { nextPermutation } from "./15.31";
 import { nextGreaterElement } from "./16.556";
 import { getPermutation } from "./17.60";
 import { findSubsequences } from "./18.491";
+import { subsets } from "./19.78";
+import { subsetsWithDup } from "./20.90";
+import { exist } from "./21.79";
 
 describe("565 测试用例", () => {
     test(`[5,4,0,3,1,6,2] should return 4`, () => {
@@ -362,5 +365,97 @@ describe("491 测试用例", () => {
 
     test(`[4,4,3,2,1] should return test2`, () => {
         expect(findSubsequences([4, 4, 3, 2, 1])).toEqual([[4, 4]]);
+    });
+});
+
+describe("78 测试用例", () => {
+    test(`[1, 2, 3] should return test1`, () => {
+        expect(subsets([1, 2, 3])).toEqual([
+            [],
+            [1],
+            [2],
+            [1, 2],
+            [3],
+            [1, 3],
+            [2, 3],
+            [1, 2, 3],
+        ]);
+    });
+
+    test(`[0] should return test1`, () => {
+        expect(subsets([0])).toEqual([[], [0]]);
+    });
+});
+
+describe("90 测试用例", () => {
+    test(`[1, 2, 2] should return test1`, () => {
+        expect(subsetsWithDup([1, 2, 2])).toEqual([
+            [],
+            [1],
+            [1, 2],
+            [1, 2, 2],
+            [2],
+            [2, 2],
+        ]);
+    });
+
+    test(`[4,4,4,1,4] should return test1`, () => {
+        expect(subsetsWithDup([4, 4, 4, 1, 4])).toEqual([
+            [],
+            [1],
+            [1, 4],
+            [1, 4, 4],
+            [1, 4, 4, 4],
+            [1, 4, 4, 4, 4],
+            [4],
+            [4, 4],
+            [4, 4, 4],
+            [4, 4, 4, 4],
+        ]);
+    });
+
+    test(`[0] should return test1`, () => {
+        expect(subsetsWithDup([0])).toEqual([[], [0]]);
+    });
+});
+
+describe("79 测试用例", () => {
+    test(`ABCCED should return true`, () => {
+        expect(
+            exist(
+                [
+                    ["A", "B", "C", "E"],
+                    ["S", "F", "C", "S"],
+                    ["A", "D", "E", "E"],
+                ],
+                "ABCCED"
+            )
+        ).toBe(true);
+    });
+
+    test(`SEE should return true`, () => {
+        expect(
+            exist(
+                [
+                    ["A", "B", "C", "E"],
+                    ["S", "F", "C", "S"],
+                    ["A", "D", "E", "E"],
+                ],
+                "SEE"
+            )
+        ).toBe(true);
+    });
+
+    test(`ABCB should return false`, () => {
+        expect(
+            exist(
+                [
+                    ["A", "B", "C", "E"],
+                    ["S", "F", "C", "S"],
+                    ["A", "D", "E", "E"],
+                ],
+                "ABCB"
+            )
+        ).toBe(false);
     });
 });

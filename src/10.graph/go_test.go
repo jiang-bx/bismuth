@@ -668,3 +668,116 @@ func TestFindSubsequences(t *testing.T) {
 		testTemp()
 	})
 }
+
+func TestSubsets(t *testing.T) {
+	utils.TestWarp("78 测试用例", func() {
+		params1 := []int{}
+		params2 := 1
+		params3 := []int{}
+		res := [][]int{}
+		testTemp := func() {
+			str1, _ := json.Marshal(params1)
+			str2, _ := json.Marshal(params2)
+			str3, _ := json.Marshal(params3)
+			res1, _ := json.Marshal(res)
+			desc := string(str1) + ", " + string(str2) + ", " + string(str3) + " should return " + string(res1)
+
+			utils.TestCondition(t, desc, reflect.DeepEqual(Subsets(params1), res))
+		}
+
+		params1 = []int{1, 2, 3}
+		res = [][]int{
+			{},
+			{1},
+			{2},
+			{1, 2},
+			{3},
+			{1, 3},
+			{2, 3},
+			{1, 2, 3},
+		}
+		testTemp()
+
+		params1 = []int{0}
+		res = [][]int{{}, {0}}
+		testTemp()
+	})
+}
+
+func TestSubsetsWithDup(t *testing.T) {
+	utils.TestWarp("90 测试用例", func() {
+		params1 := []int{}
+		params2 := 1
+		params3 := []int{}
+		res := [][]int{}
+		testTemp := func() {
+			str1, _ := json.Marshal(params1)
+			str2, _ := json.Marshal(params2)
+			str3, _ := json.Marshal(params3)
+			res1, _ := json.Marshal(res)
+			desc := string(str1) + ", " + string(str2) + ", " + string(str3) + " should return " + string(res1)
+
+			utils.TestCondition(t, desc, reflect.DeepEqual(SubsetsWithDup(params1), res))
+		}
+
+		params1 = []int{1, 2, 2}
+		res = [][]int{
+			{},
+			{1},
+			{1, 2},
+			{1, 2, 2},
+			{2},
+			{2, 2},
+		}
+		testTemp()
+
+		params1 = []int{0}
+		res = [][]int{{}, {0}}
+		testTemp()
+	})
+}
+
+func TestExist(t *testing.T) {
+	utils.TestWarp("79 测试用例", func() {
+		params1 := [][]byte{}
+		params2 := ""
+		params3 := []int{}
+		res := false
+		testTemp := func() {
+			str1, _ := json.Marshal(params1)
+			str2, _ := json.Marshal(params2)
+			str3, _ := json.Marshal(params3)
+			res1, _ := json.Marshal(res)
+			desc := string(str1) + ", " + string(str2) + ", " + string(str3) + " should return " + string(res1)
+
+			utils.TestCondition(t, desc, Exist(params1, params2) == res)
+		}
+
+		params1 = [][]byte{
+			{'A', 'B', 'C', 'E'},
+			{'S', 'F', 'C', 'S'},
+			{'A', 'D', 'E', 'E'},
+		}
+		params2 = "ABCCED"
+		res = true
+		testTemp()
+
+		params1 = [][]byte{
+			{'A', 'B', 'C', 'E'},
+			{'S', 'F', 'C', 'S'},
+			{'A', 'D', 'E', 'E'},
+		}
+		params2 = "SEE"
+		res = true
+		testTemp()
+
+		params1 = [][]byte{
+			{'A', 'B', 'C', 'E'},
+			{'S', 'F', 'C', 'S'},
+			{'A', 'D', 'E', 'E'},
+		}
+		params2 = "ABCB"
+		res = false
+		testTemp()
+	})
+}
