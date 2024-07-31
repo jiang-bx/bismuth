@@ -779,5 +779,51 @@ func TestExist(t *testing.T) {
 		params2 = "ABCB"
 		res = false
 		testTemp()
+
+		params1 = [][]byte{
+			{'A', 'B', 'C', 'E'},
+			{'S', 'F', 'C', 'S'},
+			{'A', 'D', 'E', 'E'},
+		}
+		params2 = "FS"
+		res = true
+		testTemp()
+
+		params1 = [][]byte{
+			{'a', 'a'},
+		}
+		params2 = "aaa"
+		res = false
+		testTemp()
+	})
+}
+
+func TestRestoreIpAddresses(t *testing.T) {
+	utils.TestWarp("93 测试用例", func() {
+		params1 := ""
+		params2 := ""
+		params3 := []int{}
+		res := []string{}
+		testTemp := func() {
+			str1, _ := json.Marshal(params1)
+			str2, _ := json.Marshal(params2)
+			str3, _ := json.Marshal(params3)
+			res1, _ := json.Marshal(res)
+			desc := string(str1) + ", " + string(str2) + ", " + string(str3) + " should return " + string(res1)
+
+			utils.TestCondition(t, desc, reflect.DeepEqual(RestoreIpAddresses(params1), res))
+		}
+
+		params1 = "25525511135"
+		res = []string{"255.255.11.135", "255.255.111.35"}
+		testTemp()
+
+		params1 = "0000"
+		res = []string{"0.0.0.0"}
+		testTemp()
+
+		params1 = "101023"
+		res = []string{"1.0.10.23", "1.0.102.3", "10.1.0.23", "10.10.2.3", "101.0.2.3"}
+		testTemp()
 	})
 }

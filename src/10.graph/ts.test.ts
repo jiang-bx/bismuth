@@ -19,6 +19,7 @@ import { findSubsequences } from "./18.491";
 import { subsets } from "./19.78";
 import { subsetsWithDup } from "./20.90";
 import { exist } from "./21.79";
+import { restoreIpAddresses } from "./22.93";
 
 describe("565 测试用例", () => {
     test(`[5,4,0,3,1,6,2] should return 4`, () => {
@@ -457,5 +458,28 @@ describe("79 测试用例", () => {
                 "ABCB"
             )
         ).toBe(false);
+    });
+});
+
+describe("93 测试用例", () => {
+    test(`25525511135 should return test1`, () => {
+        expect(restoreIpAddresses("25525511135")).toEqual([
+            "255.255.11.135",
+            "255.255.111.35",
+        ]);
+    });
+
+    test(`0000 should return test2`, () => {
+        expect(restoreIpAddresses("0000")).toEqual(["0.0.0.0"]);
+    });
+
+    test(`101023 should return test3`, () => {
+        expect(restoreIpAddresses("101023")).toEqual([
+            "1.0.10.23",
+            "1.0.102.3",
+            "10.1.0.23",
+            "10.10.2.3",
+            "101.0.2.3",
+        ]);
     });
 });
