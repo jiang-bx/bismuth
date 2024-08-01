@@ -20,6 +20,7 @@ import { subsets } from "./19.78";
 import { subsetsWithDup } from "./20.90";
 import { exist } from "./21.79";
 import { restoreIpAddresses } from "./22.93";
+import { findItinerary } from "./23.332";
 
 describe("565 测试用例", () => {
     test(`[5,4,0,3,1,6,2] should return 4`, () => {
@@ -481,5 +482,30 @@ describe("93 测试用例", () => {
             "10.10.2.3",
             "101.0.2.3",
         ]);
+    });
+});
+
+describe("332 测试用例", () => {
+    test(`test1 should return ["JFK","MUC","LHR","SFO","SJC"]`, () => {
+        expect(
+            findItinerary([
+                ["MUC", "LHR"],
+                ["JFK", "MUC"],
+                ["SFO", "SJC"],
+                ["LHR", "SFO"],
+            ])
+        ).toEqual(["JFK", "MUC", "LHR", "SFO", "SJC"]);
+    });
+
+    test(`test2 should return ["JFK", "ATL", "JFK", "SFO", "ATL", "SFO"]`, () => {
+        expect(
+            findItinerary([
+                ["JFK", "SFO"],
+                ["JFK", "ATL"],
+                ["SFO", "ATL"],
+                ["ATL", "JFK"],
+                ["ATL", "SFO"],
+            ])
+        ).toEqual(["JFK", "ATL", "JFK", "SFO", "ATL", "SFO"]);
     });
 });

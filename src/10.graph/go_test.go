@@ -827,3 +827,40 @@ func TestRestoreIpAddresses(t *testing.T) {
 		testTemp()
 	})
 }
+
+func TestFindItinerary(t *testing.T) {
+	utils.TestWarp("332 测试用例", func() {
+		params1 := [][]string{}
+		params2 := ""
+		params3 := []int{}
+		res := []string{}
+		testTemp := func() {
+			str1, _ := json.Marshal(params1)
+			str2, _ := json.Marshal(params2)
+			str3, _ := json.Marshal(params3)
+			res1, _ := json.Marshal(res)
+			desc := string(str1) + ", " + string(str2) + ", " + string(str3) + " should return " + string(res1)
+
+			utils.TestCondition(t, desc, reflect.DeepEqual(FindItinerary(params1), res))
+		}
+
+		params1 = [][]string{
+			{"MUC", "LHR"},
+			{"JFK", "MUC"},
+			{"SFO", "SJC"},
+			{"LHR", "SFO"},
+		}
+		res = []string{"JFK", "MUC", "LHR", "SFO", "SJC"}
+		testTemp()
+
+		params1 = [][]string{
+			{"JFK", "SFO"},
+			{"JFK", "ATL"},
+			{"SFO", "ATL"},
+			{"ATL", "JFK"},
+			{"ATL", "SFO"},
+		}
+		res = []string{"JFK", "ATL", "JFK", "SFO", "ATL", "SFO"}
+		testTemp()
+	})
+}
