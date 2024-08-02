@@ -21,6 +21,7 @@ import { subsetsWithDup } from "./20.90";
 import { exist } from "./21.79";
 import { restoreIpAddresses } from "./22.93";
 import { findItinerary } from "./23.332";
+import { diffWaysToCompute } from "./24.241";
 
 describe("565 测试用例", () => {
     test(`[5,4,0,3,1,6,2] should return 4`, () => {
@@ -507,5 +508,15 @@ describe("332 测试用例", () => {
                 ["ATL", "SFO"],
             ])
         ).toEqual(["JFK", "ATL", "JFK", "SFO", "ATL", "SFO"]);
+    });
+});
+
+describe("241 测试用例", () => {
+    test(`2-1-1 should return [0,2]`, () => {
+        expect(diffWaysToCompute("2-1-1")).toEqual([0, 2]);
+    });
+
+    test(`2*3-4*5 should return [-34,-14,-10,-10,10]`, () => {
+        expect(diffWaysToCompute("2*3-4*5")).toEqual([-34, -14, -10, -10, 10]);
     });
 });
