@@ -882,11 +882,44 @@ func TestDiffWaysToCompute(t *testing.T) {
 		}
 
 		params1 = "2-1-1"
-		res = []int{0, 2}
+		res = []int{2, 0}
 		testTemp()
 
 		params1 = "2*3-4*5"
-		res = []int{-34, -14, -10, -10, 10}
+		res = []int{-34, -10, -14, -10, 10}
+		testTemp()
+	})
+}
+
+func TestAddOperators(t *testing.T) {
+	utils.TestWarp("282 测试用例", func() {
+		params1 := ""
+		params2 := 0
+		params3 := []int{}
+		res := []string{}
+		testTemp := func() {
+			str1, _ := json.Marshal(params1)
+			str2, _ := json.Marshal(params2)
+			str3, _ := json.Marshal(params3)
+			res1, _ := json.Marshal(res)
+			desc := string(str1) + ", " + string(str2) + ", " + string(str3) + " should return " + string(res1)
+
+			utils.TestCondition(t, desc, reflect.DeepEqual(AddOperators(params1, params2), res))
+		}
+
+		params1 = "123"
+		params2 = 6
+		res = []string{"1+2+3", "1*2*3"}
+		testTemp()
+
+		params1 = "232"
+		params2 = 8
+		res = []string{"2*3+2", "2+3*2"}
+		testTemp()
+
+		params1 = "3456237490"
+		params2 = 9191
+		res = []string{}
 		testTemp()
 	})
 }

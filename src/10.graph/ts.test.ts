@@ -22,6 +22,7 @@ import { exist } from "./21.79";
 import { restoreIpAddresses } from "./22.93";
 import { findItinerary } from "./23.332";
 import { diffWaysToCompute } from "./24.241";
+import { addOperators } from "./25.282";
 
 describe("565 测试用例", () => {
     test(`[5,4,0,3,1,6,2] should return 4`, () => {
@@ -512,11 +513,25 @@ describe("332 测试用例", () => {
 });
 
 describe("241 测试用例", () => {
-    test(`2-1-1 should return [0,2]`, () => {
-        expect(diffWaysToCompute("2-1-1")).toEqual([0, 2]);
+    test(`2-1-1 should return [2, 0]`, () => {
+        expect(diffWaysToCompute("2-1-1")).toEqual([2, 0]);
     });
 
-    test(`2*3-4*5 should return [-34,-14,-10,-10,10]`, () => {
-        expect(diffWaysToCompute("2*3-4*5")).toEqual([-34, -14, -10, -10, 10]);
+    test(`2*3-4*5 should return [-34, -10, -14, -10, 10]`, () => {
+        expect(diffWaysToCompute("2*3-4*5")).toEqual([-34, -10, -14, -10, 10]);
+    });
+});
+
+describe("282 测试用例", () => {
+    test(`"123", 6 should return ["1+2+3", "1*2*3"]`, () => {
+        expect(addOperators("123", 6)).toEqual(["1+2+3", "1*2*3"]);
+    });
+
+    test(`"232", 8 should return ["2*3+2", "2+3*2"]`, () => {
+        expect(addOperators("232", 8)).toEqual(["2*3+2", "2+3*2"]);
+    });
+
+    test(`"3456237490", 9191 should return []`, () => {
+        expect(addOperators("3456237490", 9191)).toEqual([]);
     });
 });
