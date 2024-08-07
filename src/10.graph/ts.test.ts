@@ -23,6 +23,7 @@ import { restoreIpAddresses } from "./22.93";
 import { findItinerary } from "./23.332";
 import { diffWaysToCompute } from "./24.241";
 import { addOperators } from "./25.282";
+import { judgePoint24 } from "./26.679";
 
 describe("565 测试用例", () => {
     test(`[5,4,0,3,1,6,2] should return 4`, () => {
@@ -528,10 +529,22 @@ describe("282 测试用例", () => {
     });
 
     test(`"232", 8 should return ["2*3+2", "2+3*2"]`, () => {
-        expect(addOperators("232", 8)).toEqual(["2*3+2", "2+3*2"]);
+        expect(addOperators("232", 8).sort()).toEqual(
+            ["2*3+2", "2+3*2"].sort()
+        );
     });
 
     test(`"3456237490", 9191 should return []`, () => {
         expect(addOperators("3456237490", 9191)).toEqual([]);
+    });
+});
+
+describe("679 测试用例", () => {
+    test(`[4, 1, 8, 7] should return true`, () => {
+        expect(judgePoint24([4, 1, 8, 7])).toBe(true);
+    });
+
+    test(`[1, 2, 1, 2] should return false`, () => {
+        expect(judgePoint24([1, 2, 1, 2])).toBe(false);
     });
 });
