@@ -24,6 +24,7 @@ import { findItinerary } from "./23.332";
 import { diffWaysToCompute } from "./24.241";
 import { addOperators } from "./25.282";
 import { judgePoint24 } from "./26.679";
+import { generateParenthesis } from "./27.22";
 
 describe("565 测试用例", () => {
     test(`[5,4,0,3,1,6,2] should return 4`, () => {
@@ -546,5 +547,25 @@ describe("679 测试用例", () => {
 
     test(`[1, 2, 1, 2] should return false`, () => {
         expect(judgePoint24([1, 2, 1, 2])).toBe(false);
+    });
+});
+
+describe("22 测试用例", () => {
+    test(`3 should return ["((()))",
+            "(()())",
+            "(())()",
+            "()(())",
+            "()()()",]`, () => {
+        expect(generateParenthesis(3)).toEqual([
+            "((()))",
+            "(()())",
+            "(())()",
+            "()(())",
+            "()()()",
+        ]);
+    });
+
+    test(`1 should return ["()"]`, () => {
+        expect(generateParenthesis(1)).toEqual(["()"]);
     });
 });

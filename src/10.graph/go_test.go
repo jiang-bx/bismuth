@@ -945,7 +945,33 @@ func TestJudgePoint24(t *testing.T) {
 		testTemp()
 
 		params1 = []int{1, 2, 1, 2}
-		res = true
+		res = false
+		testTemp()
+	})
+}
+
+func TestGenerateParenthesis(t *testing.T) {
+	utils.TestWarp("22 测试用例", func() {
+		params1 := 0
+		params2 := 0
+		params3 := []string{}
+		res := []string{}
+		testTemp := func() {
+			str1, _ := json.Marshal(params1)
+			str2, _ := json.Marshal(params2)
+			str3, _ := json.Marshal(params3)
+			res1, _ := json.Marshal(res)
+			desc := string(str1) + ", " + string(str2) + ", " + string(str3) + " should return " + string(res1)
+
+			utils.TestCondition(t, desc, reflect.DeepEqual(GenerateParenthesis(params1), res))
+		}
+
+		params1 = 3
+		res = []string{"((()))", "(()())", "(())()", "()(())", "()()()"}
+		testTemp()
+
+		params1 = 1
+		res = []string{"()"}
 		testTemp()
 	})
 }
