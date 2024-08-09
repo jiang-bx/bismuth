@@ -975,3 +975,33 @@ func TestGenerateParenthesis(t *testing.T) {
 		testTemp()
 	})
 }
+
+func TestRemoveInvalidParentheses(t *testing.T) {
+	utils.TestWarp("301 测试用例", func() {
+		params1 := ""
+		params2 := 0
+		params3 := []string{}
+		res := []string{}
+		testTemp := func() {
+			str1, _ := json.Marshal(params1)
+			str2, _ := json.Marshal(params2)
+			str3, _ := json.Marshal(params3)
+			res1, _ := json.Marshal(res)
+			desc := string(str1) + ", " + string(str2) + ", " + string(str3) + " should return " + string(res1)
+
+			utils.TestCondition(t, desc, reflect.DeepEqual(RemoveInvalidParentheses(params1), res))
+		}
+
+		params1 = "()())()"
+		res = []string{"(())()", "()()()"}
+		testTemp()
+
+		params1 = "(a)())()"
+		res = []string{"(a())()", "(a)()()"}
+		testTemp()
+
+		params1 = ")("
+		res = []string{""}
+		testTemp()
+	})
+}

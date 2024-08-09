@@ -25,6 +25,7 @@ import { diffWaysToCompute } from "./24.241";
 import { addOperators } from "./25.282";
 import { judgePoint24 } from "./26.679";
 import { generateParenthesis } from "./27.22";
+import { removeInvalidParentheses } from "./28.301";
 
 describe("565 测试用例", () => {
     test(`[5,4,0,3,1,6,2] should return 4`, () => {
@@ -567,5 +568,25 @@ describe("22 测试用例", () => {
 
     test(`1 should return ["()"]`, () => {
         expect(generateParenthesis(1)).toEqual(["()"]);
+    });
+});
+
+describe("301 测试用例", () => {
+    test(`()())() should return ["(())()","()()()"]`, () => {
+        expect(removeInvalidParentheses("()())()")).toEqual([
+            "(())()",
+            "()()()",
+        ]);
+    });
+
+    test(`(a)())() should return ["(a())()","(a)()()"]`, () => {
+        expect(removeInvalidParentheses("(a)())()")).toEqual([
+            "(a())()",
+            "(a)()()",
+        ]);
+    });
+
+    test(`)( should return [""]`, () => {
+        expect(removeInvalidParentheses(")(")).toEqual([""]);
     });
 });
