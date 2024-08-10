@@ -1005,3 +1005,41 @@ func TestRemoveInvalidParentheses(t *testing.T) {
 		testTemp()
 	})
 }
+
+func TestFindMinStep(t *testing.T) {
+	utils.TestWarp("488 测试用例", func() {
+		params1 := ""
+		params2 := ""
+		params3 := []string{}
+		res := 0
+		testTemp := func() {
+			str1, _ := json.Marshal(params1)
+			str2, _ := json.Marshal(params2)
+			str3, _ := json.Marshal(params3)
+			res1, _ := json.Marshal(res)
+			desc := string(str1) + ", " + string(str2) + ", " + string(str3) + " should return " + string(res1)
+
+			utils.TestCondition(t, desc, FindMinStep(params1, params2) == res)
+		}
+
+		params1 = "WRRBBW"
+		params2 = "RB"
+		res = -1
+		testTemp()
+
+		params1 = "WWRRBBWW"
+		params2 = "WRBRW"
+		res = 2
+		testTemp()
+
+		params1 = "G"
+		params2 = "GGGGG"
+		res = 2
+		testTemp()
+
+		params1 = "RBYYBBRRB"
+		params2 = "YRBGB"
+		res = 3
+		testTemp()
+	})
+}

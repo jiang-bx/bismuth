@@ -26,6 +26,7 @@ import { addOperators } from "./25.282";
 import { judgePoint24 } from "./26.679";
 import { generateParenthesis } from "./27.22";
 import { removeInvalidParentheses } from "./28.301";
+import { findMinStep } from "./29.488";
 
 describe("565 测试用例", () => {
     test(`[5,4,0,3,1,6,2] should return 4`, () => {
@@ -573,20 +574,36 @@ describe("22 测试用例", () => {
 
 describe("301 测试用例", () => {
     test(`()())() should return ["(())()","()()()"]`, () => {
-        expect(removeInvalidParentheses("()())()")).toEqual([
-            "(())()",
-            "()()()",
-        ]);
+        expect(removeInvalidParentheses("()())()").sort()).toEqual(
+            ["(())()", "()()()"].sort()
+        );
     });
 
     test(`(a)())() should return ["(a())()","(a)()()"]`, () => {
-        expect(removeInvalidParentheses("(a)())()")).toEqual([
-            "(a())()",
-            "(a)()()",
-        ]);
+        expect(removeInvalidParentheses("(a)())()").sort()).toEqual(
+            ["(a())()", "(a)()()"].sort()
+        );
     });
 
     test(`)( should return [""]`, () => {
         expect(removeInvalidParentheses(")(")).toEqual([""]);
+    });
+});
+
+describe("488 测试用例", () => {
+    test(`board = "WRRBBW", hand = "RB" should return -1`, () => {
+        expect(findMinStep("WRRBBW", "RB")).toBe(-1);
+    });
+
+    test(`board = "WWRRBBWW", hand = "WRBRW" should return 2`, () => {
+        expect(findMinStep("WWRRBBWW", "WRBRW")).toBe(2);
+    });
+
+    test(`board = "G", hand = "GGGGG" should return 2`, () => {
+        expect(findMinStep("G", "GGGGG")).toBe(2);
+    });
+
+    test(`board = "RBYYBBRRB", hand = "YRBGB" should return 3`, () => {
+        expect(findMinStep("RBYYBBRRB", "YRBGB")).toBe(3);
     });
 });
