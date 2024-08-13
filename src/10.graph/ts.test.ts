@@ -27,6 +27,7 @@ import { judgePoint24 } from "./26.679";
 import { generateParenthesis } from "./27.22";
 import { removeInvalidParentheses } from "./28.301";
 import { findMinStep } from "./29.488";
+import { numIslands } from "./31.200";
 
 describe("565 测试用例", () => {
     test(`[5,4,0,3,1,6,2] should return 4`, () => {
@@ -605,5 +606,29 @@ describe("488 测试用例", () => {
 
     test(`board = "RBYYBBRRB", hand = "YRBGB" should return 3`, () => {
         expect(findMinStep("RBYYBBRRB", "YRBGB")).toBe(3);
+    });
+});
+
+describe("200 测试用例", () => {
+    test(`grid1 should return 1`, () => {
+        expect(
+            numIslands([
+                ["1", "1", "1", "1", "0"],
+                ["1", "1", "0", "1", "0"],
+                ["1", "1", "0", "0", "0"],
+                ["0", "0", "0", "0", "0"],
+            ])
+        ).toBe(1);
+    });
+
+    test(`grid1 should return 3`, () => {
+        expect(
+            numIslands([
+                ["1", "1", "0", "0", "0"],
+                ["1", "1", "0", "0", "0"],
+                ["0", "0", "1", "0", "0"],
+                ["0", "0", "0", "1", "1"],
+            ])
+        ).toBe(3);
     });
 });
