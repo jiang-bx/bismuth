@@ -28,6 +28,7 @@ import { generateParenthesis } from "./27.22";
 import { removeInvalidParentheses } from "./28.301";
 import { findMinStep } from "./29.488";
 import { numIslands } from "./31.200";
+import { maxAreaOfIsland } from "./32.695";
 
 describe("565 测试用例", () => {
     test(`[5,4,0,3,1,6,2] should return 4`, () => {
@@ -630,5 +631,26 @@ describe("200 测试用例", () => {
                 ["0", "0", "0", "1", "1"],
             ])
         ).toBe(3);
+    });
+});
+
+describe("695 测试用例", () => {
+    test(`grid1 should return 6`, () => {
+        expect(
+            maxAreaOfIsland([
+                [0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0],
+                [0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 0, 0, 0],
+                [0, 1, 1, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0],
+                [0, 1, 0, 0, 1, 1, 0, 0, 1, 0, 1, 0, 0],
+                [0, 1, 0, 0, 1, 1, 0, 0, 1, 1, 1, 0, 0],
+                [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0],
+                [0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 0, 0, 0],
+                [0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0],
+            ])
+        ).toBe(6);
+    });
+
+    test(`grid1 should return 0`, () => {
+        expect(maxAreaOfIsland([[0, 0, 0, 0, 0, 0, 0, 0]])).toBe(0);
     });
 });
