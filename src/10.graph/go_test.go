@@ -1116,3 +1116,91 @@ func TestMaxAreaOfIsland(t *testing.T) {
 		testTemp()
 	})
 }
+
+func TestIslandPerimeter(t *testing.T) {
+	utils.TestWarp("463 测试用例", func() {
+		params1 := [][]int{}
+		params2 := ""
+		params3 := []string{}
+		res := 0
+		testTemp := func() {
+			str1, _ := json.Marshal(params1)
+			str2, _ := json.Marshal(params2)
+			str3, _ := json.Marshal(params3)
+			res1, _ := json.Marshal(res)
+			desc := string(str1) + ", " + string(str2) + ", " + string(str3) + " should return " + string(res1)
+
+			utils.TestCondition(t, desc, IslandPerimeter(params1) == res)
+		}
+
+		params1 = [][]int{
+			{0, 1, 0, 0},
+			{1, 1, 1, 0},
+			{0, 1, 0, 0},
+			{1, 1, 0, 0},
+		}
+		res = 16
+		testTemp()
+
+		params1 = [][]int{
+			{1},
+		}
+		res = 4
+		testTemp()
+
+		params1 = [][]int{
+			{1, 0},
+		}
+		res = 4
+		testTemp()
+
+		params1 = [][]int{
+			{1, 1},
+			{1, 1},
+		}
+		res = 8
+		testTemp()
+	})
+}
+
+func TestUpdateMatrix(t *testing.T) {
+	utils.TestWarp("542 测试用例", func() {
+		params1 := [][]int{}
+		params2 := ""
+		params3 := []string{}
+		res := [][]int{}
+		testTemp := func() {
+			str1, _ := json.Marshal(params1)
+			str2, _ := json.Marshal(params2)
+			str3, _ := json.Marshal(params3)
+			res1, _ := json.Marshal(res)
+			desc := string(str1) + ", " + string(str2) + ", " + string(str3) + " should return " + string(res1)
+
+			utils.TestCondition(t, desc, reflect.DeepEqual(UpdateMatrix(params1), res))
+		}
+
+		params1 = [][]int{
+			{0, 0, 0},
+			{0, 1, 0},
+			{0, 0, 0},
+		}
+		res = [][]int{
+			{0, 0, 0},
+			{0, 1, 0},
+			{0, 0, 0},
+		}
+		testTemp()
+
+		params1 = [][]int{
+			{0, 0, 0},
+			{0, 1, 0},
+			{1, 1, 1},
+		}
+		res = [][]int{
+			{0, 0, 0},
+			{0, 1, 0},
+			{1, 2, 1},
+		}
+		testTemp()
+	})
+}

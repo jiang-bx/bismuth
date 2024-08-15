@@ -29,6 +29,8 @@ import { removeInvalidParentheses } from "./28.301";
 import { findMinStep } from "./29.488";
 import { numIslands } from "./31.200";
 import { maxAreaOfIsland } from "./32.695";
+import { islandPerimeter } from "./33.463";
+import { updateMatrix } from "./34.542";
 
 describe("565 测试用例", () => {
     test(`[5,4,0,3,1,6,2] should return 4`, () => {
@@ -652,5 +654,65 @@ describe("695 测试用例", () => {
 
     test(`grid1 should return 0`, () => {
         expect(maxAreaOfIsland([[0, 0, 0, 0, 0, 0, 0, 0]])).toBe(0);
+    });
+});
+
+describe("463 测试用例", () => {
+    test(`grid1 should return 16`, () => {
+        expect(
+            islandPerimeter([
+                [0, 1, 0, 0],
+                [1, 1, 1, 0],
+                [0, 1, 0, 0],
+                [1, 1, 0, 0],
+            ])
+        ).toBe(16);
+    });
+
+    test(`grid1 should return 4`, () => {
+        expect(islandPerimeter([[1]])).toBe(4);
+    });
+
+    test(`grid1 should return 4`, () => {
+        expect(islandPerimeter([[1, 0]])).toBe(4);
+    });
+
+    test(`grid1 should return 8`, () => {
+        expect(
+            islandPerimeter([
+                [1, 1],
+                [1, 1],
+            ])
+        ).toBe(8);
+    });
+});
+
+describe("542 测试用例", () => {
+    test(`grid1 should return tes1`, () => {
+        expect(
+            updateMatrix([
+                [0, 0, 0],
+                [0, 1, 0],
+                [0, 0, 0],
+            ])
+        ).toEqual([
+            [0, 0, 0],
+            [0, 1, 0],
+            [0, 0, 0],
+        ]);
+    });
+
+    test(`grid2 should return tes2`, () => {
+        expect(
+            updateMatrix([
+                [0, 0, 0],
+                [0, 1, 0],
+                [1, 1, 1],
+            ])
+        ).toEqual([
+            [0, 0, 0],
+            [0, 1, 0],
+            [1, 2, 1],
+        ]);
     });
 });
