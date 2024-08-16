@@ -1204,3 +1204,45 @@ func TestUpdateMatrix(t *testing.T) {
 		testTemp()
 	})
 }
+
+func TestSolve(t *testing.T) {
+	utils.TestWarp("130 测试用例", func() {
+		params1 := [][]byte{}
+		params2 := ""
+		params3 := []string{}
+		res := [][]byte{}
+		testTemp := func() {
+			str1, _ := json.Marshal(params1)
+			str2, _ := json.Marshal(params2)
+			str3, _ := json.Marshal(params3)
+			res1, _ := json.Marshal(res)
+			desc := string(str1) + ", " + string(str2) + ", " + string(str3) + " should return " + string(res1)
+
+			Solve(params1)
+
+			utils.TestCondition(t, desc, reflect.DeepEqual(params1, res))
+		}
+
+		params1 = [][]byte{
+			{'X', 'X', 'X', 'X'},
+			{'X', 'O', 'O', 'X'},
+			{'X', 'X', 'O', 'X'},
+			{'X', 'O', 'X', 'X'},
+		}
+		res = [][]byte{
+			{'X', 'X', 'X', 'X'},
+			{'X', 'X', 'X', 'X'},
+			{'X', 'X', 'X', 'X'},
+			{'X', 'O', 'X', 'X'},
+		}
+		testTemp()
+
+		params1 = [][]byte{
+			{'X'},
+		}
+		res = [][]byte{
+			{'X'},
+		}
+		testTemp()
+	})
+}

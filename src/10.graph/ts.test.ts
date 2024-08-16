@@ -31,6 +31,7 @@ import { numIslands } from "./31.200";
 import { maxAreaOfIsland } from "./32.695";
 import { islandPerimeter } from "./33.463";
 import { updateMatrix } from "./34.542";
+import { solve } from "./35.130";
 
 describe("565 测试用例", () => {
     test(`[5,4,0,3,1,6,2] should return 4`, () => {
@@ -714,5 +715,31 @@ describe("542 测试用例", () => {
             [0, 1, 0],
             [1, 2, 1],
         ]);
+    });
+});
+
+describe("130 测试用例", () => {
+    test(`board1 should return tes1`, () => {
+        const p = [
+            ["X", "X", "X", "X"],
+            ["X", "O", "O", "X"],
+            ["X", "X", "O", "X"],
+            ["X", "O", "X", "X"],
+        ];
+
+        solve(p);
+
+        expect(p).toEqual([
+            ["X", "X", "X", "X"],
+            ["X", "X", "X", "X"],
+            ["X", "X", "X", "X"],
+            ["X", "O", "X", "X"],
+        ]);
+    });
+
+    test(`board2 should return tes2`, () => {
+        const p = [["X"]];
+        solve(p);
+        expect(p).toEqual([["X"]]);
     });
 });
