@@ -32,6 +32,7 @@ import { maxAreaOfIsland } from "./32.695";
 import { islandPerimeter } from "./33.463";
 import { updateMatrix } from "./34.542";
 import { solve } from "./35.130";
+import { pacificAtlantic } from "./36.417";
 
 describe("565 测试用例", () => {
     test(`[5,4,0,3,1,6,2] should return 4`, () => {
@@ -741,5 +742,41 @@ describe("130 测试用例", () => {
         const p = [["X"]];
         solve(p);
         expect(p).toEqual([["X"]]);
+    });
+});
+
+describe("417 测试用例", () => {
+    test(`board1 should return tes1`, () => {
+        expect(
+            pacificAtlantic([
+                [1, 2, 2, 3, 5],
+                [3, 2, 3, 4, 4],
+                [2, 4, 5, 3, 1],
+                [6, 7, 1, 4, 5],
+                [5, 1, 1, 2, 4],
+            ])
+        ).toEqual([
+            [0, 4],
+            [1, 3],
+            [1, 4],
+            [2, 2],
+            [3, 0],
+            [3, 1],
+            [4, 0],
+        ]);
+    });
+
+    test(`board2 should return tes2`, () => {
+        expect(
+            pacificAtlantic([
+                [2, 1],
+                [1, 2],
+            ])
+        ).toEqual([
+            [0, 0],
+            [0, 1],
+            [1, 0],
+            [1, 1],
+        ]);
     });
 });
