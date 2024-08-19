@@ -33,6 +33,7 @@ import { islandPerimeter } from "./33.463";
 import { updateMatrix } from "./34.542";
 import { solve } from "./35.130";
 import { pacificAtlantic } from "./36.417";
+import { updateBoard } from "./37.529";
 
 describe("565 测试用例", () => {
     test(`[5,4,0,3,1,6,2] should return 4`, () => {
@@ -777,6 +778,46 @@ describe("417 测试用例", () => {
             [0, 1],
             [1, 0],
             [1, 1],
+        ]);
+    });
+});
+
+describe("529 测试用例", () => {
+    test(`board1 should return tes1`, () => {
+        expect(
+            updateBoard(
+                [
+                    ["E", "E", "E", "E", "E"],
+                    ["E", "E", "M", "E", "E"],
+                    ["E", "E", "E", "E", "E"],
+                    ["E", "E", "E", "E", "E"],
+                ],
+                [3, 0]
+            )
+        ).toEqual([
+            ["B", "1", "E", "1", "B"],
+            ["B", "1", "M", "1", "B"],
+            ["B", "1", "1", "1", "B"],
+            ["B", "B", "B", "B", "B"],
+        ]);
+    });
+
+    test(`board2 should return tes2`, () => {
+        expect(
+            updateBoard(
+                [
+                    ["B", "1", "E", "1", "B"],
+                    ["B", "1", "M", "1", "B"],
+                    ["B", "1", "1", "1", "B"],
+                    ["B", "B", "B", "B", "B"],
+                ],
+                [1, 2]
+            )
+        ).toEqual([
+            ["B", "1", "E", "1", "B"],
+            ["B", "1", "X", "1", "B"],
+            ["B", "1", "1", "1", "B"],
+            ["B", "B", "B", "B", "B"],
         ]);
     });
 });

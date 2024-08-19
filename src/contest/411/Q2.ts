@@ -13,6 +13,7 @@ export function maxEnergyBoost1(
     dpB[1] = dpB[0] + energyDrinkB[1];
 
     for (let i = 2; i < n; i++) {
+        // 从前向后取, 如果 A 的前两个值之和 < B 之前的第二个, 就选择切换饮料
         dpA[i] = Math.max(dpA[i - 1], dpB[i - 2]) + energyDrinkA[i];
         dpB[i] = Math.max(dpB[i - 1], dpA[i - 2]) + energyDrinkB[i];
     }

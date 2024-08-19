@@ -1246,3 +1246,124 @@ func TestSolve(t *testing.T) {
 		testTemp()
 	})
 }
+
+func TestPacificAtlantic(t *testing.T) {
+	utils.TestWarp("417 测试用例", func() {
+		params1 := [][]int{}
+		params2 := ""
+		params3 := []string{}
+		res := [][]int{}
+		testTemp := func() {
+			str1, _ := json.Marshal(params1)
+			str2, _ := json.Marshal(params2)
+			str3, _ := json.Marshal(params3)
+			res1, _ := json.Marshal(res)
+			desc := string(str1) + ", " + string(str2) + ", " + string(str3) + " should return " + string(res1)
+
+			utils.TestCondition(t, desc, reflect.DeepEqual(PacificAtlantic(params1), res))
+		}
+
+		params1 = [][]int{
+			{1, 2, 2, 3, 5},
+			{3, 2, 3, 4, 4},
+			{2, 4, 5, 3, 1},
+			{6, 7, 1, 4, 5},
+			{5, 1, 1, 2, 4},
+		}
+		res = [][]int{
+			{0, 4},
+			{1, 3},
+			{1, 4},
+			{2, 2},
+			{3, 0},
+			{3, 1},
+			{4, 0},
+		}
+		testTemp()
+
+		params1 = [][]int{
+			{2, 1},
+			{1, 2},
+		}
+		res = [][]int{
+			{0, 0},
+			{0, 1},
+			{1, 0},
+			{1, 1},
+		}
+		testTemp()
+
+		params1 = [][]int{
+			{3, 3, 3, 3, 3, 3},
+			{3, 0, 3, 3, 0, 3},
+			{3, 3, 3, 3, 3, 3},
+		}
+		res = [][]int{
+			{0, 0},
+			{0, 1},
+			{0, 2},
+			{0, 3},
+			{0, 4},
+			{0, 5},
+			{1, 0},
+			{1, 2},
+			{1, 3},
+			{1, 5},
+			{2, 0},
+			{2, 1},
+			{2, 2},
+			{2, 3},
+			{2, 4},
+			{2, 5},
+		}
+		testTemp()
+	})
+}
+
+func TestUpdateBoard(t *testing.T) {
+	utils.TestWarp("529 测试用例", func() {
+		params1 := [][]byte{}
+		params2 := []int{}
+		params3 := []string{}
+		res := [][]byte{}
+		testTemp := func() {
+			str1, _ := json.Marshal(params1)
+			str2, _ := json.Marshal(params2)
+			str3, _ := json.Marshal(params3)
+			res1, _ := json.Marshal(res)
+			desc := string(str1) + ", " + string(str2) + ", " + string(str3) + " should return " + string(res1)
+
+			utils.TestCondition(t, desc, reflect.DeepEqual(UpdateBoard(params1, params2), res))
+		}
+
+		params1 = [][]byte{
+			{'E', 'E', 'E', 'E', 'E'},
+			{'E', 'E', 'M', 'E', 'E'},
+			{'E', 'E', 'E', 'E', 'E'},
+			{'E', 'E', 'E', 'E', 'E'},
+		}
+		params2 = []int{3, 0}
+		res = [][]byte{
+			{'B', '1', 'E', '1', 'B'},
+			{'B', '1', 'M', '1', 'B'},
+			{'B', '1', '1', '1', 'B'},
+			{'B', 'B', 'B', 'B', 'B'},
+		}
+		testTemp()
+
+		params1 = [][]byte{
+			{'B', '1', 'E', '1', 'B'},
+			{'B', '1', 'M', '1', 'B'},
+			{'B', '1', '1', '1', 'B'},
+			{'B', 'B', 'B', 'B', 'B'},
+		}
+		params2 = []int{3, 0}
+		res = [][]byte{
+			{'B', '1', 'E', '1', 'B'},
+			{'B', '1', 'X', '1', 'B'},
+			{'B', '1', '1', '1', 'B'},
+			{'B', 'B', 'B', 'B', 'B'},
+		}
+		testTemp()
+	})
+}
