@@ -34,6 +34,7 @@ import { updateMatrix } from "./34.542";
 import { solve } from "./35.130";
 import { pacificAtlantic } from "./36.417";
 import { updateBoard } from "./37.529";
+import { ladderLength } from "./38.127";
 
 describe("565 测试用例", () => {
     test(`[5,4,0,3,1,6,2] should return 4`, () => {
@@ -819,5 +820,26 @@ describe("529 测试用例", () => {
             ["B", "1", "1", "1", "B"],
             ["B", "B", "B", "B", "B"],
         ]);
+    });
+});
+
+describe("127 测试用例", () => {
+    test(`"hit", "cog" should return 5`, () => {
+        expect(
+            ladderLength("hit", "cog", [
+                "hot",
+                "dot",
+                "dog",
+                "lot",
+                "log",
+                "cog",
+            ])
+        ).toBe(5);
+    });
+
+    test(`"hit", "cog" should return 0`, () => {
+        expect(
+            ladderLength("hit", "cog", ["hot", "dot", "dog", "lot", "log"])
+        ).toBe(0);
     });
 });

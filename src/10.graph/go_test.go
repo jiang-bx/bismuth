@@ -1357,13 +1357,43 @@ func TestUpdateBoard(t *testing.T) {
 			{'B', '1', '1', '1', 'B'},
 			{'B', 'B', 'B', 'B', 'B'},
 		}
-		params2 = []int{3, 0}
+		params2 = []int{1, 2}
 		res = [][]byte{
 			{'B', '1', 'E', '1', 'B'},
 			{'B', '1', 'X', '1', 'B'},
 			{'B', '1', '1', '1', 'B'},
 			{'B', 'B', 'B', 'B', 'B'},
 		}
+		testTemp()
+	})
+}
+
+func TestLadderLength(t *testing.T) {
+	utils.TestWarp("127 测试用例", func() {
+		params1 := ""
+		params2 := ""
+		params3 := []string{}
+		res := 0
+		testTemp := func() {
+			str1, _ := json.Marshal(params1)
+			str2, _ := json.Marshal(params2)
+			str3, _ := json.Marshal(params3)
+			res1, _ := json.Marshal(res)
+			desc := string(str1) + ", " + string(str2) + ", " + string(str3) + " should return " + string(res1)
+
+			utils.TestCondition(t, desc, LadderLength(params1, params2, params3) == res)
+		}
+
+		params1 = "hit"
+		params2 = "cog"
+		params3 = []string{"hot", "dot", "dog", "lot", "log", "cog"}
+		res = 5
+		testTemp()
+
+		params1 = "hit"
+		params2 = "cog"
+		params3 = []string{"hot", "dot", "dog", "lot", "log"}
+		res = 0
 		testTemp()
 	})
 }
