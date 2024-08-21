@@ -35,6 +35,7 @@ import { solve } from "./35.130";
 import { pacificAtlantic } from "./36.417";
 import { updateBoard } from "./37.529";
 import { ladderLength } from "./38.127";
+import { findLadders } from "./39.126";
 
 describe("565 测试用例", () => {
     test(`[5,4,0,3,1,6,2] should return 4`, () => {
@@ -841,5 +842,41 @@ describe("127 测试用例", () => {
         expect(
             ladderLength("hit", "cog", ["hot", "dot", "dog", "lot", "log"])
         ).toBe(0);
+    });
+
+    test(`"hit", "cog" should return 00`, () => {
+        expect(ladderLength("hit", "cog", ["hot", "dot", "tog", "cog"])).toBe(
+            0
+        );
+    });
+});
+
+describe("126 测试用例", () => {
+    test(`"hit", "cog"  should return test1`, () => {
+        expect(
+            findLadders("hit", "cog", [
+                "hot",
+                "dot",
+                "dog",
+                "lot",
+                "log",
+                "cog",
+            ])
+        ).toEqual([
+            ["hit", "hot", "dot", "dog", "cog"],
+            ["hit", "hot", "lot", "log", "cog"],
+        ]);
+    });
+
+    test(`"hit", "cog" should return test2`, () => {
+        expect(
+            findLadders("hit", "cog", ["hot", "dot", "dog", "lot", "log"])
+        ).toEqual([]);
+    });
+
+    test(`"hit", "cog" should return test3`, () => {
+        expect(findLadders("hit", "cog", ["hot", "dot", "tog", "cog"])).toEqual(
+            []
+        );
     });
 });
