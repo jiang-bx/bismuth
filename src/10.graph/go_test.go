@@ -1430,3 +1430,39 @@ func TestFindLadders(t *testing.T) {
 		testTemp()
 	})
 }
+
+func TestMinMutation(t *testing.T) {
+	utils.TestWarp("433 测试用例", func() {
+		params1 := ""
+		params2 := ""
+		params3 := []string{}
+		res := 0
+		testTemp := func() {
+			str1, _ := json.Marshal(params1)
+			str2, _ := json.Marshal(params2)
+			str3, _ := json.Marshal(params3)
+			res1, _ := json.Marshal(res)
+			desc := string(str1) + ", " + string(str2) + ", " + string(str3) + " should return " + string(res1)
+
+			utils.TestCondition(t, desc, MinMutation(params1, params2, params3) == res)
+		}
+
+		params1 = "AACCGGTT"
+		params2 = "AACCGGTA"
+		params3 = []string{"AACCGGTA"}
+		res = 1
+		testTemp()
+
+		params1 = "AACCGGTT"
+		params2 = "AAACGGTA"
+		params3 = []string{"AACCGGTA", "AACCGCTA", "AAACGGTA"}
+		res = 2
+		testTemp()
+
+		params1 = "AAAAACCC"
+		params2 = "AACCCCCC"
+		params3 = []string{"AAAACCCC", "AAACCCCC", "AACCCCCC"}
+		res = 3
+		testTemp()
+	})
+}

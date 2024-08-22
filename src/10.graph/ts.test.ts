@@ -36,6 +36,7 @@ import { pacificAtlantic } from "./36.417";
 import { updateBoard } from "./37.529";
 import { ladderLength } from "./38.127";
 import { findLadders } from "./39.126";
+import { minMutation } from "./40.433";
 
 describe("565 测试用例", () => {
     test(`[5,4,0,3,1,6,2] should return 4`, () => {
@@ -878,5 +879,31 @@ describe("126 测试用例", () => {
         expect(findLadders("hit", "cog", ["hot", "dot", "tog", "cog"])).toEqual(
             []
         );
+    });
+});
+
+describe("433 测试用例", () => {
+    test(`"AACCGGTT"  should return 1`, () => {
+        expect(minMutation("AACCGGTT", "AACCGGTA", ["AACCGGTA"])).toBe(1);
+    });
+
+    test(`"AACCGGTT"  should return 2`, () => {
+        expect(
+            minMutation("AACCGGTT", "AAACGGTA", [
+                "AACCGGTA",
+                "AACCGCTA",
+                "AAACGGTA",
+            ])
+        ).toBe(2);
+    });
+
+    test(`"AAAAACCC"  should return 3`, () => {
+        expect(
+            minMutation("AAAAACCC", "AACCCCCC", [
+                "AAAACCCC",
+                "AAACCCCC",
+                "AACCCCCC",
+            ])
+        ).toBe(3);
     });
 });
