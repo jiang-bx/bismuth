@@ -37,6 +37,7 @@ import { updateBoard } from "./37.529";
 import { ladderLength } from "./38.127";
 import { findLadders } from "./39.126";
 import { minMutation } from "./40.433";
+import { cutOffTree } from "./41.675";
 
 describe("565 测试用例", () => {
     test(`[5,4,0,3,1,6,2] should return 4`, () => {
@@ -905,5 +906,37 @@ describe("433 测试用例", () => {
                 "AACCCCCC",
             ])
         ).toBe(3);
+    });
+});
+
+describe("675 测试用例", () => {
+    test(`[1,2,3],[0,0,4],[7,6,5]  should return 6`, () => {
+        expect(
+            cutOffTree([
+                [1, 2, 3],
+                [0, 0, 4],
+                [7, 6, 5],
+            ])
+        ).toBe(6);
+    });
+
+    test(`[1,2,3],[0,0,0],[7,6,5]  should return -1`, () => {
+        expect(
+            cutOffTree([
+                [1, 2, 3],
+                [0, 0, 0],
+                [7, 6, 5],
+            ])
+        ).toBe(-1);
+    });
+
+    test(`[2,3,4],[0,0,5],[8,7,6]  should return 6`, () => {
+        expect(
+            cutOffTree([
+                [2, 3, 4],
+                [0, 0, 5],
+                [8, 7, 6],
+            ])
+        ).toBe(6);
     });
 });
