@@ -1492,9 +1492,9 @@ func TestCutOffTree(t *testing.T) {
 		testTemp()
 
 		params1 = [][]int{
-			{1, 2, 3},
+			{1, 5, 3},
 			{0, 0, 0},
-			{7, 6, 5},
+			{7, 6, 2},
 		}
 		res = -1
 		testTemp()
@@ -1505,6 +1505,40 @@ func TestCutOffTree(t *testing.T) {
 			{8, 7, 6},
 		}
 		res = 6
+		testTemp()
+	})
+}
+
+func TestFindCircleNum(t *testing.T) {
+	utils.TestWarp("547 测试用例", func() {
+		params1 := [][]int{}
+		params2 := ""
+		params3 := []string{}
+		res := 0
+		testTemp := func() {
+			str1, _ := json.Marshal(params1)
+			str2, _ := json.Marshal(params2)
+			str3, _ := json.Marshal(params3)
+			res1, _ := json.Marshal(res)
+			desc := string(str1) + ", " + string(str2) + ", " + string(str3) + " should return " + string(res1)
+
+			utils.TestCondition(t, desc, FindCircleNum(params1) == res)
+		}
+
+		params1 = [][]int{
+			{1, 1, 0},
+			{1, 1, 0},
+			{0, 0, 1},
+		}
+		res = 2
+		testTemp()
+
+		params1 = [][]int{
+			{1, 0, 0},
+			{0, 1, 0},
+			{0, 0, 1},
+		}
+		res = 3
 		testTemp()
 	})
 }

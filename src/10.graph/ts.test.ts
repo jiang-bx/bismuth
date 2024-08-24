@@ -38,6 +38,7 @@ import { ladderLength } from "./38.127";
 import { findLadders } from "./39.126";
 import { minMutation } from "./40.433";
 import { cutOffTree } from "./41.675";
+import { findCircleNum } from "./42.547";
 
 describe("565 测试用例", () => {
     test(`[5,4,0,3,1,6,2] should return 4`, () => {
@@ -938,5 +939,27 @@ describe("675 测试用例", () => {
                 [8, 7, 6],
             ])
         ).toBe(6);
+    });
+});
+
+describe("547 测试用例", () => {
+    test(`[[1,1,0],[1,1,0],[0,0,1]]  should return 2`, () => {
+        expect(
+            findCircleNum([
+                [1, 1, 0],
+                [1, 1, 0],
+                [0, 0, 1],
+            ])
+        ).toBe(2);
+    });
+
+    test(`[[1,0,0],[0,1,0],[0,0,1]] should return 3`, () => {
+        expect(
+            findCircleNum([
+                [1, 0, 0],
+                [0, 1, 0],
+                [0, 0, 1],
+            ])
+        ).toBe(3);
     });
 });
