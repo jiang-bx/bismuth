@@ -39,6 +39,7 @@ import { findLadders } from "./39.126";
 import { minMutation } from "./40.433";
 import { cutOffTree } from "./41.675";
 import { findCircleNum } from "./42.547";
+import { findRedundantConnection } from "./43.684";
 
 describe("565 测试用例", () => {
     test(`[5,4,0,3,1,6,2] should return 4`, () => {
@@ -953,6 +954,16 @@ describe("547 测试用例", () => {
         ).toBe(2);
     });
 
+    test(`[[1,1,1],[1,1,0],[1,0,1]]  should return 1`, () => {
+        expect(
+            findCircleNum([
+                [1, 1, 1],
+                [1, 1, 0],
+                [1, 0, 1],
+            ])
+        ).toBe(1);
+    });
+
     test(`[[1,0,0],[0,1,0],[0,0,1]] should return 3`, () => {
         expect(
             findCircleNum([
@@ -961,5 +972,29 @@ describe("547 测试用例", () => {
                 [0, 0, 1],
             ])
         ).toBe(3);
+    });
+});
+
+describe("684 测试用例", () => {
+    test(`[[1,2], [1,3], [2,3]]  should return [2,3]`, () => {
+        expect(
+            findRedundantConnection([
+                [1, 2],
+                [1, 3],
+                [2, 3],
+            ])
+        ).toEqual([2, 3]);
+    });
+
+    test(`[[1,2], [2,3], [3,4], [1,4], [1,5]]  should return [1,4]`, () => {
+        expect(
+            findRedundantConnection([
+                [1, 2],
+                [2, 3],
+                [3, 4],
+                [1, 4],
+                [1, 5],
+            ])
+        ).toEqual([1, 4]);
     });
 });

@@ -1542,3 +1542,39 @@ func TestFindCircleNum(t *testing.T) {
 		testTemp()
 	})
 }
+
+func TestFindRedundantConnection(t *testing.T) {
+	utils.TestWarp("684 测试用例", func() {
+		params1 := [][]int{}
+		params2 := ""
+		params3 := []string{}
+		res := []int{}
+		testTemp := func() {
+			str1, _ := json.Marshal(params1)
+			str2, _ := json.Marshal(params2)
+			str3, _ := json.Marshal(params3)
+			res1, _ := json.Marshal(res)
+			desc := string(str1) + ", " + string(str2) + ", " + string(str3) + " should return " + string(res1)
+
+			utils.TestCondition(t, desc, reflect.DeepEqual(FindRedundantConnection(params1), res))
+		}
+
+		params1 = [][]int{
+			{1, 2},
+			{1, 3},
+			{2, 3},
+		}
+		res = []int{2, 3}
+		testTemp()
+
+		params1 = [][]int{
+			{1, 2},
+			{2, 3},
+			{3, 4},
+			{1, 4},
+			{1, 5},
+		}
+		res = []int{1, 4}
+		testTemp()
+	})
+}
