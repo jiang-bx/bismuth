@@ -40,6 +40,7 @@ import { minMutation } from "./40.433";
 import { cutOffTree } from "./41.675";
 import { findCircleNum } from "./42.547";
 import { findRedundantConnection } from "./43.684";
+import { findRedundantDirectedConnection } from "./44.685";
 
 describe("565 测试用例", () => {
     test(`[5,4,0,3,1,6,2] should return 4`, () => {
@@ -996,5 +997,29 @@ describe("684 测试用例", () => {
                 [1, 5],
             ])
         ).toEqual([1, 4]);
+    });
+});
+
+describe("685 测试用例", () => {
+    test(`[[1,2], [1,3], [2,3]]  should return [2,3]`, () => {
+        expect(
+            findRedundantDirectedConnection([
+                [1, 2],
+                [1, 3],
+                [2, 3],
+            ])
+        ).toEqual([2, 3]);
+    });
+
+    test(`[[1,2], [2,3], [3,4], [4, 1], [1,5]]  should return [4, 1]`, () => {
+        expect(
+            findRedundantDirectedConnection([
+                [1, 2],
+                [2, 3],
+                [3, 4],
+                [4, 1],
+                [1, 5],
+            ])
+        ).toEqual([4, 1]);
     });
 });

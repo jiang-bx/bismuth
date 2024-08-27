@@ -1,6 +1,6 @@
 package graph
 
-func FindRedundantConnection(edges [][]int) []int {
+func FindRedundantDirectedConnection(edges [][]int) []int {
 	n := len(edges)
 	father := make([]int, n+1)
 	for i := 0; i < n; i++ {

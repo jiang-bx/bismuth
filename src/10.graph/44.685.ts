@@ -1,4 +1,4 @@
-export function findRedundantConnection(edges: number[][]): number[] {
+export function findRedundantDirectedConnection(edges: number[][]): number[] {
     const n = edges.length;
     const father = new Array(n + 1).fill(0);
     for (let i = 0; i < n; i++) {
