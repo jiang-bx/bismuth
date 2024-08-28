@@ -41,6 +41,7 @@ import { cutOffTree } from "./41.675";
 import { findCircleNum } from "./42.547";
 import { findRedundantConnection } from "./43.684";
 import { findRedundantDirectedConnection } from "./44.685";
+import { calcEquation } from "./45.399";
 
 describe("565 测试用例", () => {
     test(`[5,4,0,3,1,6,2] should return 4`, () => {
@@ -1021,5 +1022,71 @@ describe("685 测试用例", () => {
                 [1, 5],
             ])
         ).toEqual([4, 1]);
+    });
+
+    test(`[[2,1],[3,1],[4,2],[1,4]]  should return [2, 1]`, () => {
+        expect(
+            findRedundantDirectedConnection([
+                [2, 1],
+                [3, 1],
+                [4, 2],
+                [1, 4],
+            ])
+        ).toEqual([2, 1]);
+    });
+});
+
+describe("399 测试用例", () => {
+    test(`test1  should return test1`, () => {
+        expect(
+            calcEquation(
+                [
+                    ["a", "b"],
+                    ["b", "c"],
+                ],
+                [2.0, 3.0],
+                [
+                    ["a", "c"],
+                    ["b", "a"],
+                    ["a", "e"],
+                    ["a", "a"],
+                    ["x", "x"],
+                ]
+            )
+        ).toEqual([6.0, 0.5, -1.0, 1.0, -1.0]);
+    });
+
+    test(`test2  should return test2`, () => {
+        expect(
+            calcEquation(
+                [
+                    ["a", "b"],
+                    ["b", "c"],
+                    ["bc", "cd"],
+                ],
+                [1.5, 2.5, 5.0],
+                [
+                    ["a", "c"],
+                    ["c", "b"],
+                    ["bc", "cd"],
+                    ["cd", "bc"],
+                ]
+            )
+        ).toEqual([3.75, 0.4, 5.0, 0.2]);
+    });
+
+    test(`test3  should return test3`, () => {
+        expect(
+            calcEquation(
+                [["a", "b"]],
+                [0.5],
+                [
+                    ["a", "b"],
+                    ["b", "a"],
+                    ["a", "c"],
+                    ["x", "y"],
+                ]
+            )
+        ).toEqual([0.5, 2.0, -1.0, -1.0]);
     });
 });

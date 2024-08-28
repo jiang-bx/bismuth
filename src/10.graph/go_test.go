@@ -1614,3 +1614,64 @@ func TestFindRedundantDirectedConnection(t *testing.T) {
 		testTemp()
 	})
 }
+
+func TestCalcEquation(t *testing.T) {
+	utils.TestWarp("685 测试用例", func() {
+		params1 := [][]string{}
+		params2 := []float64{}
+		params3 := [][]string{}
+		res := []float64{}
+		testTemp := func() {
+			str1, _ := json.Marshal(params1)
+			str2, _ := json.Marshal(params2)
+			str3, _ := json.Marshal(params3)
+			res1, _ := json.Marshal(res)
+			desc := string(str1) + ", " + string(str2) + ", " + string(str3) + " should return " + string(res1)
+
+			utils.TestCondition(t, desc, reflect.DeepEqual(CalcEquation(params1, params2, params3), res))
+		}
+
+		params1 = [][]string{
+			{"a", "b"},
+			{"b", "c"},
+		}
+		params2 = []float64{2.0, 3.0}
+		params3 = [][]string{
+			{"a", "c"},
+			{"b", "a"},
+			{"a", "e"},
+			{"a", "a"},
+			{"x", "x"},
+		}
+		res = []float64{6.00000, 0.50000, -1.00000, 1.00000, -1.00000}
+		testTemp()
+
+		params1 = [][]string{
+			{"a", "b"},
+			{"b", "c"},
+			{"bc", "cd"},
+		}
+		params2 = []float64{1.5, 2.5, 5.0}
+		params3 = [][]string{
+			{"a", "c"},
+			{"c", "b"},
+			{"bc", "cd"},
+			{"cd", "bc"},
+		}
+		res = []float64{3.75000, 0.40000, 5.00000, 0.20000}
+		testTemp()
+
+		params1 = [][]string{
+			{"a", "b"},
+		}
+		params2 = []float64{0.5}
+		params3 = [][]string{
+			{"a", "b"},
+			{"b", "a"},
+			{"a", "c"},
+			{"x", "y"},
+		}
+		res = []float64{0.50000, 2.00000, -1.00000, -1.00000}
+		testTemp()
+	})
+}
