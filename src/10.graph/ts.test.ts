@@ -42,6 +42,7 @@ import { findCircleNum } from "./42.547";
 import { findRedundantConnection } from "./43.684";
 import { findRedundantDirectedConnection } from "./44.685";
 import { calcEquation } from "./45.399";
+import { canFinish } from "./46.207";
 
 describe("565 测试用例", () => {
     test(`[5,4,0,3,1,6,2] should return 4`, () => {
@@ -1088,5 +1089,20 @@ describe("399 测试用例", () => {
                 ]
             )
         ).toEqual([0.5, 2.0, -1.0, -1.0]);
+    });
+});
+
+describe("207 测试用例", () => {
+    test(`2 should return true`, () => {
+        expect(canFinish(2, [[1, 0]])).toBe(true);
+    });
+
+    test(`2 should return false`, () => {
+        expect(
+            canFinish(2, [
+                [1, 0],
+                [0, 1],
+            ])
+        ).toBe(false);
     });
 });
