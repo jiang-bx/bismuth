@@ -1675,6 +1675,7 @@ func TestCalcEquation(t *testing.T) {
 		testTemp()
 	})
 }
+
 func TestCanFinish(t *testing.T) {
 	utils.TestWarp("207 测试用例", func() {
 		params1 := 0
@@ -1699,6 +1700,44 @@ func TestCanFinish(t *testing.T) {
 		params1 = 2
 		params2 = [][]int{{1, 0}, {0, 1}}
 		res = false
+		testTemp()
+
+		params1 = 2
+		params2 = [][]int{{0, 1}}
+		res = true
+		testTemp()
+	})
+}
+
+func TestFindOrder(t *testing.T) {
+	utils.TestWarp("210 测试用例", func() {
+		params1 := 0
+		params2 := [][]int{}
+		params3 := [][]string{}
+		res := []int{}
+		testTemp := func() {
+			str1, _ := json.Marshal(params1)
+			str2, _ := json.Marshal(params2)
+			str3, _ := json.Marshal(params3)
+			res1, _ := json.Marshal(res)
+			desc := string(str1) + ", " + string(str2) + ", " + string(str3) + " should return " + string(res1)
+
+			utils.TestCondition(t, desc, reflect.DeepEqual(FindOrder(params1, params2), res))
+		}
+
+		params1 = 2
+		params2 = [][]int{{1, 0}}
+		res = []int{0, 1}
+		testTemp()
+
+		params1 = 2
+		params2 = [][]int{{1, 0}, {0, 1}}
+		res = []int{0, 1}
+		testTemp()
+
+		params1 = 1
+		params2 = [][]int{}
+		res = []int{0}
 		testTemp()
 	})
 }

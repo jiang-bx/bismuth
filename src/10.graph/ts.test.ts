@@ -43,6 +43,7 @@ import { findRedundantConnection } from "./43.684";
 import { findRedundantDirectedConnection } from "./44.685";
 import { calcEquation } from "./45.399";
 import { canFinish } from "./46.207";
+import { findOrder } from "./47.210";
 
 describe("565 测试用例", () => {
     test(`[5,4,0,3,1,6,2] should return 4`, () => {
@@ -1104,5 +1105,30 @@ describe("207 测试用例", () => {
                 [0, 1],
             ])
         ).toBe(false);
+    });
+
+    test(`2, [[0, 1]] should return true1`, () => {
+        expect(canFinish(2, [[0, 1]])).toBe(true);
+    });
+});
+
+describe("210 测试用例", () => {
+    test(`2 should return [0,1]`, () => {
+        expect(findOrder(2, [[1, 0]])).toEqual([0, 1]);
+    });
+
+    test(`4, [[1,0],[2,0],[3,1],[3,2]] should return [0,2,1,3]`, () => {
+        expect(
+            findOrder(4, [
+                [1, 0],
+                [2, 0],
+                [3, 1],
+                [3, 2],
+            ])
+        ).toEqual([0, 2, 1, 3]);
+    });
+
+    test(`1 should return [0]`, () => {
+        expect(findOrder(1, [])).toEqual([0]);
     });
 });
