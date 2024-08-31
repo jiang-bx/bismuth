@@ -44,6 +44,7 @@ import { findRedundantDirectedConnection } from "./44.685";
 import { calcEquation } from "./45.399";
 import { canFinish } from "./46.207";
 import { findOrder } from "./47.210";
+import { isNumber } from "./48.65";
 
 describe("565 测试用例", () => {
     test(`[5,4,0,3,1,6,2] should return 4`, () => {
@@ -1125,10 +1126,24 @@ describe("210 测试用例", () => {
                 [3, 1],
                 [3, 2],
             ])
-        ).toEqual([0, 2, 1, 3]);
+        ).toEqual([0, 1, 2, 3]);
     });
 
     test(`1 should return [0]`, () => {
         expect(findOrder(1, [])).toEqual([0]);
+    });
+});
+
+describe("65 测试用例", () => {
+    test(`0 should return true`, () => {
+        expect(isNumber("0")).toBe(true);
+    });
+
+    test(`e should return false`, () => {
+        expect(isNumber("e")).toBe(false);
+    });
+
+    test(`. should return false`, () => {
+        expect(isNumber(".")).toBe(false);
     });
 });
