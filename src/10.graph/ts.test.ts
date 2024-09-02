@@ -45,6 +45,7 @@ import { calcEquation } from "./45.399";
 import { canFinish } from "./46.207";
 import { findOrder } from "./47.210";
 import { isNumber } from "./48.65";
+import { validIPAddress } from "./49.468";
 
 describe("565 测试用例", () => {
     test(`[5,4,0,3,1,6,2] should return 4`, () => {
@@ -1145,5 +1146,21 @@ describe("65 测试用例", () => {
 
     test(`. should return false`, () => {
         expect(isNumber(".")).toBe(false);
+    });
+});
+
+describe("468 测试用例", () => {
+    test(`172.16.254.1 should return IPv4`, () => {
+        expect(validIPAddress("172.16.254.1")).toBe("IPv4");
+    });
+
+    test(`2001:0db8:85a3:0:0:8A2E:0370:7334 should return IPv6`, () => {
+        expect(validIPAddress("2001:0db8:85a3:0:0:8A2E:0370:7334")).toBe(
+            "IPv6"
+        );
+    });
+
+    test(`256.256.256.256 should return Neither`, () => {
+        expect(validIPAddress("256.256.256.256")).toBe("Neither");
     });
 });

@@ -1776,3 +1776,33 @@ func TestIsNumber(t *testing.T) {
 		testTemp()
 	})
 }
+
+func TestValidIPAddress(t *testing.T) {
+	utils.TestWarp("468 测试用例", func() {
+		params1 := ""
+		params2 := [][]int{}
+		params3 := [][]string{}
+		res := ""
+		testTemp := func() {
+			str1, _ := json.Marshal(params1)
+			str2, _ := json.Marshal(params2)
+			str3, _ := json.Marshal(params3)
+			res1, _ := json.Marshal(res)
+			desc := string(str1) + ", " + string(str2) + ", " + string(str3) + " should return " + string(res1)
+
+			utils.TestCondition(t, desc, ValidIPAddress(params1) == res)
+		}
+
+		params1 = "172.16.254.1"
+		res = "IPv4"
+		testTemp()
+
+		params1 = "2001:0db8:85a3:0:0:8A2E:0370:7334"
+		res = "IPv6"
+		testTemp()
+
+		params1 = "256.256.256.256"
+		res = "Neither"
+		testTemp()
+	})
+}
