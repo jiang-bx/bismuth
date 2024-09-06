@@ -6,7 +6,7 @@ func IsPerfectSquare(num int) bool {
 
 	for l <= r {
 		mid := l + (r-l)/2
-		res := mid
+		res := mid * mid
 		if res == num {
 			return true
 		} else if res > num {

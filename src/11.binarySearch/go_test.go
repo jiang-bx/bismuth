@@ -3,6 +3,7 @@ package array_greedy
 import (
 	"encoding/json"
 	"leetcode/src/utils"
+	"reflect"
 	"testing"
 )
 
@@ -91,6 +92,65 @@ func TestIsPerfectSquare(t *testing.T) {
 
 		params1 = 14
 		res = false
+		testTemp()
+	})
+}
+
+func TestArrangeCoins(t *testing.T) {
+	utils.TestWarp("441 测试用例", func() {
+		params1 := 1
+		params2 := 1
+		params3 := [][]string{}
+		res := 1
+		testTemp := func() {
+			str1, _ := json.Marshal(params1)
+			str2, _ := json.Marshal(params2)
+			str3, _ := json.Marshal(params3)
+			res1, _ := json.Marshal(res)
+			desc := string(str1) + ", " + string(str2) + ", " + string(str3) + " should return " + string(res1)
+
+			utils.TestCondition(t, desc, ArrangeCoins(params1) == res)
+		}
+
+		params1 = 5
+		res = 2
+		testTemp()
+
+		params1 = 8
+		res = 3
+		testTemp()
+	})
+}
+
+func TestSearchRange(t *testing.T) {
+	utils.TestWarp("34 测试用例", func() {
+		params1 := []int{}
+		params2 := 1
+		params3 := [][]string{}
+		res := []int{}
+		testTemp := func() {
+			str1, _ := json.Marshal(params1)
+			str2, _ := json.Marshal(params2)
+			str3, _ := json.Marshal(params3)
+			res1, _ := json.Marshal(res)
+			desc := string(str1) + ", " + string(str2) + ", " + string(str3) + " should return " + string(res1)
+
+			utils.TestCondition(t, desc, reflect.DeepEqual(SearchRange(params1, params2), res))
+		}
+
+		params1 = []int{5, 7, 7, 8, 8, 10}
+		params2 = 8
+		res = []int{3, 4}
+		testTemp()
+
+		params1 = []int{5, 7, 7, 8, 8, 10}
+		params2 = 6
+		res = []int{-1, -1}
+		testTemp()
+
+		params1 = []int{}
+		params2 = 0
+		res = []int{-1, -1}
 		testTemp()
 	})
 }
