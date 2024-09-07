@@ -3,6 +3,7 @@ import { searchInsert } from "./02.35";
 import { isPerfectSquare } from "./03.367";
 import { arrangeCoins } from "./04.441";
 import { searchRange } from "./05.34";
+import { singleNonDuplicate } from "./06.540";
 
 describe("374 测试用例", () => {
     test(`"10 should return 6`, () => {
@@ -57,11 +58,25 @@ describe("34 测试用例", () => {
         expect(searchRange([5, 7, 7, 8, 8, 10], 8)).toEqual([3, 4]);
     });
 
+    test(`[2, 2], target = 2 should return [0,1]`, () => {
+        expect(searchRange([2, 2], 2)).toEqual([0, 1]);
+    });
+
     test(`[5,7,7,8,8,10], target = 6 should return [-1,-1]`, () => {
         expect(searchRange([5, 7, 7, 8, 8, 10], 6)).toEqual([-1, -1]);
     });
 
     test(`[], target = 0 should return [-1,-1]`, () => {
         expect(searchRange([], 0)).toEqual([-1, -1]);
+    });
+});
+
+describe("34 测试用例", () => {
+    test(`[1,1,2,3,3,4,4,8,8] should return 2`, () => {
+        expect(singleNonDuplicate([1, 1, 2, 3, 3, 4, 4, 8, 8])).toBe(2);
+    });
+
+    test(`[3,3,7,7,10,11,11] should return 10`, () => {
+        expect(singleNonDuplicate([3, 3, 7, 7, 10, 11, 11])).toBe(10);
     });
 });

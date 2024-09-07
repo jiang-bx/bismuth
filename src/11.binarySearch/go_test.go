@@ -154,3 +154,29 @@ func TestSearchRange(t *testing.T) {
 		testTemp()
 	})
 }
+
+func TestSingleNonDuplicate(t *testing.T) {
+	utils.TestWarp("540 测试用例", func() {
+		params1 := []int{}
+		params2 := 1
+		params3 := [][]string{}
+		res := 1
+		testTemp := func() {
+			str1, _ := json.Marshal(params1)
+			str2, _ := json.Marshal(params2)
+			str3, _ := json.Marshal(params3)
+			res1, _ := json.Marshal(res)
+			desc := string(str1) + ", " + string(str2) + ", " + string(str3) + " should return " + string(res1)
+
+			utils.TestCondition(t, desc, SingleNonDuplicate(params1) == res)
+		}
+
+		params1 = []int{1, 1, 2, 3, 3, 4, 4, 8, 8}
+		res = 2
+		testTemp()
+
+		params1 = []int{3, 3, 7, 7, 10, 11, 11}
+		res = 10
+		testTemp()
+	})
+}
