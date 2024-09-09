@@ -71,12 +71,22 @@ describe("34 测试用例", () => {
     });
 });
 
-describe("34 测试用例", () => {
+describe("540 测试用例", () => {
     test(`[1,1,2,3,3,4,4,8,8] should return 2`, () => {
         expect(singleNonDuplicate([1, 1, 2, 3, 3, 4, 4, 8, 8])).toBe(2);
     });
 
     test(`[3,3,7,7,10,11,11] should return 10`, () => {
         expect(singleNonDuplicate([3, 3, 7, 7, 10, 11, 11])).toBe(10);
+    });
+});
+
+describe("275 测试用例", () => {
+    test(`[0,1,3,5,6] should return 3`, () => {
+        expect(singleNonDuplicate([0, 1, 3, 5, 6])).toBe(3);
+    });
+
+    test(`[1,2,100] should return 2`, () => {
+        expect(singleNonDuplicate([1, 2, 100])).toBe(2);
     });
 });
