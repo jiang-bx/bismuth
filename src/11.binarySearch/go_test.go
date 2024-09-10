@@ -204,5 +204,51 @@ func TestHIndex(t *testing.T) {
 		params1 = []int{1, 2, 100}
 		res = 2
 		testTemp()
+
+		params1 = []int{100}
+		res = 1
+		testTemp()
+
+		params1 = []int{0}
+		res = 0
+		testTemp()
+	})
+}
+
+func TestFindRightInterval(t *testing.T) {
+	utils.TestWarp("436 测试用例", func() {
+		params1 := [][]int{}
+		params2 := 1
+		params3 := [][]string{}
+		res := []int{}
+		testTemp := func() {
+			str1, _ := json.Marshal(params1)
+			str2, _ := json.Marshal(params2)
+			str3, _ := json.Marshal(params3)
+			res1, _ := json.Marshal(res)
+			desc := string(str1) + ", " + string(str2) + ", " + string(str3) + " should return " + string(res1)
+
+			utils.TestCondition(t, desc, reflect.DeepEqual(FindRightInterval(params1), res))
+		}
+
+		params1 = [][]int{{1, 2}}
+		res = []int{-1}
+		testTemp()
+
+		params1 = [][]int{
+			{3, 4},
+			{2, 3},
+			{1, 2},
+		}
+		res = []int{-1, 0, 1}
+		testTemp()
+
+		params1 = [][]int{
+			{1, 4},
+			{2, 3},
+			{3, 4},
+		}
+		res = []int{-1, 2, -1}
+		testTemp()
 	})
 }

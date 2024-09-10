@@ -4,6 +4,8 @@ import { isPerfectSquare } from "./03.367";
 import { arrangeCoins } from "./04.441";
 import { searchRange } from "./05.34";
 import { singleNonDuplicate } from "./06.540";
+import { hIndex } from "./07.275";
+import { findRightInterval } from "./08.436";
 
 describe("374 测试用例", () => {
     test(`"10 should return 6`, () => {
@@ -83,10 +85,36 @@ describe("540 测试用例", () => {
 
 describe("275 测试用例", () => {
     test(`[0,1,3,5,6] should return 3`, () => {
-        expect(singleNonDuplicate([0, 1, 3, 5, 6])).toBe(3);
+        expect(hIndex([0, 1, 3, 5, 6])).toBe(3);
     });
 
     test(`[1,2,100] should return 2`, () => {
-        expect(singleNonDuplicate([1, 2, 100])).toBe(2);
+        expect(hIndex([1, 2, 100])).toBe(2);
+    });
+});
+
+describe("436 测试用例", () => {
+    test(`[[1,2]] should return [-1]`, () => {
+        expect(findRightInterval([[1, 2]])).toEqual([-1]);
+    });
+
+    test(`[[3,4],[2,3],[1,2]] should return [-1,0,1]`, () => {
+        expect(
+            findRightInterval([
+                [3, 4],
+                [2, 3],
+                [1, 2],
+            ])
+        ).toEqual([-1, 0, 1]);
+    });
+
+    test(`[[1,4],[2,3],[3,4]] should return [-1,0,1]`, () => {
+        expect(
+            findRightInterval([
+                [1, 4],
+                [2, 3],
+                [3, 4],
+            ])
+        ).toEqual([-1, 2, -1]);
     });
 });
