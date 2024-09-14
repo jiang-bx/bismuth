@@ -6,6 +6,7 @@ import { searchRange } from "./05.34";
 import { singleNonDuplicate } from "./06.540";
 import { hIndex } from "./07.275";
 import { findRightInterval } from "./08.436";
+import { lengthOfLIS } from "./09.300";
 
 describe("374 测试用例", () => {
     test(`"10 should return 6`, () => {
@@ -116,5 +117,19 @@ describe("436 测试用例", () => {
                 [3, 4],
             ])
         ).toEqual([-1, 2, -1]);
+    });
+});
+
+describe("300 测试用例", () => {
+    test(`[ 10, 9, 2, 5, 3, 7, 101, 18 ] should return 4`, () => {
+        expect(lengthOfLIS([10, 9, 2, 5, 3, 7, 101, 18])).toBe(4);
+    });
+
+    test(`[ 0,1,0,3,2,3 ] should return 4`, () => {
+        expect(lengthOfLIS([0, 1, 0, 3, 2, 3])).toBe(4);
+    });
+
+    test(`[7,7,7,7,7,7,7] should return 1`, () => {
+        expect(lengthOfLIS([7, 7, 7, 7, 7, 7, 7])).toBe(1);
     });
 });
