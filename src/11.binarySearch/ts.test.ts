@@ -7,6 +7,7 @@ import { singleNonDuplicate } from "./06.540";
 import { hIndex } from "./07.275";
 import { findRightInterval } from "./08.436";
 import { lengthOfLIS } from "./09.300";
+import { maxEnvelopes } from "./10.354";
 
 describe("374 测试用例", () => {
     test(`"10 should return 6`, () => {
@@ -131,5 +132,28 @@ describe("300 测试用例", () => {
 
     test(`[7,7,7,7,7,7,7] should return 1`, () => {
         expect(lengthOfLIS([7, 7, 7, 7, 7, 7, 7])).toBe(1);
+    });
+});
+
+describe("354 测试用例", () => {
+    test(`[[5,4],[6,4],[6,7],[2,3]] should return 3`, () => {
+        expect(
+            maxEnvelopes([
+                [5, 4],
+                [6, 4],
+                [6, 7],
+                [2, 3],
+            ])
+        ).toBe(3);
+    });
+
+    test(`[[1,1],[1,1],[1,1]] should return 1`, () => {
+        expect(
+            maxEnvelopes([
+                [1, 1],
+                [1, 1],
+                [1, 1],
+            ])
+        ).toBe(1);
     });
 });

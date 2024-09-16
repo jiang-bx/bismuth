@@ -252,3 +252,88 @@ func TestFindRightInterval(t *testing.T) {
 		testTemp()
 	})
 }
+
+func TestLengthOfLIS(t *testing.T) {
+	utils.TestWarp("300 测试用例", func() {
+		params1 := []int{}
+		params2 := 0
+		params3 := [][]string{}
+		res := 1
+		testTemp := func() {
+			str1, _ := json.Marshal(params1)
+			str2, _ := json.Marshal(params2)
+			str3, _ := json.Marshal(params3)
+			res1, _ := json.Marshal(res)
+			desc := string(str1) + ", " + string(str2) + ", " + string(str3) + " should return " + string(res1)
+
+			utils.TestCondition(
+				t, desc,
+				LengthOfLIS(params1) == res,
+			)
+		}
+
+		t.Run("test1", func(t *testing.T) {
+			params1 = []int{10, 9, 2, 5, 3, 7, 101, 18}
+			res = 4
+			testTemp()
+		})
+
+		t.Run("test1", func(t *testing.T) {
+			params1 = []int{0, 1, 0, 3, 2, 3}
+			res = 4
+			testTemp()
+		})
+
+		t.Run("test1", func(t *testing.T) {
+			params1 = []int{7, 7, 7, 7, 7, 7, 7}
+			res = 1
+			testTemp()
+		})
+
+	})
+}
+
+func TestMaxEnvelopes(t *testing.T) {
+	utils.TestWarp("354 测试用例", func() {
+		params1 := [][]int{}
+		params2 := 0
+		params3 := [][]string{}
+		res := 1
+		testTemp := func() {
+			str1, _ := json.Marshal(params1)
+			str2, _ := json.Marshal(params2)
+			str3, _ := json.Marshal(params3)
+			res1, _ := json.Marshal(res)
+			desc := string(str1) + ", " + string(str2) + ", " + string(str3) + " should return " + string(res1)
+
+			utils.TestCondition(
+				t, desc,
+				reflect.DeepEqual(
+					MaxEnvelopes(params1),
+					res,
+				),
+			)
+		}
+
+		t.Run("test1", func(t *testing.T) {
+			params1 = [][]int{
+				{5, 4},
+				{6, 4},
+				{6, 7},
+				{2, 3},
+			}
+			res = 3
+			testTemp()
+		})
+
+		t.Run("test2", func(t *testing.T) {
+			params1 = [][]int{
+				{1, 1},
+				{1, 1},
+				{1, 1},
+			}
+			res = 1
+			testTemp()
+		})
+	})
+}
