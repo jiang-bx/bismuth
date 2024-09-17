@@ -8,6 +8,7 @@ import { hIndex } from "./07.275";
 import { findRightInterval } from "./08.436";
 import { lengthOfLIS } from "./09.300";
 import { maxEnvelopes } from "./10.354";
+import { findClosestElements } from "./11.658";
 
 describe("374 测试用例", () => {
     test(`"10 should return 6`, () => {
@@ -155,5 +156,35 @@ describe("354 测试用例", () => {
                 [1, 1],
             ])
         ).toBe(1);
+    });
+
+    test(`test3 should return 5`, () => {
+        expect(
+            maxEnvelopes([
+                [2, 100],
+                [3, 200],
+                [4, 300],
+                [5, 500],
+                [5, 400],
+                [5, 250],
+                [6, 370],
+                [6, 360],
+                [7, 380],
+            ])
+        ).toBe(5);
+    });
+});
+
+describe("658 测试用例", () => {
+    test(`[1,2,3,4,5], k = 4, x = 3 should return [1,2,3,4]`, () => {
+        expect(findClosestElements([1, 2, 3, 4, 5], 4, 3)).toEqual([
+            1, 2, 3, 4,
+        ]);
+    });
+
+    test(`[1,2,3,4,5], k = 4, x = -1 should return [1,2,3,4]`, () => {
+        expect(findClosestElements([1, 2, 3, 4, 5], 4, -1)).toEqual([
+            1, 2, 3, 4,
+        ]);
     });
 });

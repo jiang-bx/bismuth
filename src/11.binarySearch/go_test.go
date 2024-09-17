@@ -335,5 +335,62 @@ func TestMaxEnvelopes(t *testing.T) {
 			res = 1
 			testTemp()
 		})
+
+		t.Run("test3", func(t *testing.T) {
+			params1 = [][]int{
+				{2, 100},
+				{3, 200},
+				{4, 300},
+				{5, 500},
+				{5, 400},
+				{5, 250},
+				{6, 370},
+				{6, 360},
+				{7, 380},
+			}
+			res = 5
+			testTemp()
+		})
+	})
+}
+
+func TestFindClosestElements(t *testing.T) {
+	utils.TestWarp("658 测试用例", func() {
+		params1 := []int{}
+		params2 := 0
+		params3 := 0
+		res := []int{}
+		testTemp := func() {
+			str1, _ := json.Marshal(params1)
+			str2, _ := json.Marshal(params2)
+			str3, _ := json.Marshal(params3)
+			res1, _ := json.Marshal(res)
+			desc := string(str1) + ", " + string(str2) + ", " + string(str3) + " should return " + string(res1)
+
+			utils.TestCondition(
+				t, desc,
+				reflect.DeepEqual(
+					FindClosestElements(params1, params2, params3),
+					res,
+				),
+			)
+		}
+
+		t.Run("test1", func(t *testing.T) {
+			params1 = []int{1, 2, 3, 4, 5}
+			params2 = 4
+			params3 = 3
+			res = []int{1, 2, 3, 4}
+			testTemp()
+		})
+
+		t.Run("test2", func(t *testing.T) {
+			params1 = []int{1, 2, 3, 4, 5}
+			params2 = 4
+			params3 = -1
+			res = []int{1, 2, 3, 4}
+			testTemp()
+		})
+
 	})
 }
