@@ -10,6 +10,7 @@ import { lengthOfLIS } from "./09.300";
 import { maxEnvelopes } from "./10.354";
 import { findClosestElements } from "./11.658";
 import { findPeakElement } from "./12.162";
+import { findMedianSortedArrays } from "./13.4";
 
 describe("374 测试用例", () => {
     test(`"10 should return 6`, () => {
@@ -195,7 +196,17 @@ describe("162 测试用例", () => {
         expect(findPeakElement([1, 2, 3, 1])).toBe(2);
     });
 
-    test(`[1,2,1,3,5,6,4] should return 1`, () => {
-        expect(findPeakElement([1, 2, 1, 3, 5, 6, 4])).toBe(1);
+    test(`[1,2,1,3,5,6,4] should return 5`, () => {
+        expect(findPeakElement([1, 2, 1, 3, 5, 6, 4])).toBe(5);
+    });
+});
+
+describe("4 测试用例", () => {
+    test(`[1,3], [2] should return 2`, () => {
+        expect(findMedianSortedArrays([1, 3], [2])).toBe(2);
+    });
+
+    test(`[1,2], [3, 4] should return 2.5`, () => {
+        expect(findMedianSortedArrays([1, 2], [3, 4])).toBe(2.5);
     });
 });
