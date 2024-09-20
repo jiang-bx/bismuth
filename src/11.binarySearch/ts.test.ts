@@ -11,6 +11,7 @@ import { maxEnvelopes } from "./10.354";
 import { findClosestElements } from "./11.658";
 import { findPeakElement } from "./12.162";
 import { findMedianSortedArrays } from "./13.4";
+import { findMin } from "./14.153";
 
 describe("374 测试用例", () => {
     test(`"10 should return 6`, () => {
@@ -201,12 +202,26 @@ describe("162 测试用例", () => {
     });
 });
 
-describe("4 测试用例", () => {
+describe("04 测试用例", () => {
     test(`[1,3], [2] should return 2`, () => {
         expect(findMedianSortedArrays([1, 3], [2])).toBe(2);
     });
 
     test(`[1,2], [3, 4] should return 2.5`, () => {
         expect(findMedianSortedArrays([1, 2], [3, 4])).toBe(2.5);
+    });
+});
+
+describe("04 测试用例", () => {
+    test(`[3,4,5,1,2] should return 1`, () => {
+        expect(findMin([3, 4, 5, 1, 2])).toBe(1);
+    });
+
+    test(`[4,5,6,7,0,1,2] should return 0`, () => {
+        expect(findMin([4, 5, 6, 7, 0, 1, 2])).toBe(0);
+    });
+
+    test(`[11,13,15,17] should return 11`, () => {
+        expect(findMin([11, 13, 15, 17])).toBe(11);
     });
 });
