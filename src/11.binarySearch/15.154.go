@@ -1,6 +1,6 @@
 package array_greedy
 
-func FindMin(nums []int) int {
+func FindMinHard(nums []int) int {
 	n := len(nums)
 	l := 0
 	r := n - 1

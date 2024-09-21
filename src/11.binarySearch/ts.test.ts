@@ -12,6 +12,7 @@ import { findClosestElements } from "./11.658";
 import { findPeakElement } from "./12.162";
 import { findMedianSortedArrays } from "./13.4";
 import { findMin } from "./14.153";
+import { findMinHard } from "./15.154";
 
 describe("374 测试用例", () => {
     test(`"10 should return 6`, () => {
@@ -212,7 +213,7 @@ describe("04 测试用例", () => {
     });
 });
 
-describe("04 测试用例", () => {
+describe("153 测试用例", () => {
     test(`[3,4,5,1,2] should return 1`, () => {
         expect(findMin([3, 4, 5, 1, 2])).toBe(1);
     });
@@ -223,5 +224,19 @@ describe("04 测试用例", () => {
 
     test(`[11,13,15,17] should return 11`, () => {
         expect(findMin([11, 13, 15, 17])).toBe(11);
+    });
+
+    test(`[2,3,4,5,1] should return 1`, () => {
+        expect(findMin([2, 3, 4, 5, 1])).toBe(1);
+    });
+});
+
+describe("154 测试用例", () => {
+    test(`[1,3,5] should return 1`, () => {
+        expect(findMinHard([1, 3, 5])).toBe(1);
+    });
+
+    test(`[2,2,2,0,1] should return 0`, () => {
+        expect(findMinHard([2, 2, 2, 0, 1])).toBe(0);
     });
 });

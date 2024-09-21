@@ -1,4 +1,4 @@
-export function findMin(nums: number[]): number {
+export function findMinHard(nums: number[]): number {
     const n = nums.length;
     let l = 0;
     let r = n - 1;
