@@ -14,6 +14,7 @@ import { findMedianSortedArrays } from "./13.4";
 import { findMin } from "./14.153";
 import { findMinHard } from "./15.154";
 import { search } from "./16.33";
+import { search81 } from "./17.81";
 
 describe("374 测试用例", () => {
     test(`"10 should return 6`, () => {
@@ -261,5 +262,15 @@ describe("33 测试用例", () => {
 
     test(`[1] 0 should return -1`, () => {
         expect(search([1], 0)).toBe(-1);
+    });
+});
+
+describe("81 测试用例", () => {
+    test(`[2,5,6,0,0,1,2] 0 should return true`, () => {
+        expect(search81([2, 5, 6, 0, 0, 1, 2], 0)).toBe(false);
+    });
+
+    test(`[2,5,6,0,0,1,2] 3 should return false`, () => {
+        expect(search81([2, 5, 6, 0, 0, 1, 2], 3)).toBe(false);
     });
 });
