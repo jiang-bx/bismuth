@@ -583,7 +583,7 @@ func TestSearch(t *testing.T) {
 }
 
 func TestSearch81(t *testing.T) {
-	utils.TestWarp("33 测试用例", func() {
+	utils.TestWarp("81 测试用例", func() {
 		params1 := []int{}
 		params2 := 1
 		params3 := 0
@@ -611,6 +611,50 @@ func TestSearch81(t *testing.T) {
 		t.Run("test2", func(t *testing.T) {
 			params1 = []int{2, 5, 6, 0, 0, 1, 2}
 			params2 = 3
+			res = false
+			testTemp()
+		})
+
+	})
+}
+
+func TestSearchMatrix(t *testing.T) {
+	utils.TestWarp("74 测试用例", func() {
+		params1 := [][]int{}
+		params2 := 1
+		params3 := 0
+		res := false
+		testTemp := func() {
+			str1, _ := json.Marshal(params1)
+			str2, _ := json.Marshal(params2)
+			str3, _ := json.Marshal(params3)
+			res1, _ := json.Marshal(res)
+			desc := string(str1) + ", " + string(str2) + ", " + string(str3) + " should return " + string(res1)
+
+			utils.TestCondition(
+				t, desc,
+				SearchMatrix(params1, params2) == res,
+			)
+		}
+
+		t.Run("test1", func(t *testing.T) {
+			params1 = [][]int{
+				{1, 3, 5, 7},
+				{10, 11, 16, 20},
+				{23, 30, 34, 60},
+			}
+			params2 = 3
+			res = true
+			testTemp()
+		})
+
+		t.Run("test2", func(t *testing.T) {
+			params1 = [][]int{
+				{1, 3, 5, 7},
+				{10, 11, 16, 20},
+				{23, 30, 34, 60},
+			}
+			params2 = 13
 			res = false
 			testTemp()
 		})

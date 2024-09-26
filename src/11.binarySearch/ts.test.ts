@@ -15,6 +15,7 @@ import { findMin } from "./14.153";
 import { findMinHard } from "./15.154";
 import { search } from "./16.33";
 import { search81 } from "./17.81";
+import { searchMatrix } from "./18.74";
 
 describe("374 测试用例", () => {
     test(`"10 should return 6`, () => {
@@ -267,10 +268,51 @@ describe("33 测试用例", () => {
 
 describe("81 测试用例", () => {
     test(`[2,5,6,0,0,1,2] 0 should return true`, () => {
-        expect(search81([2, 5, 6, 0, 0, 1, 2], 0)).toBe(false);
+        expect(search81([2, 5, 6, 0, 0, 1, 2], 0)).toBe(true);
     });
 
     test(`[2,5,6,0,0,1,2] 3 should return false`, () => {
         expect(search81([2, 5, 6, 0, 0, 1, 2], 3)).toBe(false);
+    });
+
+    test(`[1,1,1,1,1,1,1,1,1,1,1,1,1,2,1,1,1,1,1] 2 should return true`, () => {
+        expect(
+            search81(
+                [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2, 1, 1, 1, 1, 1],
+                2
+            )
+        ).toBe(true);
+    });
+
+    test(`[5,1,3] 3 should return true`, () => {
+        expect(search81([5, 1, 3], 3)).toBe(true);
+    });
+});
+
+describe("74 测试用例", () => {
+    test(`[[1,3,5,7],[10,11,16,20],[23,30,34,60]], 3 should return true`, () => {
+        expect(
+            searchMatrix(
+                [
+                    [1, 3, 5, 7],
+                    [10, 11, 16, 20],
+                    [23, 30, 34, 60],
+                ],
+                3
+            )
+        ).toBe(true);
+    });
+
+    test(`[[1,3,5,7],[10,11,16,20],[23,30,34,60]], 13 should return false`, () => {
+        expect(
+            searchMatrix(
+                [
+                    [1, 3, 5, 7],
+                    [10, 11, 16, 20],
+                    [23, 30, 34, 60],
+                ],
+                13
+            )
+        ).toBe(false);
     });
 });
