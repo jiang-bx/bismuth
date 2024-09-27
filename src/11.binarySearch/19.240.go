@@ -1,6 +1,6 @@
 package array_greedy
 
-func SearchMatrix(matrix [][]int, target int) bool {
+func SearchMatrixII(matrix [][]int, target int) bool {
 	m := len(matrix)
 	n := len(matrix[0])
 

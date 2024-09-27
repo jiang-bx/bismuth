@@ -1,4 +1,4 @@
-export function searchMatrix(matrix: number[][], target: number): boolean {
+export function searchMatrixII(matrix: number[][], target: number): boolean {
     const m = matrix.length;
     const n = matrix[0].length;
 

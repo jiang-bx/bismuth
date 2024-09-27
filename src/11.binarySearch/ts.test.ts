@@ -16,6 +16,7 @@ import { findMinHard } from "./15.154";
 import { search } from "./16.33";
 import { search81 } from "./17.81";
 import { searchMatrix } from "./18.74";
+import { searchMatrixII } from "./19.240";
 
 describe("374 测试用例", () => {
     test(`"10 should return 6`, () => {
@@ -312,6 +313,38 @@ describe("74 测试用例", () => {
                     [23, 30, 34, 60],
                 ],
                 13
+            )
+        ).toBe(false);
+    });
+});
+
+describe("240 测试用例", () => {
+    test(`5 should return true`, () => {
+        expect(
+            searchMatrixII(
+                [
+                    [1, 4, 7, 11, 15],
+                    [2, 5, 8, 12, 19],
+                    [3, 6, 9, 16, 22],
+                    [10, 13, 14, 17, 24],
+                    [18, 21, 23, 26, 30],
+                ],
+                5
+            )
+        ).toBe(true);
+    });
+
+    test(`20 should return false`, () => {
+        expect(
+            searchMatrixII(
+                [
+                    [1, 4, 7, 11, 15],
+                    [2, 5, 8, 12, 19],
+                    [3, 6, 9, 16, 22],
+                    [10, 13, 14, 17, 24],
+                    [18, 21, 23, 26, 30],
+                ],
+                20
             )
         ).toBe(false);
     });
