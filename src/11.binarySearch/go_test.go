@@ -702,8 +702,50 @@ func TestSearchMatrixII(t *testing.T) {
 				{10, 13, 14, 17, 24},
 				{18, 21, 23, 26, 30},
 			}
-			params2 = 13
+			params2 = 20
 			res = false
+			testTemp()
+		})
+
+	})
+}
+
+func TestKthSmallest(t *testing.T) {
+	utils.TestWarp("378 测试用例", func() {
+		params1 := [][]int{}
+		params2 := 1
+		params3 := 0
+		res := 1
+		testTemp := func() {
+			str1, _ := json.Marshal(params1)
+			str2, _ := json.Marshal(params2)
+			str3, _ := json.Marshal(params3)
+			res1, _ := json.Marshal(res)
+			desc := string(str1) + ", " + string(str2) + ", " + string(str3) + " should return " + string(res1)
+
+			utils.TestCondition(
+				t, desc,
+				KthSmallest(params1, params2) == res,
+			)
+		}
+
+		t.Run("test1", func(t *testing.T) {
+			params1 = [][]int{
+				{1, 5, 9},
+				{10, 11, 13},
+				{12, 13, 15},
+			}
+			params2 = 8
+			res = 13
+			testTemp()
+		})
+
+		t.Run("test2", func(t *testing.T) {
+			params1 = [][]int{
+				{-5},
+			}
+			params2 = 1
+			res = -5
 			testTemp()
 		})
 
