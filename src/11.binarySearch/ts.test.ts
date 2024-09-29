@@ -18,6 +18,7 @@ import { search81 } from "./17.81";
 import { searchMatrix } from "./18.74";
 import { searchMatrixII } from "./19.240";
 import { kthSmallest } from "./20.378";
+import { findKthNumber } from "./21.668";
 
 describe("374 测试用例", () => {
     test(`"10 should return 6`, () => {
@@ -367,5 +368,28 @@ describe("378 测试用例", () => {
 
     test(`1 should return -5`, () => {
         expect(kthSmallest([[-5]], 1)).toBe(-5);
+    });
+
+    test(`8 should return 100`, () => {
+        expect(
+            kthSmallest(
+                [
+                    [1, 2, 3],
+                    [4, 5, 100],
+                    [12, 13, 101],
+                ],
+                8
+            )
+        ).toBe(100);
+    });
+});
+
+describe("668 测试用例", () => {
+    test(`m = 3, n = 3, k = 5 should return 3`, () => {
+        expect(findKthNumber(3, 3, 5)).toBe(3);
+    });
+
+    test(`m = 2, n = 3, k = 6 should return 6`, () => {
+        expect(findKthNumber(2, 3, 6)).toBe(6);
     });
 });
