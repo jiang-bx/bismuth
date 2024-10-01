@@ -19,6 +19,7 @@ import { searchMatrix } from "./18.74";
 import { searchMatrixII } from "./19.240";
 import { kthSmallest } from "./20.378";
 import { findKthNumber } from "./21.668";
+import { splitArray } from "./22.410";
 
 describe("374 测试用例", () => {
     test(`"10 should return 6`, () => {
@@ -391,5 +392,19 @@ describe("668 测试用例", () => {
 
     test(`m = 2, n = 3, k = 6 should return 6`, () => {
         expect(findKthNumber(2, 3, 6)).toBe(6);
+    });
+});
+
+describe("410 测试用例", () => {
+    test(`2 should return 18`, () => {
+        expect(splitArray([7, 2, 5, 10, 8], 2)).toBe(18);
+    });
+
+    test(`2 should return 9`, () => {
+        expect(splitArray([1, 2, 3, 4, 5], 2)).toBe(9);
+    });
+
+    test(`3 should return 4`, () => {
+        expect(splitArray([1, 4, 4], 3)).toBe(4);
     });
 });
