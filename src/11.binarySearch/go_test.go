@@ -832,3 +832,43 @@ func TestSplitArray(t *testing.T) {
 
 	})
 }
+
+func TestSmallestGoodBase(t *testing.T) {
+	utils.TestWarp("483 测试用例", func() {
+		params1 := ""
+		params2 := 1
+		params3 := 0
+		res := ""
+		testTemp := func() {
+			str1, _ := json.Marshal(params1)
+			str2, _ := json.Marshal(params2)
+			str3, _ := json.Marshal(params3)
+			res1, _ := json.Marshal(res)
+			desc := string(str1) + ", " + string(str2) + ", " + string(str3) + " should return " + string(res1)
+
+			utils.TestCondition(
+				t, desc,
+				SmallestGoodBase(params1) == res,
+			)
+		}
+
+		t.Run("test1", func(t *testing.T) {
+			params1 = "13"
+			res = "13"
+			testTemp()
+		})
+
+		t.Run("test2", func(t *testing.T) {
+			params1 = "4681"
+			res = "8"
+			testTemp()
+		})
+
+		t.Run("test3", func(t *testing.T) {
+			params1 = "1000000000000000000"
+			res = "999999999999999999"
+			testTemp()
+		})
+
+	})
+}
