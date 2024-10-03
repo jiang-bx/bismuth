@@ -20,6 +20,7 @@ import { searchMatrixII } from "./19.240";
 import { kthSmallest } from "./20.378";
 import { findKthNumber } from "./21.668";
 import { splitArray } from "./22.410";
+import { smallestGoodBase } from "./23.483";
 
 describe("374 测试用例", () => {
     test(`"10 should return 6`, () => {
@@ -406,5 +407,21 @@ describe("410 测试用例", () => {
 
     test(`3 should return 4`, () => {
         expect(splitArray([1, 4, 4], 3)).toBe(4);
+    });
+});
+
+describe("483 测试用例", () => {
+    test(`13 should return 3`, () => {
+        expect(smallestGoodBase("13")).toBe("3");
+    });
+
+    test(`4681 should return 8`, () => {
+        expect(smallestGoodBase("4681")).toBe("8");
+    });
+
+    test(`1000000000000000000 should return 999999999999999999`, () => {
+        expect(smallestGoodBase("1000000000000000000")).toBe(
+            "999999999999999999"
+        );
     });
 });

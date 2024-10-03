@@ -854,7 +854,7 @@ func TestSmallestGoodBase(t *testing.T) {
 
 		t.Run("test1", func(t *testing.T) {
 			params1 = "13"
-			res = "13"
+			res = "3"
 			testTemp()
 		})
 
