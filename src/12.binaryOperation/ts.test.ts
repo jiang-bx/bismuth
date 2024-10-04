@@ -9,3 +9,4 @@ describe("89 测试用例", () => {
         expect(grayCode(1)).toEqual([0, 1]);
     });
 });
+
