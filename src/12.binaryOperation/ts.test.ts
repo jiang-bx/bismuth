@@ -2,6 +2,7 @@ import { grayCode } from "./01.89";
 import { singleNumber } from "./02.136";
 import { singleNumber137 } from "./03.137";
 import { singleNumber260 } from "./04.260";
+import { missingNumber } from "./05.268";
 
 describe("89 测试用例", () => {
     test(`"2 should return [0,1,3,2]`, () => {
@@ -39,14 +40,32 @@ describe("137 测试用例", () => {
 
 describe("260 测试用例", () => {
     test(`[1,2,1,3,2,5] should return [3, 5]`, () => {
-        expect(singleNumber260([1, 2, 1, 3, 2, 5])).toEqual([3, 5]);
+        expect(singleNumber260([1, 2, 1, 3, 2, 5])).toEqual([5, 3]);
     });
 
     test(`[-1,0] should return [-1,0]`, () => {
-        expect(singleNumber260([-1, 0])).toEqual([-1, 0]);
+        expect(singleNumber260([-1, 0])).toEqual([0, -1]);
     });
 
     test(`[0,1] should return [1,0]`, () => {
-        expect(singleNumber260([0, 1])).toEqual([1, 0]);
+        expect(singleNumber260([0, 1])).toEqual([0, 1]);
+    });
+});
+
+describe("268 测试用例", () => {
+    test(`[3,0,1] should return 2`, () => {
+        expect(missingNumber([3, 0, 1])).toBe(2);
+    });
+
+    test(`[0,1] should return 2`, () => {
+        expect(missingNumber([0, 1])).toBe(2);
+    });
+
+    test(`[9,6,4,2,3,5,7,0,1] should return 8`, () => {
+        expect(missingNumber([9, 6, 4, 2, 3, 5, 7, 0, 1])).toBe(8);
+    });
+
+    test(`[0] should return 1`, () => {
+        expect(missingNumber([0])).toBe(1);
     });
 });
