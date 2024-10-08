@@ -1,5 +1,10 @@
 package binary_operation
 
 func MissingNumber(nums []int) int {
-	return 1
+	xor := len(nums)
+	for i, v := range nums {
+		xor ^= i
+		xor ^= v
+	}
+	return xor
 }

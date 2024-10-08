@@ -3,6 +3,7 @@ import { singleNumber } from "./02.136";
 import { singleNumber137 } from "./03.137";
 import { singleNumber260 } from "./04.260";
 import { missingNumber } from "./05.268";
+import { getSum } from "./06.371";
 
 describe("89 测试用例", () => {
     test(`"2 should return [0,1,3,2]`, () => {
@@ -67,5 +68,15 @@ describe("268 测试用例", () => {
 
     test(`[0] should return 1`, () => {
         expect(missingNumber([0])).toBe(1);
+    });
+});
+
+describe("371 测试用例", () => {
+    test(`1, 2 should return 3`, () => {
+        expect(getSum(1, 2)).toBe(3);
+    });
+
+    test(`2, 3 should return 5`, () => {
+        expect(getSum(2, 3)).toBe(5);
     });
 });

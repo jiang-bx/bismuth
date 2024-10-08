@@ -170,7 +170,7 @@ func TestMissingNumber(t *testing.T) {
 
 			utils.TestCondition(
 				t, desc,
-				reflect.DeepEqual(SingleNumber260(params1), res),
+				MissingNumber(params1) == res,
 			)
 		}
 
@@ -195,6 +195,42 @@ func TestMissingNumber(t *testing.T) {
 		t.Run("test4", func(t *testing.T) {
 			params1 = []int{9, 6, 4, 2, 3, 5, 7, 0, 1}
 			res = 8
+			testTemp()
+		})
+
+	})
+}
+
+func TestGetSum(t *testing.T) {
+	utils.TestWarp("371 测试用例", func() {
+		params1 := 1
+		params2 := 1
+		params3 := 0
+		res := 0
+		testTemp := func() {
+			str1, _ := json.Marshal(params1)
+			str2, _ := json.Marshal(params2)
+			str3, _ := json.Marshal(params3)
+			res1, _ := json.Marshal(res)
+			desc := string(str1) + ", " + string(str2) + ", " + string(str3) + " should return " + string(res1)
+
+			utils.TestCondition(
+				t, desc,
+				GetSum(params1, params2) == res,
+			)
+		}
+
+		t.Run("test1", func(t *testing.T) {
+			params1 = 1
+			params2 = 2
+			res = 3
+			testTemp()
+		})
+
+		t.Run("test2", func(t *testing.T) {
+			params1 = 2
+			params2 = 3
+			res = 5
 			testTemp()
 		})
 
