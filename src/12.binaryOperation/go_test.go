@@ -234,5 +234,52 @@ func TestGetSum(t *testing.T) {
 			testTemp()
 		})
 
+		t.Run("test3", func(t *testing.T) {
+			params1 = -12
+			params2 = -8
+			res = -20
+			testTemp()
+		})
+
+	})
+}
+
+func TestMaxProduct(t *testing.T) {
+	utils.TestWarp("318 测试用例", func() {
+		params1 := []string{}
+		params2 := 1
+		params3 := 0
+		res := 0
+		testTemp := func() {
+			str1, _ := json.Marshal(params1)
+			str2, _ := json.Marshal(params2)
+			str3, _ := json.Marshal(params3)
+			res1, _ := json.Marshal(res)
+			desc := string(str1) + ", " + string(str2) + ", " + string(str3) + " should return " + string(res1)
+
+			utils.TestCondition(
+				t, desc,
+				MaxProduct(params1) == res,
+			)
+		}
+
+		t.Run("test1", func(t *testing.T) {
+			params1 = []string{"abcw", "baz", "foo", "bar", "xtfn", "abcdef"}
+			res = 16
+			testTemp()
+		})
+
+		t.Run("test2", func(t *testing.T) {
+			params1 = []string{"a", "ab", "abc", "d", "cd", "bcd", "abcd"}
+			res = 4
+			testTemp()
+		})
+
+		t.Run("test3", func(t *testing.T) {
+			params1 = []string{"a", "aa", "aaa", "aaaa"}
+			res = 0
+			testTemp()
+		})
+
 	})
 }

@@ -3,7 +3,8 @@ import { singleNumber } from "./02.136";
 import { singleNumber137 } from "./03.137";
 import { singleNumber260 } from "./04.260";
 import { missingNumber } from "./05.268";
-import { getSum } from "./06.371";
+import { getSum, getSum1 } from "./06.371";
+import { maxProduct } from "./07.318";
 
 describe("89 测试用例", () => {
     test(`"2 should return [0,1,3,2]`, () => {
@@ -78,5 +79,27 @@ describe("371 测试用例", () => {
 
     test(`2, 3 should return 5`, () => {
         expect(getSum(2, 3)).toBe(5);
+    });
+
+    test(`-8, -12 should return -20`, () => {
+        expect(getSum1(-8, -12)).toBe(-20);
+    });
+});
+
+describe("318 测试用例", () => {
+    test(`["abcw","baz","foo","bar","xtfn","abcdef"] should return 16`, () => {
+        expect(
+            maxProduct(["abcw", "baz", "foo", "bar", "xtfn", "abcdef"])
+        ).toBe(16);
+    });
+
+    test(`["a","ab","abc","d","cd","bcd","abcd"] should return 4`, () => {
+        expect(maxProduct(["a", "ab", "abc", "d", "cd", "bcd", "abcd"])).toBe(
+            4
+        );
+    });
+
+    test(`["a","aa","aaa","aaaa"] should return 0`, () => {
+        expect(maxProduct(["a", "aa", "aaa", "aaaa"])).toBe(0);
     });
 });
