@@ -5,6 +5,7 @@ import { singleNumber260 } from "./04.260";
 import { missingNumber } from "./05.268";
 import { getSum, getSum1 } from "./06.371";
 import { maxProduct } from "./07.318";
+import { rangeBitwiseAnd } from "./08.201";
 
 describe("89 测试用例", () => {
     test(`"2 should return [0,1,3,2]`, () => {
@@ -101,5 +102,19 @@ describe("318 测试用例", () => {
 
     test(`["a","aa","aaa","aaaa"] should return 0`, () => {
         expect(maxProduct(["a", "aa", "aaa", "aaaa"])).toBe(0);
+    });
+});
+
+describe("201 测试用例", () => {
+    test(`5, 7 should return 4`, () => {
+        expect(rangeBitwiseAnd(5, 7)).toBe(4);
+    });
+
+    test(`0, 0 should return 0`, () => {
+        expect(rangeBitwiseAnd(0, 0)).toBe(0);
+    });
+
+    test(`1, 2147483647 should return 0`, () => {
+        expect(rangeBitwiseAnd(1, 2147483647)).toBe(0);
     });
 });

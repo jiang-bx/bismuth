@@ -283,3 +283,46 @@ func TestMaxProduct(t *testing.T) {
 
 	})
 }
+
+func TestRangeBitwiseAnd(t *testing.T) {
+	utils.TestWarp("201 测试用例", func() {
+		params1 := 1
+		params2 := 1
+		params3 := 0
+		res := 0
+		testTemp := func() {
+			str1, _ := json.Marshal(params1)
+			str2, _ := json.Marshal(params2)
+			str3, _ := json.Marshal(params3)
+			res1, _ := json.Marshal(res)
+			desc := string(str1) + ", " + string(str2) + ", " + string(str3) + " should return " + string(res1)
+
+			utils.TestCondition(
+				t, desc,
+				RangeBitwiseAnd(params1, params2) == res,
+			)
+		}
+
+		t.Run("test1", func(t *testing.T) {
+			params1 = 5
+			params2 = 7
+			res = 4
+			testTemp()
+		})
+
+		t.Run("test2", func(t *testing.T) {
+			params1 = 0
+			params2 = 0
+			res = 0
+			testTemp()
+		})
+
+		t.Run("test3", func(t *testing.T) {
+			params1 = 1
+			params2 = 2147483647
+			res = 0
+			testTemp()
+		})
+
+	})
+}
