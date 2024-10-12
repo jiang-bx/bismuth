@@ -6,7 +6,7 @@ import (
 	"testing"
 )
 
-func TestArrayPairSum(t *testing.T) {
+func TestFib(t *testing.T) {
 	utils.TestWarp("509 测试用例", func() {
 		params1 := 0
 		params2 := 0
@@ -19,17 +19,23 @@ func TestArrayPairSum(t *testing.T) {
 			utils.TestCondition(t, desc, Fib(params1) == res)
 		}
 
-		params1 = 2
-		res = 1
-		testTemp()
+		t.Run("test1", func(t *testing.T) {
+			params1 = 2
+			res = 1
+			testTemp()
+		})
 
-		params1 = 3
-		res = 2
-		testTemp()
+		t.Run("test2", func(t *testing.T) {
+			params1 = 3
+			res = 2
+			testTemp()
+		})
 
-		params1 = 4
-		res = 3
-		testTemp()
+		t.Run("test3", func(t *testing.T) {
+			params1 = 4
+			res = 3
+			testTemp()
+		})
 
 	})
 }
