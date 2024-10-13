@@ -39,3 +39,31 @@ func TestFib(t *testing.T) {
 
 	})
 }
+
+func TestClimbStairs(t *testing.T) {
+	utils.TestWarp("70 测试用例", func() {
+		params1 := 0
+		params2 := 0
+		res := 0
+		testTemp := func() {
+			str1, _ := json.Marshal(params1)
+			str2, _ := json.Marshal(params2)
+			res1, _ := json.Marshal(res)
+			desc := string(str1) + ", " + string(str2) + " should return " + string(res1)
+			utils.TestCondition(t, desc, ClimbStairs(params1) == res)
+		}
+
+		t.Run("test1", func(t *testing.T) {
+			params1 = 2
+			res = 2
+			testTemp()
+		})
+
+		t.Run("test2", func(t *testing.T) {
+			params1 = 3
+			res = 3
+			testTemp()
+		})
+
+	})
+}
