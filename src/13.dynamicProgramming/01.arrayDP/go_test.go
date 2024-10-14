@@ -3,6 +3,7 @@ package arraydp
 import (
 	"encoding/json"
 	"leetcode/src/utils"
+	"reflect"
 	"testing"
 )
 
@@ -62,6 +63,38 @@ func TestClimbStairs(t *testing.T) {
 		t.Run("test2", func(t *testing.T) {
 			params1 = 3
 			res = 3
+			testTemp()
+		})
+
+	})
+}
+
+func TestCountBits(t *testing.T) {
+	utils.TestWarp("338 测试用例", func() {
+		params1 := 0
+		params2 := 0
+		res := []int{}
+		testTemp := func() {
+			str1, _ := json.Marshal(params1)
+			str2, _ := json.Marshal(params2)
+			res1, _ := json.Marshal(res)
+			desc := string(str1) + ", " + string(str2) + " should return " + string(res1)
+			utils.TestCondition(
+				t,
+				desc,
+				reflect.DeepEqual(CountBits(params1), res),
+			)
+		}
+
+		t.Run("test1", func(t *testing.T) {
+			params1 = 2
+			res = []int{0, 1, 1}
+			testTemp()
+		})
+
+		t.Run("test2", func(t *testing.T) {
+			params1 = 5
+			res = []int{0, 1, 1, 2, 1, 2}
 			testTemp()
 		})
 
