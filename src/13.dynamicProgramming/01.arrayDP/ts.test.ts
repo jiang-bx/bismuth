@@ -1,6 +1,7 @@
 import { fib } from "./01.509";
 import { climbStairs } from "./02.70";
 import { countBits } from "./03.338";
+import { jump } from "./04.45";
 
 describe("509 测试用例", () => {
     test(`2 should return 1`, () => {
@@ -32,6 +33,16 @@ describe("338 测试用例", () => {
     });
 
     test(`5 should return [0,1,1,2,1,2]`, () => {
-        expect(countBits(2)).toEqual([0, 1, 1, 2, 1, 2]);
+        expect(countBits(5)).toEqual([0, 1, 1, 2, 1, 2]);
+    });
+});
+
+describe("45 测试用例", () => {
+    test(`[2,3,1,1,4] should return 2`, () => {
+        expect(jump([2, 3, 1, 1, 4])).toBe(2);
+    });
+
+    test(`[2,3,0,1,4] should return 2`, () => {
+        expect(jump([2, 3, 0, 1, 4])).toBe(2);
     });
 });
