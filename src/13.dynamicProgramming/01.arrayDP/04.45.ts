@@ -7,5 +7,17 @@
  */
 
 export function jump(nums: number[]): number {
-    return 1;
+    const n = nums.length;
+    let count = 0;
+    let maxPos = 0;
+    let end = 0;
+    for (let i = 0; i < n - 1; i++) {
+        maxPos = Math.max(nums[i] + i, maxPos);
+        if (i == end) {
+            end = maxPos;
+            count++;
+        }
+    }
+
+    return count;
 }
