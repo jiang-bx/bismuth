@@ -6,14 +6,6 @@
  * 明确 baseCase -> 明确状态 -> 明确选择 -> 定义 dp 数组
  */
 
-export function canJump(nums: number[]): boolean {
-    let max = 0;
-    for (let i = 0; i < nums.length; i++) {
-        if (i > max) {
-            return false;
-        }
-
-        max = Math.max(max, i + nums[i]);
-    }
-    return true;
-}
+export function rob(nums: number[]): number {
+    return 1
+};

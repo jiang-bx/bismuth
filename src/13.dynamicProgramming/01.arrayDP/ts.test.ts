@@ -3,6 +3,7 @@ import { climbStairs } from "./02.70";
 import { countBits } from "./03.338";
 import { jump } from "./04.45";
 import { canJump } from "./05.55";
+import { rob } from "./06.198";
 
 describe("509 测试用例", () => {
     test(`2 should return 1`, () => {
@@ -55,5 +56,15 @@ describe("55 测试用例", () => {
 
     test(`[3,2,1,0,4] should return false`, () => {
         expect(canJump([3, 2, 1, 0, 4])).toBe(false);
+    });
+});
+
+describe("198 测试用例", () => {
+    test(`[1,2,3,1] should return 4`, () => {
+        expect(rob([1, 2, 3, 1])).toBe(4);
+    });
+
+    test(`[2,7,9,3,1] should return 12`, () => {
+        expect(rob([2, 7, 9, 3, 1])).toBe(12);
     });
 });
