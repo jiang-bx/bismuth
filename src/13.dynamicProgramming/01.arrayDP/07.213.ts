@@ -6,7 +6,7 @@
  * 明确 baseCase -> 明确状态 -> 明确选择 -> 定义 dp 数组
  */
 
-export function rob1(nums: number[]): number {
+export function rob_213(nums: number[]): number {
     // 子问题, 在 k 个房子中偷最多的钱
     // 一个子问题, 要能通过其他子问题求解出来: 最优子结构
 
@@ -32,20 +32,4 @@ export function rob1(nums: number[]): number {
         dp[i] = Math.max(dp[i - 1], dp[i - 2] + nums[i - 1]);
     }
     return dp[n];
-}
-
-export function rob(nums: number[]): number {
-    // 空间优化
-    const n = nums.length;
-
-    let cur = 0;
-    let prev = 0;
-
-    for (const num of nums) {
-        const temp = Math.max(cur, prev + num);
-        prev = cur;
-        cur = temp;
-    }
-
-    return cur;
 }

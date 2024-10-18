@@ -1,6 +1,6 @@
 package arraydp
 
-func Rob1(nums []int) int {
+func Rob_213(nums []int) int {
 	n := len(nums)
 	dp := make([]int, n+1)
 	dp[0] = 0
@@ -16,21 +16,4 @@ func Rob1(nums []int) int {
 		}
 	}
 	return dp[n]
-}
-
-func Rob(nums []int) int {
-
-	cur := 0
-	prev := 0
-
-	for _, v := range nums {
-		temp := prev + v
-		if temp < cur {
-			temp = cur
-		}
-		prev = cur
-		cur = temp
-	}
-
-	return cur
 }

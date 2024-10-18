@@ -4,6 +4,7 @@ import { countBits } from "./03.338";
 import { jump } from "./04.45";
 import { canJump } from "./05.55";
 import { rob } from "./06.198";
+import { rob_213 } from "./07.213";
 
 describe("509 测试用例", () => {
     test(`2 should return 1`, () => {
@@ -66,5 +67,23 @@ describe("198 测试用例", () => {
 
     test(`[2,7,9,3,1] should return 12`, () => {
         expect(rob([2, 7, 9, 3, 1])).toBe(12);
+    });
+
+    test(`[2,1,1,2] should return 4`, () => {
+        expect(rob([2, 1, 1, 2])).toBe(4);
+    });
+});
+
+describe("213 测试用例", () => {
+    test(`[2,3,2] should return 3`, () => {
+        expect(rob_213([2, 3, 2])).toBe(3);
+    });
+
+    test(`[1,2,3,1] should return 4`, () => {
+        expect(rob_213([1, 2, 3, 1])).toBe(4);
+    });
+
+    test(`[1,2,3] should return 3`, () => {
+        expect(rob_213([1, 2, 3])).toBe(3);
     });
 });
