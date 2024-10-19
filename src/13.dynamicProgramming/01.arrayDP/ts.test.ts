@@ -5,6 +5,7 @@ import { jump } from "./04.45";
 import { canJump } from "./05.55";
 import { rob } from "./06.198";
 import { rob_213 } from "./07.213";
+import { minSteps } from "./08.650";
 
 describe("509 测试用例", () => {
     test(`2 should return 1`, () => {
@@ -85,5 +86,15 @@ describe("213 测试用例", () => {
 
     test(`[1,2,3] should return 3`, () => {
         expect(rob_213([1, 2, 3])).toBe(3);
+    });
+});
+
+describe("650 测试用例", () => {
+    test(`3 should return 3`, () => {
+        expect(minSteps(3)).toBe(3);
+    });
+
+    test(`1 should return 0`, () => {
+        expect(minSteps(1)).toBe(0);
     });
 });

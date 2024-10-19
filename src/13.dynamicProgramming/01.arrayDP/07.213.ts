@@ -11,6 +11,10 @@ export function rob_213(nums: number[]): number {
     // 一个子问题, 要能通过其他子问题求解出来: 最优子结构
 
     // 写出子问题的地推关系
+    // f(k) 的偷法
+    // 取了第一个就不能偷 最后一个
+    // 取了最后一个, 第一个就不能偷
+    // 转为非环形
     // f(k) 的偷法有两种:
     // 1. 偷前 k - 1 间房子
     // 2. 偷前 k - 2 间房子 和 最后一间
@@ -22,14 +26,24 @@ export function rob_213(nums: number[]): number {
     // k = 0, 没有房子 f(0) = 0
     // k = 1, 只有一间房子 f(1) = h(0)
 
-    // 确定 dp 数组的计算顺序
-    const n = nums.length;
-    const dp = new Array(n + 1).fill(0);
-    dp[0] = 0;
-    dp[1] = nums[0];
+    const myRob = (vals: number[]) => {
+        let cur = 0;
+        let prev = 0;
+        for (const val of vals) {
+            const temp = Math.max(cur, prev + val);
+            prev = cur;
+            cur = temp;
+        }
+        return cur;
+    };
 
-    for (let i = 2; i <= n; i++) {
-        dp[i] = Math.max(dp[i - 1], dp[i - 2] + nums[i - 1]);
+    if (nums.length === 0) {
+        return 0;
     }
-    return dp[n];
+
+    if (nums.length === 1) {
+        return nums[0];
+    }
+
+    return Math.max(myRob(nums.slice(0, -1)), myRob(nums.slice(1)));
 }
