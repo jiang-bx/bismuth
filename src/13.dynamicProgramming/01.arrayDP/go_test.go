@@ -266,3 +266,41 @@ func TestMinSteps(t *testing.T) {
 
 	})
 }
+
+func TestNumDecodings(t *testing.T) {
+	utils.TestWarp("91 测试用例", func() {
+		params1 := ""
+		params2 := 0
+		res := 1
+		testTemp := func() {
+			str1, _ := json.Marshal(params1)
+			str2, _ := json.Marshal(params2)
+			res1, _ := json.Marshal(res)
+			desc := string(str1) + ", " + string(str2) + " should return " + string(res1)
+			utils.TestCondition(
+				t,
+				desc,
+				reflect.DeepEqual(NumDecodings(params1), res),
+			)
+		}
+
+		t.Run("test1", func(t *testing.T) {
+			params1 = "12"
+			res = 2
+			testTemp()
+		})
+
+		t.Run("test2", func(t *testing.T) {
+			params1 = "226"
+			res = 3
+			testTemp()
+		})
+
+		t.Run("test3", func(t *testing.T) {
+			params1 = "06"
+			res = 0
+			testTemp()
+		})
+
+	})
+}

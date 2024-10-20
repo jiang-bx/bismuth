@@ -7,5 +7,25 @@
  */
 
 export function minSteps(n: number): number {
-    return 1
-};
+    const dp = new Array(n + 1).fill(0).map(() => {
+        return new Array(n + 1).fill(n);
+    });
+
+    dp[1][1] = 0;
+
+    for (let i = 1; i <= n; i++) {
+        let minNum = dp[i][1];
+
+        for (let j = 1; j <= i; j++) {
+            if (i - j >= 1) {
+                dp[i][j] = Math.min(dp[i][j], dp[i - j][j] + 1);
+                minNum = Math.min(minNum, dp[i][j]);
+            }
+            if (i == j) {
+                dp[i][j] = minNum + 1;
+            }
+        }
+    }
+
+    return dp[n][n] - 1;
+}

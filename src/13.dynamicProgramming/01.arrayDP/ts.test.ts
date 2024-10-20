@@ -6,6 +6,7 @@ import { canJump } from "./05.55";
 import { rob } from "./06.198";
 import { rob_213 } from "./07.213";
 import { minSteps } from "./08.650";
+import { numDecodings } from "./09.91";
 
 describe("509 测试用例", () => {
     test(`2 should return 1`, () => {
@@ -96,5 +97,19 @@ describe("650 测试用例", () => {
 
     test(`1 should return 0`, () => {
         expect(minSteps(1)).toBe(0);
+    });
+});
+
+describe("91 测试用例", () => {
+    test(`12 should return 2`, () => {
+        expect(numDecodings("12")).toBe(2);
+    });
+
+    test(`226 should return 3`, () => {
+        expect(numDecodings("226")).toBe(3);
+    });
+
+    test(`06 should return 0`, () => {
+        expect(numDecodings("06")).toBe(0);
     });
 });
