@@ -6,7 +6,7 @@
  * 明确 baseCase -> 明确状态 -> 明确选择 -> 定义 dp 数组
  */
 
-export function numDecodings(s: string): number {
+export function numDecodings_639(s: string): number {
     // 1~26
     // 一位时, 1~9
     // 两位时, 十位: 1~2, 个位: 0~6

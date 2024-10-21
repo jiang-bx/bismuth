@@ -1,6 +1,6 @@
 package arraydp
 
-func NumDecodings(s string) int {
+func NumDecodings_639(s string) int {
 	n := len(s)
 	dp := make([]int, n+1)
 	dp[0] = 1

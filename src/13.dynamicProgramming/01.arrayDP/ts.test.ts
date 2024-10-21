@@ -7,6 +7,7 @@ import { rob } from "./06.198";
 import { rob_213 } from "./07.213";
 import { minSteps } from "./08.650";
 import { numDecodings } from "./09.91";
+import { numDecodings_639 } from "./10.639";
 
 describe("509 测试用例", () => {
     test(`2 should return 1`, () => {
@@ -111,5 +112,20 @@ describe("91 测试用例", () => {
 
     test(`06 should return 0`, () => {
         expect(numDecodings("06")).toBe(0);
+    });
+});
+
+
+describe("639 测试用例", () => {
+    test(`* should return 9`, () => {
+        expect(numDecodings_639("*")).toBe(9);
+    });
+
+    test(`1* should return 18`, () => {
+        expect(numDecodings_639("1*")).toBe(18);
+    });
+
+    test(`2* should return 15`, () => {
+        expect(numDecodings_639("2*")).toBe(15);
     });
 });
