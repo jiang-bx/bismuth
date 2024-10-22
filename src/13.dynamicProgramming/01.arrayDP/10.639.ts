@@ -12,21 +12,63 @@ export function numDecodings_639(s: string): number {
     // 两位时, 十位: 1~2, 个位: 0~6
 
     const n = s.length;
+    const mod = 1e9 + 7;
     const dp = new Array(n + 1).fill(0);
     dp[0] = 1;
 
     for (let i = 0; i < n; i++) {
-        // 1 ~ 9
-        const one = Number(s[i]);
-        if (one >= 1 && one <= 9) {
-            dp[i + 1] = dp[i];
+        // 个位
+        if (s[i] === "*") {
+            // 1 ~ 9
+            dp[i + 1] = dp[i] * 9;
+        } else {
+            const one = Number(s[i]);
+            if (one >= 1 && one <= 9) {
+                dp[i + 1] = dp[i];
+            }
         }
 
-        // 10 ~ 26
-        const two = i >= 1 ? Number(s[i - 1]) * 10 + Number(s[i]) : 0;
-        if (two >= 10 && two <= 26) {
-            dp[i + 1] += dp[i - 1];
+        if (i < 1) {
+            continue;
         }
+
+        if (s[i] === "*") {
+            if (s[i - 1] === "*") {
+                // 个位: * , 十位: *, **
+                // 10 ~ 26 => 17 种, 排除: 10, 20, => 15 种
+                dp[i + 1] += dp[i - 1] * 15;
+            } else {
+                // 个位: *, 十位: 数字为 1 或 2,  1*
+                if (s[i - 1] === "1") {
+                    // 1*
+                    dp[i + 1] += dp[i - 1] * 9;
+                } else if (s[i - 1] === "2") {
+                    // 2*
+                    dp[i + 1] += dp[i - 1] * 6;
+                }
+            }
+        } else {
+            if (s[i - 1] === "*") {
+                // 个位: 数字, 十位: *, *1
+
+                if (Number(s[i]) <= 6) {
+                    // 能选 1 或者 2
+                    dp[i + 1] += dp[i - 1] * 2;
+                } else {
+                    // 只能选 1: *7
+                    dp[i + 1] += dp[i - 1];
+                }
+            } else {
+                // 个位: 数字, 十位: 数字, 22
+                // 10 ~ 26
+                const two = Number(s[i - 1]) * 10 + Number(s[i]);
+                if (two >= 10 && two <= 26) {
+                    dp[i + 1] += dp[i - 1];
+                }
+            }
+        }
+
+        dp[i + 1] %= mod;
     }
 
     return dp[n];

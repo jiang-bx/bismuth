@@ -318,7 +318,7 @@ func TestNumDecodings_639(t *testing.T) {
 			utils.TestCondition(
 				t,
 				desc,
-				reflect.DeepEqual(NumDecodings(params1), res),
+				reflect.DeepEqual(NumDecodings_639(params1), res),
 			)
 		}
 
@@ -337,6 +337,50 @@ func TestNumDecodings_639(t *testing.T) {
 		t.Run("test3", func(t *testing.T) {
 			params1 = "2*"
 			res = 15
+			testTemp()
+		})
+
+		t.Run("test4", func(t *testing.T) {
+			params1 = "*10*1"
+			res = 99
+			testTemp()
+		})
+
+	})
+}
+
+func TestCheckRecord_552(t *testing.T) {
+	utils.TestWarp("552 测试用例", func() {
+		params1 := 1
+		params2 := 0
+		res := 1
+		testTemp := func() {
+			str1, _ := json.Marshal(params1)
+			str2, _ := json.Marshal(params2)
+			res1, _ := json.Marshal(res)
+			desc := string(str1) + ", " + string(str2) + " should return " + string(res1)
+			utils.TestCondition(
+				t,
+				desc,
+				reflect.DeepEqual(CheckRecord_552(params1), res),
+			)
+		}
+
+		t.Run("test1", func(t *testing.T) {
+			params1 = 2
+			res = 8
+			testTemp()
+		})
+
+		t.Run("test2", func(t *testing.T) {
+			params1 = 1
+			res = 3
+			testTemp()
+		})
+
+		t.Run("test3", func(t *testing.T) {
+			params1 = 10101
+			res = 183236316
 			testTemp()
 		})
 

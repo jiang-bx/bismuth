@@ -8,6 +8,7 @@ import { rob_213 } from "./07.213";
 import { minSteps } from "./08.650";
 import { numDecodings } from "./09.91";
 import { numDecodings_639 } from "./10.639";
+import { checkRecord_552 } from "./11.552";
 
 describe("509 测试用例", () => {
     test(`2 should return 1`, () => {
@@ -115,7 +116,6 @@ describe("91 测试用例", () => {
     });
 });
 
-
 describe("639 测试用例", () => {
     test(`* should return 9`, () => {
         expect(numDecodings_639("*")).toBe(9);
@@ -127,5 +127,35 @@ describe("639 测试用例", () => {
 
     test(`2* should return 15`, () => {
         expect(numDecodings_639("2*")).toBe(15);
+    });
+
+    test(`*2 should return 11`, () => {
+        expect(numDecodings_639("*2")).toBe(11);
+    });
+
+    test(`** should return 96`, () => {
+        expect(numDecodings_639("**")).toBe(96);
+    });
+
+    test(`*** should return 999`, () => {
+        expect(numDecodings_639("***")).toBe(999);
+    });
+
+    test(`********* should return 291868912`, () => {
+        expect(numDecodings_639("*********")).toBe(291868912);
+    });
+});
+
+describe("552 测试用例", () => {
+    test(`2 should return 8`, () => {
+        expect(checkRecord_552(2)).toBe(8);
+    });
+
+    test(`1 should return 3`, () => {
+        expect(checkRecord_552(1)).toBe(3);
+    });
+
+    test(`10101 should return 183236316`, () => {
+        expect(checkRecord_552(10101)).toBe(183236316);
     });
 });
