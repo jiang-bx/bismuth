@@ -9,6 +9,7 @@ import { minSteps } from "./08.650";
 import { numDecodings } from "./09.91";
 import { numDecodings_639 } from "./10.639";
 import { checkRecord_552 } from "./11.552";
+import { maxProfit_123 } from "./12.123";
 
 describe("509 测试用例", () => {
     test(`2 should return 1`, () => {
@@ -157,5 +158,23 @@ describe("552 测试用例", () => {
 
     test(`10101 should return 183236316`, () => {
         expect(checkRecord_552(10101)).toBe(183236316);
+    });
+});
+
+describe("123 测试用例", () => {
+    test(`[3,3,5,0,0,3,1,4] should return 6`, () => {
+        expect(maxProfit_123([3, 3, 5, 0, 0, 3, 1, 4])).toBe(6);
+    });
+
+    test(`[1,2,3,4,5] should return 4`, () => {
+        expect(maxProfit_123([1, 2, 3, 4, 5])).toBe(4);
+    });
+
+    test(`[7,6,4,3,1] should return 0`, () => {
+        expect(maxProfit_123([7, 6, 4, 3, 1])).toBe(0);
+    });
+
+    test(`[1] should return 0`, () => {
+        expect(maxProfit_123([1])).toBe(0);
     });
 });

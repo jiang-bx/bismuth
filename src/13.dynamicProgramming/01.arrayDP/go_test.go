@@ -386,3 +386,47 @@ func TestCheckRecord_552(t *testing.T) {
 
 	})
 }
+
+func TestMaxProfit_123(t *testing.T) {
+	utils.TestWarp("123 测试用例", func() {
+		params1 := []int{}
+		params2 := 0
+		res := 1
+		testTemp := func() {
+			str1, _ := json.Marshal(params1)
+			str2, _ := json.Marshal(params2)
+			res1, _ := json.Marshal(res)
+			desc := string(str1) + ", " + string(str2) + " should return " + string(res1)
+			utils.TestCondition(
+				t,
+				desc,
+				reflect.DeepEqual(MaxProfit_123(params1), res),
+			)
+		}
+
+		t.Run("test1", func(t *testing.T) {
+			params1 = []int{3, 3, 5, 0, 0, 3, 1, 4}
+			res = 6
+			testTemp()
+		})
+
+		t.Run("test2", func(t *testing.T) {
+			params1 = []int{1, 2, 3, 4, 5}
+			res = 4
+			testTemp()
+		})
+
+		t.Run("test3", func(t *testing.T) {
+			params1 = []int{7, 6, 4, 3, 1}
+			res = 0
+			testTemp()
+		})
+
+		t.Run("test4", func(t *testing.T) {
+			params1 = []int{1}
+			res = 0
+			testTemp()
+		})
+
+	})
+}
