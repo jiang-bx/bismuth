@@ -11,6 +11,7 @@ import { numDecodings_639 } from "./10.639";
 import { checkRecord_552 } from "./11.552";
 import { maxProfit_123 } from "./12.123";
 import { maxProfit_188 } from "./13.188";
+import { maxProfit_309 } from "./14.309";
 
 describe("509 测试用例", () => {
     test(`2 should return 1`, () => {
@@ -187,5 +188,15 @@ describe("188 测试用例", () => {
 
     test(`2, [3,2,6,5,0,3] should return 7`, () => {
         expect(maxProfit_188(2, [3, 2, 6, 5, 0, 3])).toBe(7);
+    });
+});
+
+describe("309 测试用例", () => {
+    test(`[1,2,3,0,2] should return 3`, () => {
+        expect(maxProfit_309([1, 2, 3, 0, 2])).toBe(3);
+    });
+
+    test(`[1] should return 0`, () => {
+        expect(maxProfit_309([1])).toBe(0);
     });
 });

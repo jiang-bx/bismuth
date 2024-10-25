@@ -6,19 +6,40 @@
  * 明确 baseCase -> 明确状态 -> 明确选择 -> 定义 dp 数组
  */
 
-export function maxProfit_188(k: number, prices: number[]): number {
+export function maxProfit_188_1(k: number, prices: number[]): number {
     const n = prices.length;
-    let a1 = -prices[0];
-    let b1 = 0;
-    let a2 = -prices[0];
-    let b2 = 0;
+    const kLen = 2 * k + 1;
+    const dp = new Array(n).fill(0).map(() => {
+        return new Array(kLen).fill(0).map((_, index) => {
+            return index % 2 === 1 ? -prices[0] : 0;
+        });
+    });
 
     for (let i = 1; i < n; i++) {
-        a1 = Math.max(a1, 0 - prices[i]);
-        b1 = Math.max(b1, a1 + prices[i]);
-        a2 = Math.max(a2, b1 - prices[i]);
-        b2 = Math.max(b2, a2 + prices[i]);
+        for (let j = 1; j < kLen; j++) {
+            // -prices[i] -> 买入
+            const val = j % 2 === 1 ? -prices[i] : prices[i];
+            dp[i][j] = Math.max(dp[i - 1][j], dp[i - 1][j - 1] + val);
+        }
     }
 
-    return b2;
+    return dp[n - 1][kLen - 1];
+}
+
+export function maxProfit_188(k: number, prices: number[]): number {
+    const n = prices.length;
+    const kLen = 2 * k + 1;
+    const dp = new Array(kLen).fill(0).map((_, index) => {
+        return index % 2 === 1 ? -prices[0] : 0;
+    });
+
+    for (let i = 1; i < n; i++) {
+        for (let j = 1; j < kLen; j++) {
+            // -prices[i] -> 买入
+            const val = j % 2 === 1 ? -prices[i] : prices[i];
+            dp[j] = Math.max(dp[j], dp[j - 1] + val);
+        }
+    }
+
+    return dp[kLen - 1];
 }

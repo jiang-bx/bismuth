@@ -464,3 +464,35 @@ func TestMaxProfit_188(t *testing.T) {
 
 	})
 }
+
+func TestMaxProfit_309(t *testing.T) {
+	utils.TestWarp("309 测试用例", func() {
+		params1 := []int{}
+		params2 := 0
+		res := 1
+		testTemp := func() {
+			str1, _ := json.Marshal(params1)
+			str2, _ := json.Marshal(params2)
+			res1, _ := json.Marshal(res)
+			desc := string(str1) + ", " + string(str2) + " should return " + string(res1)
+			utils.TestCondition(
+				t,
+				desc,
+				reflect.DeepEqual(MaxProfit_309(params1), res),
+			)
+		}
+
+		t.Run("test1", func(t *testing.T) {
+			params1 = []int{1, 2, 3, 0, 2}
+			res = 3
+			testTemp()
+		})
+
+		t.Run("test2", func(t *testing.T) {
+			params1 = []int{1}
+			res = 0
+			testTemp()
+		})
+
+	})
+}
