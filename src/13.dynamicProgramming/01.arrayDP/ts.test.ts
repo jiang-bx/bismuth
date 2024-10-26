@@ -12,6 +12,7 @@ import { checkRecord_552 } from "./11.552";
 import { maxProfit_123 } from "./12.123";
 import { maxProfit_188 } from "./13.188";
 import { maxProfit_309 } from "./14.309";
+import { longestValidParentheses } from "./15.32";
 
 describe("509 测试用例", () => {
     test(`2 should return 1`, () => {
@@ -198,5 +199,23 @@ describe("309 测试用例", () => {
 
     test(`[1] should return 0`, () => {
         expect(maxProfit_309([1])).toBe(0);
+    });
+
+    test(`[1,2,4] should return 3`, () => {
+        expect(maxProfit_309([1, 2, 4])).toBe(3);
+    });
+});
+
+describe("32 测试用例", () => {
+    test(`)()()) should return 4`, () => {
+        expect(longestValidParentheses(")()())")).toBe(4);
+    });
+
+    test(`(() should return 2`, () => {
+        expect(longestValidParentheses("(()")).toBe(2);
+    });
+
+    test(`"" should return 0`, () => {
+        expect(longestValidParentheses("")).toBe(0);
     });
 });
