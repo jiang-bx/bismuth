@@ -13,6 +13,7 @@ import { maxProfit_123 } from "./12.123";
 import { maxProfit_188 } from "./13.188";
 import { maxProfit_309 } from "./14.309";
 import { longestValidParentheses } from "./15.32";
+import { nthUglyNumber } from "./16.264";
 
 describe("509 测试用例", () => {
     test(`2 should return 1`, () => {
@@ -217,5 +218,15 @@ describe("32 测试用例", () => {
 
     test(`"" should return 0`, () => {
         expect(longestValidParentheses("")).toBe(0);
+    });
+});
+
+describe("264 测试用例", () => {
+    test(`10 should return 12`, () => {
+        expect(nthUglyNumber(10)).toBe(12);
+    });
+
+    test(`1 should return 1`, () => {
+        expect(nthUglyNumber(1)).toBe(1);
     });
 });
