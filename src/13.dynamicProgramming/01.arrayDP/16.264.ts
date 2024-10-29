@@ -7,5 +7,27 @@
  */
 
 export function nthUglyNumber(n: number): number {
-    return 1;
+    const dp = new Array(n).fill(0);
+    dp[0] = 1;
+    let p2 = 0;
+    let p3 = 0;
+    let p5 = 0;
+
+    for (let i = 1; i < n; i++) {
+        const n2 = dp[p2] * 2;
+        const n3 = dp[p3] * 3;
+        const n5 = dp[p5] * 5;
+        dp[i] = Math.min(n2, n3, n5);
+        if (dp[i] == n2) {
+            p2++;
+        }
+        if (dp[i] == n3) {
+            p3++;
+        }
+        if (dp[i] == n5) {
+            p5++;
+        }
+    }
+
+    return dp[n - 1];
 }
