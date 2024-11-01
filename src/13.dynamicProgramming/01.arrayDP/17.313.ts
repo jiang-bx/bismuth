@@ -7,5 +7,27 @@
  */
 
 export function nthSuperUglyNumber(n: number, primes: number[]): number {
-    return 1
-};
+    const dp = new Array(n).fill(0);
+    dp[0] = 1;
+
+    const p = new Array(primes.length).fill(0);
+
+    for (let i = 1; i < n; i++) {
+        let min = Infinity;
+        const p2 = p.map((pItem, pIndex) => {
+            const val = dp[pItem] * primes[pIndex];
+            min = Math.min(min, val);
+            return val;
+        });
+
+        dp[i] = min;
+
+        p2.forEach((item, index) => {
+            if (dp[i] === item) {
+                p[index]++;
+            }
+        });
+    }
+
+    return dp[n - 1];
+}

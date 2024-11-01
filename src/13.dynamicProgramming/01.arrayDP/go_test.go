@@ -566,3 +566,69 @@ func TestNthUglyNumber(t *testing.T) {
 
 	})
 }
+
+func TestNthSuperUglyNumber(t *testing.T) {
+	utils.TestWarp("313 测试用例", func() {
+		params1 := 0
+		params2 := []int{}
+		res := 1
+		testTemp := func() {
+			str1, _ := json.Marshal(params1)
+			str2, _ := json.Marshal(params2)
+			res1, _ := json.Marshal(res)
+			desc := string(str1) + ", " + string(str2) + " should return " + string(res1)
+			utils.TestCondition(
+				t,
+				desc,
+				reflect.DeepEqual(NthSuperUglyNumber(params1, params2), res),
+			)
+		}
+
+		t.Run("test1", func(t *testing.T) {
+			params1 = 12
+			params2 = []int{2, 7, 13, 19}
+			res = 32
+			testTemp()
+		})
+
+		t.Run("test2", func(t *testing.T) {
+			params1 = 1
+			params2 = []int{2, 3, 5}
+			res = 1
+			testTemp()
+		})
+
+	})
+}
+
+func TestCanCross(t *testing.T) {
+	utils.TestWarp("403 测试用例", func() {
+		params1 := []int{}
+		params2 := []int{}
+		res := false
+		testTemp := func() {
+			str1, _ := json.Marshal(params1)
+			str2, _ := json.Marshal(params2)
+			res1, _ := json.Marshal(res)
+			desc := string(str1) + ", " + string(str2) + " should return " + string(res1)
+			utils.TestCondition(
+				t,
+				desc,
+				reflect.DeepEqual(CanCross(params1), res),
+			)
+		}
+
+		t.Run("test1", func(t *testing.T) {
+			params1 = []int{0, 1, 3, 5, 6, 8, 12, 17}
+			res = true
+			testTemp()
+		})
+
+		t.Run("test2", func(t *testing.T) {
+			params1 = []int{0, 1, 2, 3, 4, 8, 9, 11}
+			res = false
+			testTemp()
+		})
+
+	})
+}
